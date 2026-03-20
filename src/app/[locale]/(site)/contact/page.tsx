@@ -1,9 +1,15 @@
 import {PageContainer, PageHero, SectionTitle, SurfaceCard} from '@/components/page-shell';
 import {Reveal} from '@/components/reveal';
 import {contactDetails, isAppLocale, socialLinks} from '@/data/site-content';
-import {Mail, MapPin, Phone} from 'lucide-react';
+import {ArrowUpRight, Facebook, Instagram, Mail, Phone, Youtube, MapPin} from 'lucide-react';
 import {getTranslations} from 'next-intl/server';
 import {notFound} from 'next/navigation';
+
+const SOCIAL_ICONS = {
+  facebook: Facebook,
+  youtube: Youtube,
+  instagram: Instagram
+} as const;
 
 export default async function ContactPage({params}: PageProps<'/[locale]/contact'>) {
   const {locale} = await params;
@@ -119,17 +125,27 @@ export default async function ContactPage({params}: PageProps<'/[locale]/contact
                 }
               />
               <div className="mt-5 space-y-3">
-                {socialLinks.map((item) => (
-                  <a
-                    key={item.id}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="block rounded-[1.3rem] border border-[var(--border)] bg-white/25 px-4 py-3 text-sm font-medium text-[var(--text)] transition hover:bg-white/38"
-                  >
-                    {item.label}
-                  </a>
-                ))}
+                {socialLinks.map((item) => {
+                  const Icon = SOCIAL_ICONS[item.id];
+
+                  return (
+                    <a
+                      key={item.id}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center justify-between rounded-[1.3rem] border border-[var(--border)] bg-white/25 px-4 py-3 text-sm font-medium text-[var(--text)] transition hover:bg-white/38 hover:text-[var(--accent)]"
+                    >
+                      <span className="inline-flex items-center gap-3">
+                        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)]">
+                          <Icon className="h-4 w-4" />
+                        </span>
+                        {item.label}
+                      </span>
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  );
+                })}
               </div>
             </SurfaceCard>
           </Reveal>

@@ -28,7 +28,8 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
 
   const tActions = await getTranslations({locale, namespace: 'actions'});
   const content = getSiteContent(locale);
-  const featuredNews = news[0];
+  const sortedNews = [...news].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+  const featuredNews = sortedNews[0];
 
   const heroMetrics = [
     {
@@ -59,7 +60,7 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
 
   return (
     <PageContainer>
-      <div className="space-y-12 lg:space-y-14">
+      <div className="space-y-10 lg:space-y-12">
         <Reveal>
           <PageHero
             eyebrow={content.heroEyebrow}
@@ -71,11 +72,11 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
             description={content.heroIntro[0]}
             metrics={heroMetrics}
             artwork={
-              <div className="relative mx-auto w-full max-w-[26rem]">
+              <div className="mx-auto grid w-full max-w-[26rem] gap-3">
                 <SurfaceCard className="overflow-hidden p-3">
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[1.8rem]">
                     <Image
-                      src="/gallery/hero-group.png"
+                      src="/media/projects/muto-stimmen-fuer-veraenderung/featured.jpg"
                       alt="NGONDA e.V."
                       fill
                       className="object-cover"
@@ -96,7 +97,7 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
                   </div>
                 </SurfaceCard>
 
-                <SurfaceCard tone="contrast" className="absolute -left-4 bottom-4 hidden max-w-[12rem] p-4 sm:block">
+                <SurfaceCard tone="contrast" className="p-4">
                   <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">
                     {locale === 'de' ? 'Aachen base' : 'base Aachen'}
                   </p>
@@ -106,7 +107,6 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
                       : 'Accompagnement, orientation et empowerment dans un cadre sur.'}
                   </p>
                 </SurfaceCard>
-
               </div>
             }
           >
@@ -195,9 +195,19 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
 
             <Reveal delay={0.08}>
               <SurfaceCard tone="muted" className="p-6 sm:p-7">
-                <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
-                  <Newspaper className="h-4 w-4 text-[var(--accent)]" />
-                  {locale === 'de' ? 'Aktuelles' : 'Actualites'}
+                <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-[1.35rem]">
+                  <Image
+                    src={featuredNews.featuredImage.src}
+                    alt={getLocalized(featuredNews.featuredImage.alt, locale)}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 30rem, 100vw"
+                  />
+                  <div className="media-overlay-strong" />
+                  <div className="absolute left-3 top-3 inline-flex items-center gap-2 rounded-full border border-white/24 bg-black/24 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.23em] contrast-on-media">
+                    <Newspaper className="h-3.5 w-3.5" />
+                    {locale === 'de' ? 'Aktuelles' : 'Actualites'}
+                  </div>
                 </div>
                 <h3 className="mt-4 text-2xl font-semibold text-[var(--text)]">
                   {getLocalized(featuredNews.title, locale)}
@@ -266,29 +276,51 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
           <div className="grid gap-5 md:grid-cols-2">
             {currentProjects.map((project, index) => (
               <Reveal key={project.id} delay={0.05 * index}>
-                <SurfaceCard className="h-full p-6 sm:p-7">
-                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">
-                    {locale === 'de' ? 'Projekt' : 'Projet'} 0{index + 1}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-semibold text-[var(--text)]">
-                    {getLocalized(project.title, locale)}
-                  </h3>
-                  <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
-                    {getLocalized(project.body[0], locale)}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
-                    {getLocalized(project.body[1], locale)}
-                  </p>
-                  <Link
-                    href={{
-                      pathname: '/projects/[slug]',
-                      params: {slug: getLocalized(project.slug, locale)}
-                    }}
-                    className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)]"
-                  >
-                    {tActions('readMore')}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
+                <SurfaceCard className="h-full overflow-hidden p-3">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-[1.35rem]">
+                    <Image
+                      src={project.featuredImage.src}
+                      alt={getLocalized(project.featuredImage.alt, locale)}
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                    />
+                    <div className="media-overlay-strong" />
+                    <div className="absolute left-3 top-3 rounded-full border border-white/24 bg-black/24 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.23em] contrast-on-media">
+                      {locale === 'de' ? 'Projekt' : 'Projet'} 0{index + 1}
+                    </div>
+                  </div>
+                  <div className="space-y-3 px-2 pb-2 pt-4">
+                    <h3 className="text-2xl font-semibold text-[var(--text)]">
+                      {getLocalized(project.title, locale)}
+                    </h3>
+                    <p className="text-sm leading-7 text-[var(--muted)]">
+                      {getLocalized(project.body[0], locale)}
+                    </p>
+                    <div className="grid grid-cols-3 gap-2">
+                      {project.gallery.slice(0, 3).map((item) => (
+                        <div key={item.src} className="relative aspect-square overflow-hidden rounded-[0.95rem]">
+                          <Image
+                            src={item.src}
+                            alt={getLocalized(item.alt, locale)}
+                            fill
+                            className="object-cover"
+                            sizes="100px"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    <Link
+                      href={{
+                        pathname: '/projects/[slug]',
+                        params: {slug: getLocalized(project.slug, locale)}
+                      }}
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)]"
+                    >
+                      {tActions('readMore')}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
                 </SurfaceCard>
               </Reveal>
             ))}

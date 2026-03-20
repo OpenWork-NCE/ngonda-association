@@ -38,7 +38,7 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
               },
               {
                 value: `${galleryVideos.length}`,
-                label: locale === 'de' ? 'Video slots' : 'emplacements video'
+                label: locale === 'de' ? 'Videobeitraege' : 'videos publiees'
               }
             ]}
             artwork={
@@ -46,7 +46,7 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
                 <SurfaceCard className="overflow-hidden p-3">
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem]">
                     <Image
-                      src="/gallery/background.jpg"
+                      src="/media/projects/koloniale-gewalt-bassaa/featured.jpg"
                       alt="NGONDA gallery"
                       fill
                       className="object-cover"

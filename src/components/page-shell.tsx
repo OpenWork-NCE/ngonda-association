@@ -49,7 +49,7 @@ export function PageHero({
         className
       )}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(140deg,rgba(255,255,255,0.45),transparent_38%),radial-gradient(circle_at_top_right,rgba(215,178,110,0.18),transparent_24%),var(--surface)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(140deg,var(--hero-sheen),transparent_38%),radial-gradient(circle_at_top_right,rgba(215,178,110,0.18),transparent_24%),var(--surface)]" />
       <div className="pointer-events-none absolute inset-0 hairline-grid opacity-45 [mask-image:radial-gradient(circle_at_center,black_34%,transparent_82%)]" />
       <div className="pointer-events-none absolute -left-14 top-10 h-40 w-40 rounded-full bg-[var(--accent-soft)] blur-3xl animate-float-slow" />
       <div className="pointer-events-none absolute -bottom-20 right-8 h-52 w-52 rounded-full bg-[var(--accent-secondary-soft)] blur-3xl animate-float-reverse" />

@@ -1,7 +1,7 @@
 import { contactDetails, getSiteContent, socialLinks } from '@/data/site-content';
 import { Link } from '@/i18n/navigation';
 import type { AppLocale } from '@/i18n/routing';
-import {ArrowUpRight, Mail, MapPin, Phone} from 'lucide-react';
+import {ArrowUpRight, Facebook, Instagram, Mail, MapPin, Phone, Youtube} from 'lucide-react';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
@@ -15,6 +15,12 @@ const SECONDARY_LINKS = [
   { href: '/contact', key: 'contact' }
 ] as const;
 
+const SOCIAL_ICONS = {
+  facebook: Facebook,
+  youtube: Youtube,
+  instagram: Instagram
+} as const;
+
 export async function SiteFooter({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: 'footer' });
   const tNav = await getTranslations({ locale, namespace: 'nav' });
@@ -23,7 +29,7 @@ export async function SiteFooter({ locale }: { locale: AppLocale }) {
   const content = getSiteContent(locale);
 
   return (
-    <footer className="relative mt-10 border-t border-[var(--border)]">
+    <footer className="relative mt-10 border-t border-[var(--border)] bg-[var(--footer-bg)]">
       <div className="mx-auto w-full max-w-[92rem] px-4 pb-8 pt-12 sm:px-6 lg:px-10">
         <div className="surface-card surface-card-accent mb-6 px-6 py-6 contrast-on-accent sm:px-8 sm:py-8">
           <div className="grid gap-6 lg:grid-cols-[1.2fr_auto] lg:items-center">
@@ -137,26 +143,13 @@ export async function SiteFooter({ locale }: { locale: AppLocale }) {
 
           <div className="surface-card surface-card-muted px-6 py-6 sm:px-7">
             <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--muted)]">
-              {t('social')}
+              {locale === 'de' ? 'Recht & Organisation' : 'Cadre legal & organisation'}
             </h4>
-            <ul className="mt-5 grid gap-2 text-sm">
-              {socialLinks.map((item) => (
-                <li key={item.id}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center justify-between rounded-[1rem] border border-transparent px-3 py-2 text-[var(--text)] transition hover:border-[var(--border)] hover:bg-white/35 hover:text-[var(--accent)]"
-                  >
-                    <span>{item.label}</span>
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <div className="premium-divider my-5" />
-
+            <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
+              {locale === 'de'
+                ? 'Institutionelle Referenzen, Bankdaten und formale Kennzahlen der Organisation.'
+                : 'References institutionnelles, coordonnees bancaires et informations formelles de l organisation.'}
+            </p>
             <div className="rounded-[1.5rem] border border-[var(--border)] bg-white/22 p-4 text-xs leading-6 text-[var(--muted)]">
               <p>{contactDetails.vr}</p>
               <p>{contactDetails.ust}</p>
@@ -170,18 +163,23 @@ export async function SiteFooter({ locale }: { locale: AppLocale }) {
 
         <div className="flex flex-col gap-4 px-1 py-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap gap-2">
-            {socialLinks.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                className="control-chip inline-flex items-center gap-2 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] hover:text-[var(--text)]"
-              >
-                {item.id}
-                <ArrowUpRight className="h-3.5 w-3.5" />
-              </a>
-            ))}
+            {socialLinks.map((item) => {
+              const Icon = SOCIAL_ICONS[item.id];
+
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="control-chip inline-flex items-center gap-2 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] hover:text-[var(--text)]"
+                >
+                  <Icon className="h-3.5 w-3.5" />
+                  {item.label}
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+              );
+            })}
           </div>
 
           <div className="text-xs text-[var(--muted)]">

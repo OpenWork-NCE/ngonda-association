@@ -1,18 +1,18 @@
-import {PageContainer, PageHero, SectionTitle, SurfaceCard} from '@/components/page-shell';
-import {Reveal} from '@/components/reveal';
-import {funders, getSiteContent, isAppLocale} from '@/data/site-content';
+import { PageContainer, PageHero, SectionTitle, SurfaceCard } from '@/components/page-shell';
+import { Reveal } from '@/components/reveal';
+import { funders, getSiteContent, isAppLocale } from '@/data/site-content';
 import Image from 'next/image';
-import {getTranslations} from 'next-intl/server';
-import {notFound} from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 
-export default async function FundersPage({params}: PageProps<'/[locale]/funders'>) {
-  const {locale} = await params;
+export default async function FundersPage({ params }: PageProps<'/[locale]/funders'>) {
+  const { locale } = await params;
 
   if (!isAppLocale(locale)) {
     notFound();
   }
 
-  const tPages = await getTranslations({locale, namespace: 'pages'});
+  const tPages = await getTranslations({ locale, namespace: 'pages' });
   const content = getSiteContent(locale);
 
   return (
@@ -29,17 +29,17 @@ export default async function FundersPage({params}: PageProps<'/[locale]/funders
                 label: locale === 'de' ? 'sichtbare logos' : 'logos visibles'
               }
             ]}
-            artwork={
-              <div className="grid grid-cols-2 gap-3">
-                {funders.map((funder) => (
-                  <SurfaceCard key={funder.id} className="h-full p-3">
-                    <div className="relative h-20 overflow-hidden rounded-[1rem] bg-white/75">
-                      <Image src={funder.logo} alt={funder.name} fill className="object-contain p-3" sizes="160px" />
-                    </div>
-                  </SurfaceCard>
-                ))}
-              </div>
-            }
+          // artwork={
+          //   <div className="grid grid-cols-2 gap-3">
+          //     {funders.map((funder) => (
+          //       <SurfaceCard key={funder.id} className="h-full p-3">
+          //         <div className="relative h-20 overflow-hidden rounded-[1rem] bg-white/75">
+          //           <Image src={funder.logo} alt={funder.name} fill className="object-contain p-3" sizes="160px" />
+          //         </div>
+          //       </SurfaceCard>
+          //     ))}
+          //   </div>
+          // }
           />
         </Reveal>
 

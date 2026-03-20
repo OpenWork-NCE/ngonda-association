@@ -26,7 +26,18 @@
   --on-media: #f9fbfa;
   --on-media-muted: rgba(249, 251, 250, 0.82);
   --header-bg: rgba(255, 250, 242, 0.76);
-  --footer-bg: rgba(234, 224, 210, 0.78);
+  --footer-bg: #d8c8b3;
+  --header-sheen: rgba(255, 255, 255, 0.42);
+  --hero-sheen: rgba(255, 255, 255, 0.45);
+  --label-bg: rgba(255, 255, 255, 0.34);
+  --sheen-chip: linear-gradient(160deg, rgba(255, 255, 255, 0.5), transparent 45%);
+  --sheen-card: linear-gradient(160deg, rgba(255, 255, 255, 0.5), transparent 42%);
+  --sheen-muted: linear-gradient(145deg, rgba(255, 255, 255, 0.32), transparent 48%);
+  --sheen-contrast: linear-gradient(160deg, rgba(255, 255, 255, 0.36), transparent 48%);
+  --sheen-warning: linear-gradient(145deg, rgba(255, 255, 255, 0.26), transparent 50%);
+  --sheen-widget: linear-gradient(155deg, rgba(255, 255, 255, 0.44), transparent 48%);
+  --grid-sheen: rgba(255, 255, 255, 0.22);
+  --atmosphere-sheen: rgba(255, 255, 255, 0.32);
   --shadow-card: 0 28px 64px -42px rgba(14, 29, 25, 0.42);
   --shadow-hero: 0 40px 120px -56px rgba(14, 29, 25, 0.48);
   --shadow-soft: inset 0 1px 0 rgba(255, 255, 255, 0.72);
@@ -55,12 +66,23 @@
   --accent-secondary-soft: rgba(206, 140, 105, 0.16);
   --accent-highlight: #e4bf7a;
   --accent-contrast: #07120f;
-  --on-accent: #06100d;
-  --on-accent-muted: rgba(6, 16, 13, 0.76);
+  --on-accent: #ecf5ef;
+  --on-accent-muted: rgba(236, 245, 239, 0.82);
   --on-media: #f2f8f5;
   --on-media-muted: rgba(233, 244, 239, 0.82);
   --header-bg: rgba(8, 17, 15, 0.74);
-  --footer-bg: rgba(9, 20, 17, 0.82);
+  --footer-bg: #050d0c;
+  --header-sheen: rgba(13, 30, 25, 0.56);
+  --hero-sheen: rgba(12, 28, 24, 0.56);
+  --label-bg: rgba(17, 35, 30, 0.76);
+  --sheen-chip: linear-gradient(160deg, rgba(18, 40, 34, 0.68), transparent 52%);
+  --sheen-card: linear-gradient(160deg, rgba(14, 34, 29, 0.62), transparent 54%);
+  --sheen-muted: linear-gradient(145deg, rgba(18, 39, 33, 0.56), transparent 55%);
+  --sheen-contrast: linear-gradient(160deg, rgba(12, 28, 24, 0.6), transparent 56%);
+  --sheen-warning: linear-gradient(145deg, rgba(43, 36, 24, 0.42), transparent 56%);
+  --sheen-widget: linear-gradient(155deg, rgba(16, 34, 29, 0.62), transparent 56%);
+  --grid-sheen: rgba(16, 34, 29, 0.42);
+  --atmosphere-sheen: rgba(7, 18, 15, 0.14);
   --shadow-card: 0 36px 78px -48px rgba(0, 0, 0, 0.65);
   --shadow-hero: 0 50px 140px -62px rgba(0, 0, 0, 0.72);
   --shadow-soft: inset 0 1px 0 rgba(255, 255, 255, 0.04);
@@ -141,7 +163,7 @@ body::after {
   z-index: -1;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.32), transparent 16%, transparent 84%, rgba(8, 17, 15, 0.04)),
+    linear-gradient(180deg, var(--atmosphere-sheen), transparent 16%, transparent 84%, rgba(8, 17, 15, 0.04)),
     radial-gradient(circle at 22% 78%, rgba(31, 109, 91, 0.08), transparent 20%),
     radial-gradient(circle at 78% 64%, rgba(190, 116, 82, 0.08), transparent 20%);
 }
@@ -159,7 +181,7 @@ body::after {
   gap: 0.55rem;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.34);
+  background: var(--label-bg);
   box-shadow: var(--shadow-soft);
   color: var(--muted);
   font-size: 0.72rem;
@@ -184,7 +206,7 @@ body::after {
   border: 1px solid var(--border-strong);
   border-radius: 999px;
   background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.5), transparent 45%),
+    var(--sheen-chip),
     var(--surface);
   box-shadow: var(--shadow-soft), var(--shadow-card);
   backdrop-filter: blur(18px);
@@ -197,7 +219,7 @@ body::after {
   border-radius: 2rem;
   background:
     radial-gradient(circle at top right, rgba(215, 178, 110, 0.12), transparent 24%),
-    linear-gradient(160deg, rgba(255, 255, 255, 0.5), transparent 42%),
+    var(--sheen-card),
     var(--surface);
   box-shadow: var(--shadow-soft), var(--shadow-card);
   backdrop-filter: blur(18px);
@@ -220,14 +242,14 @@ body::after {
 .surface-card-muted {
   background:
     radial-gradient(circle at bottom left, rgba(31, 109, 91, 0.1), transparent 24%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.32), transparent 48%),
+    var(--sheen-muted),
     var(--surface-muted);
 }
 
 .surface-card-contrast {
   background:
     radial-gradient(circle at top left, rgba(190, 116, 82, 0.12), transparent 22%),
-    linear-gradient(160deg, rgba(255, 255, 255, 0.36), transparent 48%),
+    var(--sheen-contrast),
     var(--surface-contrast);
 }
 
@@ -238,7 +260,7 @@ body::after {
 .surface-card-warning {
   background:
     radial-gradient(circle at top right, rgba(215, 178, 110, 0.18), transparent 20%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.26), transparent 50%),
+    var(--sheen-warning),
     rgba(235, 205, 145, 0.28);
 }
 
@@ -329,7 +351,7 @@ body::after {
   border: 1px solid var(--border-strong);
   background:
     radial-gradient(circle at top right, rgba(215, 178, 110, 0.14), transparent 34%),
-    linear-gradient(155deg, rgba(255, 255, 255, 0.44), transparent 48%),
+    var(--sheen-widget),
     var(--surface-strong);
   box-shadow: var(--shadow-soft), var(--shadow-card);
   backdrop-filter: blur(16px);
@@ -349,7 +371,7 @@ body::after {
   border-radius: 1.2rem;
   border: 1px solid var(--border);
   background:
-    linear-gradient(0deg, rgba(255, 255, 255, 0.22), transparent 56%),
+    linear-gradient(0deg, var(--grid-sheen), transparent 56%),
     linear-gradient(90deg, var(--line) 1px, transparent 1px),
     linear-gradient(var(--line) 1px, transparent 1px);
   background-size: auto, 22px 22px, 22px 22px;

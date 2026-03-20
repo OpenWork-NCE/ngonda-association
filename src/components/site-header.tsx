@@ -58,8 +58,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6 lg:px-10">
       <div className="mx-auto w-full max-w-[92rem]">
-        <div className="relative rounded-[2rem] border border-[var(--border-strong)] bg-[var(--header-bg)] shadow-[var(--shadow-card)] backdrop-blur-2xl">
-          <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(135deg,rgba(255,255,255,0.42),transparent_44%),radial-gradient(circle_at_top_right,rgba(215,178,110,0.14),transparent_22%)]" />
+        <div className="relative overflow-visible rounded-[2rem] border border-[var(--border-strong)] bg-[var(--header-bg)] shadow-[var(--shadow-card)] backdrop-blur-2xl">
+          <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(135deg,var(--header-sheen),transparent_44%),radial-gradient(circle_at_top_right,rgba(215,178,110,0.14),transparent_22%)]" />
 
           <div className="relative flex items-center justify-between gap-3 px-4 py-3 sm:px-5">
             <Link href="/" className="flex min-w-0 items-center gap-3">
@@ -86,7 +86,7 @@ export function SiteHeader() {
               </div>
             </Link>
 
-            <nav className="hidden items-center gap-1 rounded-full border border-[var(--border)] bg-[var(--surface-strong)] p-1.5 xl:flex">
+            <nav className="relative z-20 hidden items-center gap-1 overflow-visible rounded-full border border-[var(--border)] bg-[var(--surface-strong)] p-1.5 xl:flex">
               {links.map((link) => {
                 if (link.children.length > 0) {
                   return (
@@ -103,7 +103,7 @@ export function SiteHeader() {
                         {link.label}
                         <ChevronDown className="h-4 w-4" />
                       </Link>
-                      <div className="invisible absolute left-0 top-[calc(100%+12px)] w-56 translate-y-1 rounded-[1.6rem] border border-[var(--border-strong)] bg-[var(--surface-strong)] p-2 opacity-0 shadow-[var(--shadow-card)] transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                      <div className="pointer-events-none invisible absolute left-0 top-[calc(100%+10px)] z-50 w-56 translate-y-1 rounded-[1.6rem] border border-[var(--border-strong)] bg-[var(--surface-strong)] p-2 opacity-0 shadow-[var(--shadow-card)] transition-all group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                         {link.children.map((child) => (
                           <Link
                             key={child.key}
