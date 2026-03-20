@@ -63,6 +63,7 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
       <div className="space-y-10 lg:space-y-12">
         <Reveal>
           <PageHero
+            className="lg:py-11"
             eyebrow={content.heroEyebrow}
             title={
               locale === 'de'
@@ -72,7 +73,7 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
             description={content.heroIntro[0]}
             metrics={heroMetrics}
             artwork={
-              <div className="mx-auto grid w-full max-w-[26rem] gap-3">
+              <div className="relative mx-auto w-full max-w-[27rem]">
                 <SurfaceCard className="overflow-hidden p-3">
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[1.8rem]">
                     <Image
@@ -90,14 +91,14 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
                       </p>
                       <p className="mt-3 max-w-xs text-xl font-semibold leading-tight">
                         {locale === 'de'
-                          ? 'Institutionelle Sichtbarkeit mit menschlicher Nahe.'
+                          ? 'Institutionelle Sichtbarkeit mit menschlicher Naehe.'
                           : 'Une presence institutionnelle qui reste humaine et proche.'}
                       </p>
                     </div>
                   </div>
                 </SurfaceCard>
 
-                <SurfaceCard tone="contrast" className="p-4">
+                <SurfaceCard tone="contrast" className="absolute -left-4 bottom-4 hidden max-w-[12rem] p-4 sm:block">
                   <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">
                     {locale === 'de' ? 'Aachen base' : 'base Aachen'}
                   </p>
