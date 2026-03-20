@@ -180,12 +180,23 @@ export function BackLink({
 function HeroPrism() {
   return (
     <div className="relative mx-auto flex aspect-[4/5] w-full max-w-[22rem] items-center justify-center">
-      <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_center,rgba(215,178,110,0.24),transparent_56%)] blur-2xl" />
-      <div className="absolute inset-[12%] rounded-[2.5rem] border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,0.26),rgba(255,255,255,0.06))] shadow-[0_24px_80px_-35px_rgba(14,29,25,0.48)] [transform:perspective(1200px)_rotateX(66deg)_rotateZ(-30deg)] animate-float-slow" />
-      <div className="absolute inset-[23%] rounded-[2rem] border border-[var(--border-strong)] bg-[linear-gradient(145deg,rgba(255,255,255,0.4),rgba(255,255,255,0.08)),var(--surface-strong)] shadow-[0_20px_64px_-30px_rgba(14,29,25,0.42)] [transform:perspective(1200px)_rotateX(66deg)_rotateZ(-30deg)_translateZ(24px)] animate-float-reverse" />
-      <div className="absolute inset-[35%] rounded-[1.65rem] border border-[var(--border-strong)] bg-[linear-gradient(140deg,var(--accent-highlight),var(--accent-secondary))] shadow-[0_16px_44px_-20px_rgba(14,29,25,0.42)] [transform:perspective(1200px)_rotateX(66deg)_rotateZ(-30deg)_translateZ(48px)]" />
-      <div className="absolute left-[18%] top-[22%] h-14 w-14 rounded-[1.15rem] border border-white/35 bg-white/15 shadow-[0_12px_34px_-18px_rgba(14,29,25,0.45)] animate-glow-pan" />
-      <div className="absolute bottom-[17%] right-[16%] h-20 w-20 rounded-full border border-[var(--border-strong)] bg-[linear-gradient(145deg,rgba(31,109,91,0.25),rgba(255,255,255,0.04))] shadow-[0_16px_42px_-26px_rgba(14,29,25,0.5)] animate-float-reverse" />
+      {/* Warm encompassing glow */}
+      <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_center,rgba(215,178,110,0.25),transparent_60%)] blur-2xl" />
+      
+      {/* Base soft circle representing unity */}
+      <div className="absolute inset-[15%] rounded-full border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,0.3),rgba(255,255,255,0.05))] shadow-[0_24px_80px_-35px_rgba(14,29,25,0.4)] animate-float-slow" />
+      
+      {/* Petal/Embrace Right - reaching left, representing support */}
+      <div className="absolute inset-y-[25%] right-[15%] w-[55%] rounded-[3rem] rounded-tl-full rounded-br-full border border-[var(--border-strong)] bg-[linear-gradient(145deg,rgba(255,255,255,0.45),rgba(255,255,255,0.1)),var(--surface-strong)] shadow-[0_20px_64px_-30px_rgba(14,29,25,0.35)] backdrop-blur-sm animate-float-reverse" />
+      
+      {/* Petal/Embrace Left - reaching right, representing growth */}
+      <div className="absolute inset-y-[35%] left-[20%] w-[50%] rounded-[2.5rem] rounded-tr-full rounded-bl-full border border-[var(--border-strong)] bg-[linear-gradient(140deg,var(--accent-highlight),var(--accent-secondary))] shadow-[0_16px_44px_-20px_rgba(14,29,25,0.4)] backdrop-blur-md animate-float-slow" />
+      
+      {/* Floating dot (spark of change) */}
+      <div className="absolute right-[25%] top-[25%] h-12 w-12 rounded-full border border-white/35 bg-white/20 shadow-[0_12px_34px_-18px_rgba(14,29,25,0.4)] animate-glow-pan" />
+      
+      {/* Smaller floating dot (community seed) */}
+      <div className="absolute bottom-[20%] left-[30%] h-8 w-8 rounded-full border border-[var(--border-strong)] bg-[linear-gradient(145deg,rgba(215,178,110,0.3),rgba(255,255,255,0.05))] shadow-[0_16px_42px_-26px_rgba(14,29,25,0.4)] animate-float-reverse" />
     </div>
   );
 }
