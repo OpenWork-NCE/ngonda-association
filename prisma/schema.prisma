@@ -1,0 +1,170 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Locale {
+  de
+  fr
+}
+
+enum ProjectScope {
+  current
+  archive
+}
+
+model SiteSettings {
+  id              Int         @id @default(1)
+  organization    String
+  slogan          String
+  defaultLocale   Locale      @default(de)
+  secondaryLocale Locale      @default(fr)
+  phone           String
+  street          String
+  city            String
+  vrNumber        String
+  ustNumber       String
+  iban            String
+  bic             String
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  socialLinks     SocialLink[]
+}
+
+model SocialLink {
+  id         String       @id @default(cuid())
+  network    String
+  label      String
+  url        String
+  order      Int          @default(0)
+  settingsId Int
+  settings   SiteSettings @relation(fields: [settingsId], references: [id], onDelete: Cascade)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+}
+
+model TeamMember {
+  id        String               @id @default(cuid())
+  role      String
+  order     Int                  @default(0)
+  createdAt DateTime             @default(now())
+  updatedAt DateTime             @updatedAt
+  locale    TeamMemberLocale[]
+}
+
+model TeamMemberLocale {
+  id        String     @id @default(cuid())
+  locale    Locale
+  name      String
+  subtitle  String
+  memberId  String
+  member    TeamMember @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@unique([locale, memberId])
+}
+
+model News {
+  id          String       @id @default(cuid())
+  slug        String       @unique
+  publishedAt DateTime
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  locale      NewsLocale[]
+}
+
+model NewsLocale {
+  id      String @id @default(cuid())
+  locale  Locale
+  title   String
+  excerpt String
+  body    String
+  newsId  String
+  news    News   @relation(fields: [newsId], references: [id], onDelete: Cascade)
+
+  @@unique([locale, newsId])
+}
+
+model Project {
+  id        String          @id @default(cuid())
+  slug      String          @unique
+  scope     ProjectScope
+  order     Int             @default(0)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  locale    ProjectLocale[]
+}
+
+model ProjectLocale {
+  id        String   @id @default(cuid())
+  locale    Locale
+  title     String
+  body      String
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([locale, projectId])
+}
+
+model Theme {
+  id        String        @id @default(cuid())
+  order     Int           @default(0)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  locale    ThemeLocale[]
+}
+
+model ThemeLocale {
+  id      String @id @default(cuid())
+  locale  Locale
+  title   String
+  body    String
+  themeId String
+  theme   Theme  @relation(fields: [themeId], references: [id], onDelete: Cascade)
+
+  @@unique([locale, themeId])
+}
+
+model GalleryItem {
+  id        String      @id @default(cuid())
+  imageUrl  String
+  caption   String?
+  locale    Locale
+  order     Int         @default(0)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model Brochure {
+  id        String      @id @default(cuid())
+  title     String
+  fileUrl   String
+  locale    Locale
+  order     Int         @default(0)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model Funder {
+  id        String      @id @default(cuid())
+  name      String
+  logoUrl   String
+  website   String?
+  order     Int         @default(0)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model LegalBlock {
+  id        String      @id @default(cuid())
+  key       String      @unique
+  locale    Locale
+  title     String
+  body      String
+  order     Int         @default(0)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}

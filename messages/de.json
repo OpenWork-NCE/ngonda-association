@@ -1,0 +1,59 @@
+{
+  "brand": {
+    "name": "NGONDA e.V.",
+    "slogan": "She first"
+  },
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "funders": "Förderer",
+    "news": "Aktuelles",
+    "gallery": "Gallerie",
+    "photos": "Fotos",
+    "videos": "Videos",
+    "projects": "Projekte",
+    "contact": "Contact"
+  },
+  "actions": {
+    "readMore": "Mehr erfahren",
+    "viewAll": "Alle ansehen",
+    "discover": "Entdecken",
+    "open": "Öffnen",
+    "language": "Sprache",
+    "theme": "Thema wechseln",
+    "light": "Hell",
+    "dark": "Dunkel"
+  },
+  "home": {
+    "heroEyebrow": "Migrantinnen stärken in Aachen",
+    "missionTitle": "Mission & Haltung",
+    "distinctionTitle": "Was uns auszeichnet",
+    "focusTitle": "Unsere Schwerpunkte",
+    "visionTitle": "Unsere Vision",
+    "currentProjectsTitle": "Unsere aktuellen Projekte",
+    "resourcesTitle": "Ressourcen & Partner",
+    "newsTitle": "Aktuelles"
+  },
+  "pages": {
+    "aboutTitle": "Über uns",
+    "newsTitle": "Aktuelles",
+    "projectsTitle": "Projekte",
+    "themesTitle": "Schwerpunktthemen",
+    "archiveTitle": "Archiv & weitere Projekte",
+    "galleryTitle": "Gallerie",
+    "brochureTitle": "Brochure",
+    "fundersTitle": "Förderer",
+    "onlineServiceTitle": "Online-Service",
+    "impressumTitle": "Impressum",
+    "contactTitle": "Contact",
+    "photosTitle": "Fotos",
+    "videosTitle": "Videos"
+  },
+  "footer": {
+    "quickLinks": "Schnellzugriff",
+    "contact": "Kontakt",
+    "legal": "Rechtliches",
+    "social": "Soziale Netzwerke",
+    "copyright": "© {year} NGONDA e.V. Alle Rechte vorbehalten."
+  }
+}
