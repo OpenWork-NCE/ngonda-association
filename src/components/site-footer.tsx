@@ -62,13 +62,13 @@ export async function SiteFooter({ locale }: { locale: AppLocale }) {
         <div className="grid gap-6 lg:grid-cols-[1.2fr_0.9fr_0.9fr]">
           <div className="surface-card px-6 py-6 sm:px-7">
             <div className="flex items-center gap-4">
-              <div className="rounded-[1.35rem] border border-[var(--border-strong)] bg-[var(--surface-strong)] p-3">
+              <div className="rounded-[1.35rem] border border-[var(--border-strong)] bg-[var(--surface-strong)] px-3.5 py-2.5">
                 <Image
                   src="/ngonda-logo.png"
                   alt="NGONDA e.V."
-                  width={128}
-                  height={128}
-                  className="h-12 w-auto object-contain sm:h-14"
+                  width={970}
+                  height={257}
+                  className="h-10 w-auto object-contain sm:h-11"
                 />
               </div>
               <div>

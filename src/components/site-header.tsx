@@ -63,13 +63,13 @@ export function SiteHeader() {
 
           <div className="relative flex items-center justify-between gap-3 px-4 py-3 sm:px-5">
             <Link href="/" className="flex min-w-0 items-center gap-3">
-              <div className="relative overflow-hidden rounded-[1.15rem] border border-[var(--border-strong)] bg-[var(--surface-strong)] p-2 shadow-[var(--shadow-soft)]">
+              <div className="relative overflow-hidden rounded-[1.15rem] border border-[var(--border-strong)] bg-[var(--surface-strong)] px-2.5 py-2 shadow-[var(--shadow-soft)]">
                 <Image
                   src="/ngonda-logo.png"
                   alt="NGONDA e.V."
-                  width={128}
-                  height={128}
-                  className="h-10 w-auto object-contain sm:h-11"
+                  width={970}
+                  height={257}
+                  className="h-8 w-auto object-contain sm:h-9"
                   priority
                 />
               </div>
