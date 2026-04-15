@@ -1,4 +1,4 @@
-import type {AppLocale} from '@/i18n/routing';
+import type { AppLocale } from '@/i18n/routing';
 
 export type LocalizedString = Record<AppLocale, string>;
 
@@ -77,6 +77,20 @@ export type GalleryVideo = {
   description: LocalizedString;
   href: string;
   thumbnail: string;
+};
+
+export type BrochureItem = {
+  id: string;
+  title: LocalizedString;
+  description: LocalizedString;
+  kind: LocalizedString;
+  highlights: LocalizedString[];
+  filePath: string;
+  fileName: string;
+  pageCount: number;
+  pageFormat: string;
+  fileSizeBytes: number;
+  updatedAt: string;
 };
 
 export const socialLinks: SocialLink[] = [
@@ -169,40 +183,31 @@ export const currentProjects: ProjectItem[] = [
       }
     },
     gallery: [
-      {
-        src: '/media/projects/klima-migration/gallery-1.jpg',
-        alt: {
-          de: 'Dialogrunde in einem Bildungsformat',
-          fr: 'Session de dialogue dans un format educatif'
-        }
-      },
-      {
-        src: '/media/projects/klima-migration/gallery-2.jpg',
-        alt: {
-          de: 'Community Austausch in einer Seminarreihe',
-          fr: 'Echange communautaire lors d un seminaire'
-        }
-      },
-      {
-        src: '/media/projects/klima-migration/gallery-3.jpg',
-        alt: {
-          de: 'Visuelles Motiv zu Mobilitaet und Zukunft',
-          fr: 'Motif visuel autour de la mobilite et de l avenir'
-        }
-      }
     ],
     body: [
       {
-        de: 'Klima & Migration – Wege der Hoffnung ist eine Bildungs- und Dialogreihe, die globale Zusammenhänge zwischen Klimawandel und Migration erfahrbar macht.',
-        fr: 'Klima & Migration – Wege der Hoffnung est une série éducative et de dialogue qui rend visibles les liens entre changement climatique et migration.'
+        de: 'Climate & Migration – Wege der Hoffnung ist ein Bildungs- und Dialogprojekt, das den Menschen helfen soll, die tiefgreifenden Zusammenhänge zwischen Klimawandel, sozialer Ungleichheit und Migration besser zu verstehen. In einer Welt, in der Umweltkrisen und politische Instabilität zunehmen, schafft dieses Projekt einen sinnvollen Raum für Lernen, Reflexion und offene Gespräche.',
+        fr: 'Climat et migrations – Chemins d’espoir est un projet éducatif et de dialogue visant à mieux comprendre les liens profonds entre changement climatique, inégalités sociales et migrations. Dans un monde où les crises environnementales et l’instabilité politique s’accentuent, ce projet offre un espace propice à l’apprentissage, à la réflexion et au dialogue ouvert.'
       },
       {
-        de: 'Das Projekt beleuchtet Ursachen, klimabedingte Flucht, soziale Ungleichheiten sowie Perspektiven aus dem Globalen Süden. In interaktiven Workshops, Dialogformen und kreativen Methoden werden Migrationserfahrungen sichtbar gemacht und Lösungsansätze für mehr globale Gerechtigkeit entwickelt.',
-        fr: 'Le projet aborde les causes, les déplacements liés au climat, les inégalités sociales et les perspectives du Sud global à travers des ateliers interactifs, des formats de dialogue et des approches créatives.'
+        de: 'Das Projekt zielt darauf ab, die Teilnehmer dabei zu unterstützen, vertieftes Wissen über die ökologischen, politischen und sozialen Ursachen der Migration zu erlangen. Klimawandel, Konflikte, Armut und fehlende Ressourcen zwingen viele Menschen dazu, ihre Heimat auf der Suche nach Sicherheit und besseren Möglichkeiten zu verlassen. In Workshops und Diskussionen erforschen die Teilnehmer diese Ursachen und entwickeln ein besseres Verständnis für die Gründe der Migration.',
+        fr: 'Le projet a pour objectif d’aider les participants à approfondir leurs connaissances sur les causes écologiques, politiques et sociales des migrations. Le changement climatique, les conflits, la pauvreté et le manque de ressources contraignent de nombreuses personnes à quitter leur foyer en quête de sécurité et de meilleures perspectives. À travers des ateliers et des discussions, les participants explorent ces causes et développent une compréhension plus fine des raisons qui poussent à migrer.'
       },
       {
-        de: 'Ziel ist es, Bewusstsein zu stärken, Vorurteile abzubauen und gemeinsames Handeln für eine solidarische und nachhaltige Zukunft zu fördern.',
-        fr: 'L’objectif est de renforcer la conscience collective, de réduire les préjugés et de favoriser des actions communes vers un avenir solidaire et durable.'
+        de: 'Ein wichtiges Ziel des Projekts ist es, die Mythen, Vorurteile und Fehlinformationen, die oft die öffentlichen Debatten über Migration beherrschen, zu hinterfragen und zu zerstreuen. Durch den Einsatz von Fakten, Dialog und kritischem Denken lernen die Teilnehmer, Stereotypen zu hinterfragen und ausgewogenere und fundiertere Perspektiven zu entwickeln. Dieser Ansatz fördert das Einfühlungsvermögen und den Respekt für Menschen mit unterschiedlichem Hintergrund.',
+        fr: 'Un objectif clé du projet est de remettre en question et de dissiper les mythes, les préjugés et la désinformation qui dominent souvent les débats publics sur les migrations. En s’appuyant sur des faits, le dialogue et l’esprit critique, les participants apprennent à questionner les stéréotypes et à développer des perspectives plus équilibrées et éclairées. Cette approche favorise l’empathie et le respect envers les personnes issues de milieux divers.'
+      },
+      {
+        de: 'Das Projekt betont die Einbeziehung von Menschen mit Migrationserfahrung. Sie werden ermutigt, ihre persönlichen Geschichten, Kämpfe und Hoffnungen zu erzählen. Diese Erfahrungen aus dem wirklichen Leben geben globalen Problemen ein menschliches Gesicht und helfen dabei, große Herausforderungen mit dem Leben des Einzelnen zu verbinden. Indem sie diesen Stimmen zuhören, gewinnen die Teilnehmer einen tieferen Einblick und ein besseres Verständnis.',
+        fr: 'Le projet met l’accent sur l’inclusion des personnes ayant une expérience migratoire. Les participants sont encouragés à partager leurs histoires personnelles, leurs difficultés et leurs espoirs. Ces expériences vécues donnent un visage humain aux problèmes mondiaux et permettent de relier les grands défis à la vie de chacun. En écoutant ces voix, ils acquièrent une compréhension plus profonde et une vision plus globale.'
+      },
+      {
+        de: 'Ein weiterer Schwerpunkt ist die Sensibilisierung für die Auswirkungen des Klimawandels in den Regionen des globalen Südens. Die Teilnehmer erfahren, wie sich Dürren, Überschwemmungen und Ressourcenknappheit auf Gemeinschaften auswirken und die Migration verstärken. Dies unterstreicht die globale Verantwortung, die wir bei der Bewältigung von Klimagerechtigkeit und der Unterstützung gefährdeter Bevölkerungsgruppen haben.',
+        fr: 'Un autre axe du projet est la sensibilisation aux impacts du changement climatique dans les pays du Sud. Les participants découvrent comment les sécheresses, les inondations et la raréfaction des ressources affectent les communautés et exacerbent les migrations. Cela souligne notre responsabilité mondiale face à la justice climatique et au soutien des populations vulnérables.'
+      },
+      {
+        de: 'Climate & Migration, Wege der Hoffnung" schafft einen Raum, in dem sich globale Herausforderungen und persönliche Erfahrungen treffen. Durch Bildung, Dialog und Geschichtenerzählen fördert das Projekt Verständnis, Solidarität und Hoffnung. Es befähigt den Einzelnen, informierter, mitfühlender und aktiver am Aufbau einer gerechteren und nachhaltigeren Welt mitzuwirken.',
+        fr: '« Climat et migrations : Voies d’espoir » crée un espace de rencontre entre les défis mondiaux et les expériences personnelles. Par le biais de l’éducation, du dialogue et du récit, le projet favorise la compréhension, la solidarité et l’espoir. Il permet à chacun d’être mieux informé, plus compatissant et plus actif dans la construction d’un monde plus juste et durable.'
       }
     ]
   },
@@ -821,6 +826,149 @@ export const funders: FunderItem[] = [
   }
 ];
 
+export const brochures: BrochureItem[] = [
+  {
+    id: 'ngonda-brochure',
+    title: {
+      de: 'NGONDA Broschüre',
+      fr: 'Brochure NGONDA'
+    },
+    description: {
+      de: 'Kompakte institutionelle Broschüre mit dem Profil von NGONDA, den zentralen Handlungsfeldern und einer klaren Einstiegsübersicht für Partner, Förderer und Interessierte.',
+      fr: 'Brochure institutionnelle concise présentant le profil de NGONDA, ses axes d’action et une vue d’ensemble claire pour les partenaires, les bailleurs et le public.'
+    },
+    kind: {
+      de: 'Institutionelle Präsentation',
+      fr: 'Présentation institutionnelle'
+    },
+    highlights: [
+      {
+        de: 'Kurzformat für eine schnelle Einführung',
+        fr: 'Format court pour une découverte rapide'
+      },
+      {
+        de: 'Geeignet für Präsentationen und Erstkontakte',
+        fr: 'Adaptée aux présentations et aux premiers contacts'
+      },
+      {
+        de: 'Direkt teilbar als PDF',
+        fr: 'Facile à partager en PDF'
+      }
+    ],
+    filePath: '/Brochure/Ngonda Brochure.pdf',
+    fileName: 'Ngonda Brochure.pdf',
+    pageCount: 3,
+    pageFormat: 'Landscape',
+    fileSizeBytes: 414178,
+    updatedAt: '2026-04-15'
+  },
+  {
+    id: 'toolkit-ngonda',
+    title: {
+      de: 'Toolkit NGONDA',
+      fr: 'Toolkit NGONDA'
+    },
+    description: {
+      de: 'Umfangreiches Toolkit für vertiefte Arbeit, strukturierte Vermittlung und den Einsatz in Workshops, Gruppenformaten oder begleitenden Bildungssettings.',
+      fr: 'Toolkit approfondi pour la transmission structurée et l’utilisation dans des ateliers, des formats de groupe ou des dispositifs d’accompagnement.'
+    },
+    kind: {
+      de: 'Praxis-Toolkit',
+      fr: 'Toolkit pratique'
+    },
+    highlights: [
+      {
+        de: 'Ausführlicher Dokumentumfang',
+        fr: 'Contenu détaillé et structuré'
+      },
+      {
+        de: 'Für Moderation und Begleitung geeignet',
+        fr: 'Pensé pour l’animation et l’accompagnement'
+      },
+      {
+        de: 'Print-ready im A4-Format',
+        fr: 'Prêt à imprimer au format A4'
+      }
+    ],
+    filePath: '/Brochure/Toolkit Ngonda.pdf',
+    fileName: 'Toolkit Ngonda.pdf',
+    pageCount: 36,
+    pageFormat: 'A4',
+    fileSizeBytes: 2015229,
+    updatedAt: '2026-04-15'
+  },
+  {
+    id: 'mi-madre-handbook',
+    title: {
+      de: 'Mi Madre Handbook',
+      fr: 'Guide Mi Madre'
+    },
+    description: {
+      de: 'Handbuch im A4-Format für thematische Orientierung, begleitende Nutzung und eine ruhige, gut lesbare Vermittlung im Kontext von Mi Madre.',
+      fr: 'Guide au format A4 pensé pour l’orientation thématique, l’accompagnement et une lecture claire autour de Mi Madre.'
+    },
+    kind: {
+      de: 'Handbuch',
+      fr: 'Guide'
+    },
+    highlights: [
+      {
+        de: 'Klar gegliedertes Handbuch',
+        fr: 'Guide clairement structuré'
+      },
+      {
+        de: 'Gut lesbar für Einzel- und Gruppennutzung',
+        fr: 'Lisible en usage individuel ou collectif'
+      },
+      {
+        de: 'Direkt druck- und downloadfähig',
+        fr: 'Téléchargeable et imprimable immédiatement'
+      }
+    ],
+    filePath: '/Brochure/Mi Madre handbook ok.pdf',
+    fileName: 'Mi Madre handbook ok.pdf',
+    pageCount: 16,
+    pageFormat: 'A4',
+    fileSizeBytes: 1725965,
+    updatedAt: '2026-04-15'
+  },
+  {
+    id: 'ndog-bidi-booklet',
+    title: {
+      de: 'Ndog bidi Booklet',
+      fr: 'Livret Ndog bidi'
+    },
+    description: {
+      de: 'Längeres Booklet im kompakten Format, geeignet für sequentielle Lektüre, Weitergabe im Feld und den Einsatz in kulturellen oder gemeinschaftlichen Kontexten.',
+      fr: 'Livret plus long au format compact, adapté à une lecture séquentielle, à la diffusion sur le terrain et à des contextes culturels ou communautaires.'
+    },
+    kind: {
+      de: 'Booklet / Heft',
+      fr: 'Livret'
+    },
+    highlights: [
+      {
+        de: 'Kompaktes Heftformat',
+        fr: 'Format livret compact'
+      },
+      {
+        de: 'Ideal für Auslage und Verteilung',
+        fr: 'Idéal pour la diffusion et la mise à disposition'
+      },
+      {
+        de: 'Umfangreicher Inhalt auf kleinerem Format',
+        fr: 'Contenu dense dans un format réduit'
+      }
+    ],
+    filePath: '/Brochure/Ndog bidi (booklet).pdf',
+    fileName: 'Ndog bidi (booklet).pdf',
+    pageCount: 45,
+    pageFormat: 'A6',
+    fileSizeBytes: 2149275,
+    updatedAt: '2026-04-15'
+  }
+];
+
 export const galleryPhotos: GalleryPhoto[] = [
   {
     id: 'photo-1',
@@ -941,11 +1089,11 @@ export const siteContent = {
     archiveEditorialNote:
       'Archive und ergänzende Programme bleiben sichtbar, aber getrennt von aktuellen Projekten. So werden historische und konzeptionelle Inhalte nicht mit laufenden Projekten vermischt.',
     galleryNote:
-      'Die Galerie zeigt kuratierte Eindruecke aus Projekten, Begegnungen und Community-Aktivitaeten.',
+      'Die Galerie zeigt kuratierte Eindrücke aus Projekten, Begegnungen und Community-Aktivitäten.',
     brochureNote:
-      'Die Brochure sammelt Informationsunterlagen zu Programmen, Partnerschaften und Vereinsarbeit.',
+      'Die Broschüre bündelt Informationsunterlagen zu Programmen, Partnerschaften und Vereinsarbeit.',
     fundersNote:
-      'Foerderer werden als sichtbare Partner in einer eigenen, klar strukturierten Sektion praesentiert.',
+      'Förderer werden als sichtbare Partner in einer eigenen, klar strukturierten Sektion präsentiert.',
     onlineServiceNote:
       'Der Online-Service bietet digitale Kontaktwege, Orientierung und direkten Zugang zu relevanten Informationen.'
   },
@@ -976,13 +1124,13 @@ export const siteContent = {
     archiveEditorialNote:
       'Les archives et programmes complémentaires restent visibles mais distincts des projets en cours pour préserver la lisibilité éditoriale.',
     galleryNote:
-      'La galerie presente des moments choisis issus des projets, des rencontres et des actions communautaires.',
+      'La galerie présente des moments choisis issus des projets, des rencontres et des actions communautaires.',
     brochureNote:
-      'La rubrique Brochure rassemble les documents d information sur les programmes, partenariats et activites de l association.',
+      'La rubrique Brochure rassemble les documents d’information sur les programmes, les partenariats et les activités de l’association.',
     fundersNote:
       'La rubrique Partenaires/Financeurs est structurée et extensible (logos, noms, liens).',
     onlineServiceNote:
-      'Le service en ligne propose des parcours de contact numeriques, des informations utiles et des points d orientation.'
+      'Le service en ligne propose des parcours de contact numériques, des informations utiles et des points d’orientation.'
   }
 } as const;
 
@@ -991,9 +1139,12 @@ export const contactDetails = {
   street: 'Jülicher Str.293',
   careOf: 'S/O ADNA e.V.',
   city: '52070 Aachen',
-  phone: '+49 241 47594351',
+  phone: '0241 47594351',
+  officePhone: '0241 47594351',
+  mobilePhone: '01743993509',
+  website: 'https://ngonda-ev.com',
   vr: 'VR-6400',
-  ust: 'UST-Nr: 201/5914/5135',
+  ust: 'UST- Nr:201/5914/5135',
   iban: 'DE55 3905 0000 1077 3506 58',
   bic: 'AACSDE33XXX'
 };

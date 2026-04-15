@@ -5,7 +5,8 @@ import {
   galleryVideos,
   getLocalized,
   getSiteContent,
-  isAppLocale
+  isAppLocale,
+  socialLinks
 } from '@/data/site-content';
 import {Link} from '@/i18n/navigation';
 import {ArrowRight, Camera, Film} from 'lucide-react';
@@ -28,17 +29,17 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
       <div className="space-y-10">
         <Reveal>
           <PageHero
-            eyebrow={locale === 'de' ? 'Visuelle Bibliothek' : 'Bibliotheque visuelle'}
+            eyebrow={locale === 'de' ? 'Visuelle Bibliothek' : 'Bibliothèque visuelle'}
             title={tPages('galleryTitle')}
             description={content.galleryNote}
             metrics={[
               {
                 value: `${galleryPhotos.length}`,
-                label: locale === 'de' ? 'kurierte Fotos' : 'photos curees'
+                label: locale === 'de' ? 'kuratierte Fotos' : 'photos sélectionnées'
               },
               {
                 value: `${galleryVideos.length}`,
-                label: locale === 'de' ? 'Videobeitraege' : 'videos publiees'
+                label: locale === 'de' ? 'Videobeiträge' : 'vidéos publiées'
               }
             ]}
             artwork={
@@ -55,12 +56,12 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
                     <div className="media-overlay-strong" />
                     <div className="absolute bottom-5 left-5 right-5 contrast-on-media">
                       <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] contrast-on-media-muted">
-                        {locale === 'de' ? 'Medienraum' : 'espace media'}
+                        {locale === 'de' ? 'Medienraum' : 'espace médias'}
                       </p>
                       <p className="mt-2 text-lg font-semibold leading-tight">
                         {locale === 'de'
                           ? 'Fotos und Videos in einer klaren, konsistenten Medienarchitektur.'
-                          : 'Photos et videos reunies dans une architecture media claire et coherente.'}
+                          : 'Photos et vidéos réunies dans une architecture média claire et cohérente.'}
                       </p>
                     </div>
                   </div>
@@ -95,7 +96,7 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
                 description={
                   locale === 'de'
                     ? 'Mosaikartige Einblicke in Community, Empowerment und Begegnung.'
-                    : 'Des apercus en mosaique autour de la communaute, de l empowerment et de la rencontre.'
+                    : 'Des aperçus en mosaïque autour de la communauté, de l’empowerment et de la rencontre.'
                 }
               />
               <div className="mt-5 grid grid-cols-2 gap-3">
@@ -129,8 +130,8 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
                 title={tPages('videosTitle')}
                 description={
                   locale === 'de'
-                    ? 'Interviews, Workshops und Event-Recaps mit direkter Verknuepfung zu den Videoquellen.'
-                    : 'Interviews, ateliers et recaps d evenements avec acces direct aux sources video.'
+                    ? 'Interviews, Workshops und Event-Recaps mit direkter Verknüpfung zu den Videoquellen.'
+                    : 'Interviews, ateliers et récapitulatifs d’événements avec accès direct aux sources vidéo.'
                 }
               />
               <div className="mt-5 space-y-3">
@@ -168,6 +169,33 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
             </SurfaceCard>
           </Reveal>
         </section>
+
+        <Reveal>
+          <SurfaceCard tone="muted" className="p-6 sm:p-7">
+            <SectionTitle
+              title={locale === 'de' ? 'Netzwerke & Videos' : 'Réseaux & vidéos'}
+              description={
+                locale === 'de'
+                  ? 'Die Galerie bleibt direkt mit den sozialen Kanälen von NGONDA verbunden.'
+                  : 'La galerie reste directement reliée aux réseaux sociaux de NGONDA.'
+              }
+            />
+            <div className="mt-5 flex flex-wrap gap-3">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white/30 px-4 py-2.5 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--border-strong)] hover:text-[var(--accent)]"
+                >
+                  {item.label}
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+          </SurfaceCard>
+        </Reveal>
       </div>
     </PageContainer>
   );

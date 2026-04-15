@@ -12,3 +12,11 @@ export function formatDate(date: string, locale: AppLocale) {
     year: 'numeric'
   }).format(new Date(date));
 }
+
+export function formatFileSize(bytes: number, locale: AppLocale) {
+  return new Intl.NumberFormat(localeMap[locale], {
+    style: 'unit',
+    unit: 'megabyte',
+    maximumFractionDigits: 1
+  }).format(bytes / (1024 * 1024));
+}

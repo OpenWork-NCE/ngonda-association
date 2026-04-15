@@ -8,11 +8,13 @@
     "about": "Über uns",
     "funders": "Förderer",
     "news": "Aktuelles",
-    "gallery": "Gallerie",
+    "gallery": "Galerie",
+    "brochure": "Broschüre",
     "photos": "Fotos",
     "videos": "Videos",
     "projects": "Projekte",
-    "contact": "Contact"
+    "contact": "Kontakt",
+    "impressum": "Impressum"
   },
   "actions": {
     "readMore": "Mehr erfahren",
@@ -40,12 +42,12 @@
     "projectsTitle": "Projekte",
     "themesTitle": "Schwerpunktthemen",
     "archiveTitle": "Archiv & weitere Projekte",
-    "galleryTitle": "Gallerie",
-    "brochureTitle": "Brochure",
+    "galleryTitle": "Galerie",
+    "brochureTitle": "Broschüre",
     "fundersTitle": "Förderer",
     "onlineServiceTitle": "Online-Service",
     "impressumTitle": "Impressum",
-    "contactTitle": "Contact",
+    "contactTitle": "Kontakt",
     "photosTitle": "Fotos",
     "videosTitle": "Videos"
   },

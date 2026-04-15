@@ -31,7 +31,7 @@ export default async function ImpressumPage({
             description={
               locale === 'de'
                 ? 'Institutionelle Angaben, Verantwortlichkeiten und rechtliche Hinweise in einer strukturierten Premium-Darstellung.'
-                : 'Informations institutionnelles, responsabilites et mentions juridiques dans une presentation premium structuree.'
+                : 'Informations institutionnelles, responsabilités et mentions juridiques dans une présentation premium structurée.'
             }
             metrics={[
               {
@@ -40,7 +40,7 @@ export default async function ImpressumPage({
               },
               {
                 value: `${teamMembers.length}`,
-                label: locale === 'de' ? 'benannte Verantwortliche' : 'responsables nommes'
+                label: locale === 'de' ? 'benannte Verantwortliche' : 'responsables désignés'
               }
             ]}
           />
@@ -49,16 +49,35 @@ export default async function ImpressumPage({
         <section className="grid gap-6 lg:grid-cols-[1.15fr_1fr]">
           <Reveal>
             <SurfaceCard className="p-6 sm:p-7">
-              <SectionTitle title="NGONDA e.V." />
-              <div className="mt-5 space-y-1 text-sm leading-7 text-[var(--text)]">
+              <SectionTitle
+                title={locale === 'de' ? 'Signatur & Kontaktblock' : 'Signature & bloc contact'}
+                description={
+                  locale === 'de'
+                    ? 'Institutioneller Signaturblock für E-Mails, Partnerkontakte und rechtliche Referenzen.'
+                    : 'Bloc de signature institutionnel pour les e-mails, les partenaires et les références légales.'
+                }
+              />
+              <div className="mt-5 rounded-[1.4rem] border border-[var(--border)] bg-white/25 p-5 text-sm leading-7 text-[var(--text)]">
+                <p className="font-semibold">NGONDA e.V.</p>
                 <p>{contactDetails.street}</p>
                 <p>{contactDetails.careOf}</p>
                 <p>{contactDetails.city}</p>
-                <p>Tel: {contactDetails.phone}</p>
-              </div>
-              <div className="mt-5 rounded-[1.4rem] border border-[var(--border)] bg-white/25 p-4 text-sm leading-7 text-[var(--muted)]">
                 <p>{contactDetails.vr}</p>
                 <p>{contactDetails.ust}</p>
+                <p>Office:{contactDetails.officePhone}</p>
+                <p>Tel:{contactDetails.mobilePhone}</p>
+                <p>
+                  Ngonda e.V (
+                  <a
+                    href={contactDetails.website}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-[var(--accent)] hover:underline"
+                  >
+                    ngonda-ev.com
+                  </a>
+                  )
+                </p>
                 <p>IBAN: {contactDetails.iban}</p>
                 <p>BIC: {contactDetails.bic}</p>
               </div>
@@ -67,7 +86,7 @@ export default async function ImpressumPage({
 
           <Reveal delay={0.06}>
             <SurfaceCard tone="contrast" className="p-6 sm:p-7">
-              <SectionTitle title={locale === 'de' ? 'Verantwortliche' : 'Equipe responsable'} />
+              <SectionTitle title={locale === 'de' ? 'Verantwortliche' : 'Équipe responsable'} />
               <ul className="mt-5 space-y-3">
                 {teamMembers.map((member, index) => (
                   <li

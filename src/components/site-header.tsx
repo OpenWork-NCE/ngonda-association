@@ -2,28 +2,21 @@
 
 import {Link, usePathname} from '@/i18n/navigation';
 import {cn} from '@/lib/utils';
-import {ChevronDown, Menu, Sparkles, X} from 'lucide-react';
+import {Menu, Sparkles, X} from 'lucide-react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import {useTranslations} from 'next-intl';
 import {useState} from 'react';
-import { LanguageSwitcher } from './language-switcher';
-import { ThemeToggle } from './theme-toggle';
+import {LanguageSwitcher} from './language-switcher';
+import {ThemeToggle} from './theme-toggle';
 
 const NAV_ITEMS = [
   { key: 'home', href: '/', children: [] },
-  { key: 'about', href: '/about', children: [] },
-  { key: 'funders', href: '/funders', children: [] },
   { key: 'news', href: '/news', children: [] },
-  {
-    key: 'gallery',
-    href: '/gallery',
-    children: [
-      { key: 'photos', href: '/gallery/photos' },
-      { key: 'videos', href: '/gallery/videos' }
-    ]
-  },
-  { key: 'projects', href: '/projects', children: [] },
-  { key: 'contact', href: '/contact', children: [] }
+  { key: 'about', href: '/about', children: [] },
+  { key: 'gallery', href: '/gallery', children: [] },
+  { key: 'brochure', href: '/brochure', children: [] },
+  { key: 'funders', href: '/funders', children: [] },
+  { key: 'impressum', href: '/impressum', children: [] }
 ] as const;
 
 export function SiteHeader() {
@@ -88,41 +81,6 @@ export function SiteHeader() {
 
             <nav className="relative z-20 hidden items-center gap-1 overflow-visible rounded-full border border-[var(--border)] bg-[var(--surface-strong)] p-1.5 xl:flex">
               {links.map((link) => {
-                if (link.children.length > 0) {
-                  return (
-                    <div key={link.key} className="group relative">
-                      <Link
-                        href={link.href}
-                        className={cn(
-                          'inline-flex items-center gap-1 rounded-full px-4 py-2.5 text-sm font-medium transition-colors',
-                          link.active
-                            ? 'bg-[linear-gradient(135deg,var(--accent),var(--accent-secondary))] text-[var(--accent-contrast)] shadow-[0_20px_40px_-24px_rgba(14,29,25,0.58)]'
-                            : 'text-[var(--muted)] hover:bg-white/50 hover:text-[var(--text)]'
-                        )}
-                      >
-                        {link.label}
-                        <ChevronDown className="h-4 w-4" />
-                      </Link>
-                      <div className="pointer-events-none invisible absolute left-0 top-[calc(100%+10px)] z-50 w-56 translate-y-1 rounded-[1.6rem] border border-[var(--border-strong)] bg-[var(--surface-strong)] p-2 opacity-0 shadow-[var(--shadow-card)] transition-all group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                        {link.children.map((child) => (
-                          <Link
-                            key={child.key}
-                            href={child.href}
-                            className={cn(
-                              'block rounded-[1rem] px-3 py-2.5 text-sm font-medium transition-colors',
-                              child.active
-                                ? 'bg-[linear-gradient(135deg,var(--accent),var(--accent-secondary))] text-[var(--accent-contrast)]'
-                                : 'text-[var(--text)] hover:bg-white/40'
-                            )}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                }
-
                 return (
                   <Link
                     key={link.key}

@@ -6,13 +6,15 @@
   "nav": {
     "home": "Accueil",
     "about": "Qui sommes-nous",
-    "funders": "Partenaires",
+    "funders": "Bailleurs",
     "news": "Actualités",
     "gallery": "Galerie",
+    "brochure": "Brochure",
     "photos": "Photos",
     "videos": "Vidéos",
     "projects": "Projets",
-    "contact": "Contact"
+    "contact": "Contact",
+    "impressum": "Impressum"
   },
   "actions": {
     "readMore": "Lire",
@@ -42,9 +44,9 @@
     "archiveTitle": "Archives et autres projets",
     "galleryTitle": "Galerie",
     "brochureTitle": "Brochure",
-    "fundersTitle": "Partenaires / financeurs",
+    "fundersTitle": "Bailleurs",
     "onlineServiceTitle": "Service en ligne",
-    "impressumTitle": "Mentions légales",
+    "impressumTitle": "Impressum",
     "contactTitle": "Contact",
     "photosTitle": "Photos",
     "videosTitle": "Vidéos"

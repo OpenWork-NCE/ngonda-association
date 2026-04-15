@@ -6,13 +6,13 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
 const SECONDARY_LINKS = [
-  { href: '/funders', key: 'funders' },
+  { href: '/', key: 'home' },
   { href: '/news', key: 'news' },
+  { href: '/about', key: 'about' },
   { href: '/gallery', key: 'gallery' },
-  { href: '/gallery/photos', key: 'photos' },
-  { href: '/gallery/videos', key: 'videos' },
-  { href: '/projects', key: 'projects' },
-  { href: '/contact', key: 'contact' }
+  { href: '/brochure', key: 'brochure' },
+  { href: '/funders', key: 'funders' },
+  { href: '/impressum', key: 'impressum' }
 ] as const;
 
 const SOCIAL_ICONS = {
@@ -24,7 +24,6 @@ const SOCIAL_ICONS = {
 export async function SiteFooter({ locale }: { locale: AppLocale }) {
   const t = await getTranslations({ locale, namespace: 'footer' });
   const tNav = await getTranslations({ locale, namespace: 'nav' });
-  const tPages = await getTranslations({ locale, namespace: 'pages' });
   const tBrand = await getTranslations({ locale, namespace: 'brand' });
   const content = getSiteContent(locale);
 
@@ -98,7 +97,7 @@ export async function SiteFooter({ locale }: { locale: AppLocale }) {
                 <div className="rounded-[1.4rem] border border-[var(--border)] bg-white/25 px-4 py-3 text-[var(--text)]">
                   <div className="flex items-center gap-3">
                     <Phone className="h-4 w-4 text-[var(--accent)]" />
-                    <span>{contactDetails.phone}</span>
+                    <span>{contactDetails.officePhone}</span>
                   </div>
                 </div>
                 <div className="rounded-[1.4rem] border border-[var(--border)] bg-white/25 px-4 py-3 text-[var(--text)]">
@@ -129,30 +128,23 @@ export async function SiteFooter({ locale }: { locale: AppLocale }) {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/impressum"
-                  className="flex items-center justify-between rounded-[1rem] border border-transparent px-3 py-2 text-[var(--text)] transition hover:border-[var(--border)] hover:bg-white/35 hover:text-[var(--accent)]"
-                >
-                  <span>{tPages('impressumTitle')}</span>
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
-              </li>
             </ul>
           </div>
 
           <div className="surface-card surface-card-muted px-6 py-6 sm:px-7">
             <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--muted)]">
-              {locale === 'de' ? 'Recht & Organisation' : 'Cadre legal & organisation'}
+              {locale === 'de' ? 'Recht & Organisation' : 'Cadre légal & organisation'}
             </h4>
             <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
               {locale === 'de'
                 ? 'Institutionelle Referenzen, Bankdaten und formale Kennzahlen der Organisation.'
-                : 'References institutionnelles, coordonnees bancaires et informations formelles de l organisation.'}
+                : 'Références institutionnelles, coordonnées bancaires et informations formelles de l’organisation.'}
             </p>
             <div className="rounded-[1.5rem] border border-[var(--border)] bg-white/22 p-4 text-xs leading-6 text-[var(--muted)]">
               <p>{contactDetails.vr}</p>
               <p>{contactDetails.ust}</p>
+              <p>Office: {contactDetails.officePhone}</p>
+              <p>Tel: {contactDetails.mobilePhone}</p>
               <p>IBAN: {contactDetails.iban}</p>
               <p>BIC: {contactDetails.bic}</p>
             </div>
