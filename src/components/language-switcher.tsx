@@ -34,7 +34,7 @@ export function LanguageSwitcher() {
             className={cn(
               'rounded-full px-3 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.24em] transition-colors',
               active
-                ? 'bg-[linear-gradient(135deg,var(--accent),var(--accent-secondary))] text-[var(--accent-contrast)] shadow-[0_14px_32px_-20px_rgba(14,29,25,0.55)]'
+                ? 'bg-[var(--accent)] text-[var(--accent-contrast)]'
                 : 'text-[var(--muted)] hover:bg-white/40 hover:text-[var(--text)]'
             )}
           >

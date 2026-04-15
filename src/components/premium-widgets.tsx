@@ -39,10 +39,10 @@ export function SpatialWireframeWidget({
 
       <div className="relative mt-6 h-48">
         <div className="widget-grid-3d h-full w-full" />
-        <div className="wire-orb absolute left-[12%] top-[16%] h-16 w-16 animate-float-slow" />
-        <div className="wire-orb absolute right-[18%] top-[22%] h-10 w-10 animate-float-reverse" />
-        <div className="wire-cube absolute bottom-[18%] left-[35%] h-12 w-12 animate-float-slow" />
-        <div className="wire-cube absolute right-[16%] top-[54%] h-9 w-9 animate-float-reverse" />
+        <div className="wire-orb absolute left-[12%] top-[16%] h-16 w-16 opacity-80" />
+        <div className="wire-orb absolute right-[18%] top-[22%] h-10 w-10 opacity-70" />
+        <div className="wire-cube absolute bottom-[18%] left-[35%] h-12 w-12 opacity-75" />
+        <div className="wire-cube absolute right-[16%] top-[54%] h-9 w-9 opacity-70" />
         <div className="widget-spark left-[18%] top-[66%] h-2.5 w-2.5" />
         <div className="widget-spark right-[22%] top-[44%] h-2 w-2 [animation-delay:0.4s]" />
       </div>
@@ -127,7 +127,7 @@ export function TeamMemberWidget({
           </span>
           {locale === 'de' ? 'Leitung' : 'Direction'}
         </div>
-        <div className="wire-orb h-10 w-10" />
+        <div className="wire-orb h-10 w-10 opacity-75" />
       </div>
 
       <div className="relative z-10 mt-5 grid grid-cols-[auto_1fr] items-center gap-4">

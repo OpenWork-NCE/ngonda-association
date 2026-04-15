@@ -17,7 +17,7 @@ export function PageContainer({
   className?: string;
 }) {
   return (
-    <div className={cn('mx-auto w-full max-w-[92rem] px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-14', className)}>
+    <div className={cn('mx-auto w-full max-w-[92rem] px-4 py-8 sm:px-6 sm:py-9 lg:px-10 lg:py-12', className)}>
       {children}
     </div>
   );
@@ -45,14 +45,12 @@ export function PageHero({
   return (
     <section
       className={cn(
-        'relative overflow-hidden rounded-[2rem] border border-[var(--border-strong)] px-6 py-8 shadow-[var(--shadow-hero)] sm:px-8 sm:py-10 lg:px-12 lg:py-12',
+        'relative overflow-hidden rounded-[2rem] border border-[var(--border-strong)] px-6 py-8 shadow-[var(--shadow-hero)] sm:px-8 sm:py-9 lg:px-12 lg:py-10',
         className
       )}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(140deg,var(--hero-sheen),transparent_38%),radial-gradient(circle_at_top_right,rgba(215,178,110,0.18),transparent_24%),var(--surface)]" />
-      <div className="pointer-events-none absolute inset-0 hairline-grid opacity-45 [mask-image:radial-gradient(circle_at_center,black_34%,transparent_82%)]" />
-      <div className="pointer-events-none absolute -left-14 top-10 h-40 w-40 rounded-full bg-[var(--accent-soft)] blur-3xl animate-float-slow" />
-      <div className="pointer-events-none absolute -bottom-20 right-8 h-52 w-52 rounded-full bg-[var(--accent-secondary-soft)] blur-3xl animate-float-reverse" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,var(--hero-sheen),transparent_42%),var(--surface)]" />
+      <div className="pointer-events-none absolute inset-0 hairline-grid opacity-20 [mask-image:linear-gradient(180deg,black,transparent_80%)]" />
 
       <div
         className={cn(
@@ -141,7 +139,7 @@ export function SurfaceCard({
   return (
     <div
       className={cn(
-        'surface-card transition-transform duration-500 hover:-translate-y-1',
+        'surface-card transition-transform duration-300 hover:-translate-y-0.5',
         tone === 'muted' && 'surface-card-muted',
         tone === 'contrast' && 'surface-card-contrast',
         tone === 'accent' && 'surface-card-accent',
@@ -180,23 +178,11 @@ export function BackLink({
 function HeroPrism() {
   return (
     <div className="relative mx-auto flex aspect-[4/5] w-full max-w-[22rem] items-center justify-center">
-      {/* Warm encompassing glow */}
-      <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_center,rgba(215,178,110,0.25),transparent_60%)] blur-2xl" />
-      
-      {/* Base soft circle representing unity */}
-      <div className="absolute inset-[15%] rounded-full border border-white/35 bg-[linear-gradient(145deg,rgba(255,255,255,0.3),rgba(255,255,255,0.05))] shadow-[0_24px_80px_-35px_rgba(14,29,25,0.4)] animate-float-slow" />
-      
-      {/* Petal/Embrace Right - reaching left, representing support */}
-      <div className="absolute inset-y-[25%] right-[15%] w-[55%] rounded-[3rem] rounded-tl-full rounded-br-full border border-[var(--border-strong)] bg-[linear-gradient(145deg,rgba(255,255,255,0.45),rgba(255,255,255,0.1)),var(--surface-strong)] shadow-[0_20px_64px_-30px_rgba(14,29,25,0.35)] backdrop-blur-sm animate-float-reverse" />
-      
-      {/* Petal/Embrace Left - reaching right, representing growth */}
-      <div className="absolute inset-y-[35%] left-[20%] w-[50%] rounded-[2.5rem] rounded-tr-full rounded-bl-full border border-[var(--border-strong)] bg-[linear-gradient(140deg,var(--accent-highlight),var(--accent-secondary))] shadow-[0_16px_44px_-20px_rgba(14,29,25,0.4)] backdrop-blur-md animate-float-slow" />
-      
-      {/* Floating dot (spark of change) */}
-      <div className="absolute right-[25%] top-[25%] h-12 w-12 rounded-full border border-white/35 bg-white/20 shadow-[0_12px_34px_-18px_rgba(14,29,25,0.4)] animate-glow-pan" />
-      
-      {/* Smaller floating dot (community seed) */}
-      <div className="absolute bottom-[20%] left-[30%] h-8 w-8 rounded-full border border-[var(--border-strong)] bg-[linear-gradient(145deg,rgba(215,178,110,0.3),rgba(255,255,255,0.05))] shadow-[0_16px_42px_-26px_rgba(14,29,25,0.4)] animate-float-reverse" />
+      <div className="absolute inset-[12%] rounded-[2.4rem] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.46),rgba(255,255,255,0.08))]" />
+      <div className="absolute inset-y-[24%] right-[14%] w-[54%] rounded-[3rem] rounded-tl-full rounded-br-full border border-[var(--border-strong)] bg-[var(--surface-strong)] shadow-[var(--shadow-card)]" />
+      <div className="absolute inset-y-[36%] left-[18%] w-[48%] rounded-[2.4rem] rounded-tr-full rounded-bl-full border border-[var(--border-strong)] bg-[linear-gradient(140deg,var(--accent-highlight),var(--accent-secondary))]" />
+      <div className="absolute right-[24%] top-[25%] h-10 w-10 rounded-full border border-[var(--border-strong)] bg-white/50" />
+      <div className="absolute bottom-[20%] left-[30%] h-7 w-7 rounded-full border border-[var(--border)] bg-white/40" />
     </div>
   );
 }

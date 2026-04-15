@@ -1,15 +1,25 @@
 'use client';
 
-import {Link, usePathname} from '@/i18n/navigation';
-import {cn} from '@/lib/utils';
-import {Menu, Sparkles, X} from 'lucide-react';
+import { Link, usePathname } from '@/i18n/navigation';
+import { cn } from '@/lib/utils';
+import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
-import {useTranslations} from 'next-intl';
-import {useState} from 'react';
-import {LanguageSwitcher} from './language-switcher';
-import {ThemeToggle} from './theme-toggle';
+import { useTranslations } from 'next-intl';
+import type { ComponentProps } from 'react';
+import { useState } from 'react';
+import { LanguageSwitcher } from './language-switcher';
+import { ThemeToggle } from './theme-toggle';
 
-const NAV_ITEMS = [
+type NavItem = {
+  key: string;
+  href: ComponentProps<typeof Link>['href'];
+  children: Array<{
+    key: string;
+    href: ComponentProps<typeof Link>['href'];
+  }>;
+};
+
+const NAV_ITEMS: NavItem[] = [
   { key: 'home', href: '/', children: [] },
   { key: 'news', href: '/news', children: [] },
   { key: 'about', href: '/about', children: [] },
@@ -51,8 +61,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6 lg:px-10">
       <div className="mx-auto w-full max-w-[92rem]">
-        <div className="relative overflow-visible rounded-[2rem] border border-[var(--border-strong)] bg-[var(--header-bg)] shadow-[var(--shadow-card)] backdrop-blur-2xl">
-          <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(135deg,var(--header-sheen),transparent_44%),radial-gradient(circle_at_top_right,rgba(215,178,110,0.14),transparent_22%)]" />
+        <div className="relative overflow-visible rounded-[1.75rem] border border-[var(--border-strong)] bg-[var(--header-bg)] shadow-[var(--shadow-card)]">
+          <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(180deg,var(--header-sheen),transparent_55%)]" />
 
           <div className="relative flex items-center justify-between gap-3 px-4 py-3 sm:px-5">
             <Link href="/" className="flex min-w-0 items-center gap-3">
@@ -88,7 +98,7 @@ export function SiteHeader() {
                     className={cn(
                       'rounded-full px-4 py-2.5 text-sm font-medium transition-colors',
                       link.active
-                        ? 'bg-[linear-gradient(135deg,var(--accent),var(--accent-secondary))] text-[var(--accent-contrast)] shadow-[0_20px_40px_-24px_rgba(14,29,25,0.58)]'
+                        ? 'bg-[var(--accent)] text-[var(--accent-contrast)]'
                         : 'text-[var(--muted)] hover:bg-white/50 hover:text-[var(--text)]'
                     )}
                   >
@@ -99,10 +109,6 @@ export function SiteHeader() {
             </nav>
 
             <div className="hidden items-center gap-2 xl:flex">
-              <div className="control-chip hidden items-center gap-2 px-3 py-2 text-xs font-semibold uppercase tracking-[0.26em] text-[var(--muted)] 2xl:inline-flex">
-                <Sparkles className="h-3.5 w-3.5 text-[var(--accent)]" />
-                Women first
-              </div>
               <LanguageSwitcher />
               <ThemeToggle />
             </div>
@@ -129,7 +135,7 @@ export function SiteHeader() {
                       className={cn(
                         'surface-card block px-4 py-3 text-sm font-medium',
                         link.active
-                          ? 'bg-[linear-gradient(135deg,var(--accent),var(--accent-secondary))] text-[var(--accent-contrast)]'
+                          ? 'bg-[var(--accent)] text-[var(--accent-contrast)]'
                           : 'text-[var(--text)]'
                       )}
                     >

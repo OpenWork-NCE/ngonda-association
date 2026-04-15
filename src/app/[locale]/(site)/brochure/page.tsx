@@ -1,10 +1,10 @@
 import { BrochureActions } from '@/components/brochure-actions';
 import { PageContainer, PageHero, SectionTitle, SurfaceCard } from '@/components/page-shell';
 import { Reveal } from '@/components/reveal';
-import { brochures, getLocalized, getSiteContent, isAppLocale } from '@/data/site-content';
+import { brochures, getLocalized, isAppLocale } from '@/data/site-content';
 import { cn } from '@/lib/utils';
 import { formatDate, formatFileSize } from '@/lib/format';
-import { BookMarked, FileStack } from 'lucide-react';
+import { FileStack } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
@@ -24,7 +24,6 @@ export default async function BrochurePage({ params }: PageProps<'/[locale]/broc
   }
 
   const tPages = await getTranslations({ locale, namespace: 'pages' });
-  const content = getSiteContent(locale);
   const totalPages = brochures.reduce((sum, item) => sum + item.pageCount, 0);
   const totalSizeBytes = brochures.reduce((sum, item) => sum + item.fileSizeBytes, 0);
 
