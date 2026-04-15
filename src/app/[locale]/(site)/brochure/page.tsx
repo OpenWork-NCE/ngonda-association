@@ -95,65 +95,61 @@ export default async function BrochurePage({ params }: PageProps<'/[locale]/broc
                   tone={BROCHURE_TONES[index % BROCHURE_TONES.length]}
                   className="h-full p-5 sm:p-6"
                 >
-                  <div className="flex h-full flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,1fr)_210px] lg:items-start">
-                    <div className="order-2 flex h-full flex-col lg:order-1">
-                      <div className="flex flex-wrap gap-2">
-                        <span className="rounded-full border border-[var(--border)] bg-white/35 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
-                          {getLocalized(brochure.kind, locale)}
-                        </span>
-                        <span className="rounded-full border border-[var(--border)] bg-white/35 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
-                          {brochure.pageFormat}
-                        </span>
-                      </div>
-
-                      <h3 className="mt-4 text-3xl font-semibold text-[var(--text)]">
-                        {getLocalized(brochure.title, locale)}
-                      </h3>
-
-                      <p className="mt-3 text-sm leading-8 text-[var(--muted)] sm:text-base">
-                        {getLocalized(brochure.description, locale)}
-                      </p>
-
-                      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                        <MetadataPill
-                          label={locale === 'de' ? 'Seitenzahl' : 'Pagination'}
-                          value={`${brochure.pageCount} ${locale === 'de' ? 'Seiten' : 'pages'}`}
-                        />
-                        <MetadataPill
-                          label={locale === 'de' ? 'Dateigröße' : 'Taille du fichier'}
-                          value={formatFileSize(brochure.fileSizeBytes, locale)}
-                        />
-                        <MetadataPill
-                          label={locale === 'de' ? 'Format' : 'Format'}
-                          value={brochure.pageFormat}
-                        />
-                        <MetadataPill
-                          label={locale === 'de' ? 'Aktualisiert' : 'Mis à jour'}
-                          value={formatDate(brochure.updatedAt, locale)}
-                        />
-                      </div>
-
-                      <div className="mt-5 grid gap-2">
-                        {brochure.highlights.map((item) => (
-                          <div
-                            key={item.de}
-                            className="rounded-[1rem] border border-[var(--border)] bg-white/18 px-4 py-3 text-sm leading-6 text-[var(--text)]"
-                          >
-                            {getLocalized(item, locale)}
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="mt-6">
-                        <BrochureActions
-                          href={brochure.filePath}
-                          fileName={brochure.fileName}
-                          labels={labels}
-                        />
-                      </div>
+                  <div className="order-2 flex h-full flex-col lg:order-1">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="rounded-full border border-[var(--border)] bg-white/35 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
+                        {getLocalized(brochure.kind, locale)}
+                      </span>
+                      <span className="rounded-full border border-[var(--border)] bg-white/35 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
+                        {brochure.pageFormat}
+                      </span>
                     </div>
 
-                    <BrochurePreview brochure={brochure} locale={locale} index={index} />
+                    <h3 className="mt-4 text-3xl font-semibold text-[var(--text)]">
+                      {getLocalized(brochure.title, locale)}
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-8 text-[var(--muted)] sm:text-base">
+                      {getLocalized(brochure.description, locale)}
+                    </p>
+
+                    <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                      <MetadataPill
+                        label={locale === 'de' ? 'Seitenzahl' : 'Pagination'}
+                        value={`${brochure.pageCount} ${locale === 'de' ? 'Seiten' : 'pages'}`}
+                      />
+                      <MetadataPill
+                        label={locale === 'de' ? 'Dateigröße' : 'Taille du fichier'}
+                        value={formatFileSize(brochure.fileSizeBytes, locale)}
+                      />
+                      <MetadataPill
+                        label={locale === 'de' ? 'Format' : 'Format'}
+                        value={brochure.pageFormat}
+                      />
+                      <MetadataPill
+                        label={locale === 'de' ? 'Aktualisiert' : 'Mis à jour'}
+                        value={formatDate(brochure.updatedAt, locale)}
+                      />
+                    </div>
+
+                    <div className="mt-5 grid gap-2">
+                      {brochure.highlights.map((item) => (
+                        <div
+                          key={item.de}
+                          className="rounded-[1rem] border border-[var(--border)] bg-white/18 px-4 py-3 text-sm leading-6 text-[var(--text)]"
+                        >
+                          {getLocalized(item, locale)}
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-6">
+                      <BrochureActions
+                        href={brochure.filePath}
+                        fileName={brochure.fileName}
+                        labels={labels}
+                      />
+                    </div>
                   </div>
                 </SurfaceCard>
               </Reveal>
@@ -172,69 +168,6 @@ function MetadataPill({ label, value }: { label: string; value: string }) {
         {label}
       </p>
       <p className="mt-2 text-sm font-semibold text-[var(--text)]">{value}</p>
-    </div>
-  );
-}
-
-function BrochurePreview({
-  brochure,
-  locale,
-  index
-}: {
-  brochure: (typeof brochures)[number];
-  locale: 'de' | 'fr';
-  index: number;
-}) {
-  const isLandscape = brochure.pageFormat === 'Landscape';
-
-  return (
-    <div className="order-1 mx-auto w-full max-w-[220px] lg:order-2 lg:max-w-[210px]">
-      <div className="relative mx-auto w-full">
-        <div
-          className={cn(
-            'absolute left-3 top-4 rounded-[1.6rem] border border-white/16 bg-white/18 shadow-[0_24px_52px_-34px_rgba(14,29,25,0.4)]',
-            isLandscape ? 'h-[72%] w-[90%] rotate-[-7deg]' : 'h-[86%] w-[92%] rotate-[-7deg]'
-          )}
-        />
-        <div
-          className={cn(
-            'absolute right-2 top-6 rounded-[1.6rem] border border-white/16 bg-white/10 shadow-[0_24px_52px_-34px_rgba(14,29,25,0.35)]',
-            isLandscape ? 'h-[68%] w-[88%] rotate-[6deg]' : 'h-[82%] w-[90%] rotate-[6deg]'
-          )}
-        />
-        <div
-          className={cn(
-            `relative overflow-hidden rounded-[1.8rem] border border-white/25 bg-gradient-to-br ${BROCHURE_VISUALS[index % BROCHURE_VISUALS.length]} p-5 shadow-[0_30px_80px_-40px_rgba(14,29,25,0.45)]`,
-            isLandscape ? 'aspect-[16/11]' : 'aspect-[4/5]'
-          )}
-        >
-          <div className="absolute right-4 top-4 rounded-full border border-white/30 bg-black/10 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-black/70">
-            PDF
-          </div>
-          <div className="relative flex h-full flex-col justify-between">
-            <div>
-              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-black/55">
-                {getLocalized(brochure.kind, locale)}
-              </p>
-              <h3 className="mt-3 text-[2rem] font-semibold leading-[0.92] text-[#4a2208]">
-                {getLocalized(brochure.title, locale)}
-              </h3>
-            </div>
-
-            <div className="space-y-3">
-              <div className="flex items-center gap-2 text-sm font-semibold text-[#4a2208]/75">
-                <FileStack className="h-4 w-4" />
-                {brochure.pageCount} {locale === 'de' ? 'Seiten' : 'pages'}
-              </div>
-              <div className="space-y-2">
-                <div className="h-2 w-full rounded-full bg-white/36" />
-                <div className="h-2 w-4/5 rounded-full bg-white/28" />
-                <div className="h-2 w-3/5 rounded-full bg-white/22" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
