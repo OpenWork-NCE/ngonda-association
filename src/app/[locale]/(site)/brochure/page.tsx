@@ -10,10 +10,10 @@ import { notFound } from 'next/navigation';
 
 const BROCHURE_TONES = ['default', 'contrast', 'muted', 'warning'] as const;
 const BROCHURE_VISUALS = [
-  'from-[rgba(255,219,122,0.96)] via-[rgba(247,196,77,0.95)] to-[rgba(241,132,28,0.96)]',
-  'from-[rgba(255,245,214,0.96)] via-[rgba(255,206,120,0.94)] to-[rgba(226,115,38,0.96)]',
-  'from-[rgba(255,232,179,0.96)] via-[rgba(255,183,77,0.94)] to-[rgba(240,121,53,0.96)]',
-  'from-[rgba(255,238,206,0.96)] via-[rgba(247,196,77,0.92)] to-[rgba(221,104,30,0.96)]'
+  'from-[rgba(255,225,196,0.96)] via-[rgba(247,172,121,0.95)] to-[rgba(235,126,59,0.96)]',
+  'from-[rgba(255,240,224,0.96)] via-[rgba(250,190,146,0.94)] to-[rgba(220,100,44,0.96)]',
+  'from-[rgba(254,220,192,0.96)] via-[rgba(245,160,110,0.94)] to-[rgba(212,88,30,0.96)]',
+  'from-[rgba(255,232,204,0.96)] via-[rgba(248,175,128,0.92)] to-[rgba(200,90,30,0.96)]'
 ] as const;
 
 export default async function BrochurePage({ params }: PageProps<'/[locale]/brochure'>) {
@@ -175,10 +175,10 @@ function MetadataPill({ label, value }: { label: string; value: string }) {
 function BrochureStack({ locale }: { locale: 'de' | 'fr' }) {
   return (
     <div className="relative mx-auto flex aspect-[4/5] w-full max-w-[24rem] items-center justify-center">
-      <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_center,rgba(247,196,77,0.28),transparent_62%)] blur-2xl" />
-      <div className="absolute left-[12%] top-[12%] h-[72%] w-[58%] rotate-[-8deg] rounded-[1.8rem] border border-white/25 bg-[linear-gradient(160deg,rgba(255,245,214,0.95),rgba(247,196,77,0.82),rgba(241,132,28,0.95))] p-5 shadow-[0_30px_80px_-36px_rgba(14,29,25,0.45)]" />
-      <div className="absolute right-[11%] top-[22%] h-[68%] w-[58%] rotate-[6deg] rounded-[1.8rem] border border-white/25 bg-[linear-gradient(160deg,rgba(255,239,204,0.94),rgba(255,183,77,0.88),rgba(226,115,38,0.94))] p-5 shadow-[0_30px_80px_-36px_rgba(14,29,25,0.45)]" />
-      <div className="relative z-10 h-[74%] w-[62%] rounded-[2rem] border border-white/30 bg-[linear-gradient(160deg,rgba(255,247,224,0.98),rgba(255,209,91,0.94),rgba(241,132,28,0.98))] p-6 shadow-[0_38px_90px_-42px_rgba(14,29,25,0.5)]">
+      <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_center,rgba(235,126,59,0.28),transparent_62%)] blur-2xl" />
+      <div className="absolute left-[12%] top-[12%] h-[72%] w-[58%] rotate-[-8deg] rounded-[1.8rem] border border-white/25 bg-[linear-gradient(160deg,rgba(255,236,212,0.95),rgba(245,160,110,0.82),rgba(235,126,59,0.95))] p-5 shadow-[0_30px_80px_-36px_rgba(14,29,25,0.45)]" />
+      <div className="absolute right-[11%] top-[22%] h-[68%] w-[58%] rotate-[6deg] rounded-[1.8rem] border border-white/25 bg-[linear-gradient(160deg,rgba(255,232,204,0.94),rgba(248,172,120,0.88),rgba(210,95,35,0.94))] p-5 shadow-[0_30px_80px_-36px_rgba(14,29,25,0.45)]" />
+      <div className="relative z-10 h-[74%] w-[62%] rounded-[2rem] border border-white/30 bg-[linear-gradient(160deg,rgba(255,240,220,0.98),rgba(250,175,125,0.94),rgba(235,126,59,0.98))] p-6 shadow-[0_38px_90px_-42px_rgba(14,29,25,0.5)]">
         <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-[#5b2b0d]/65">
           {locale === 'de' ? 'PDF Library' : 'PDF Library'}
         </p>
