@@ -30,14 +30,12 @@ export function SpatialWireframeWidget({
     <div className={cn('widget-shell p-5 sm:p-6', className)}>
       <div className="widget-glow-bg" />
       <div className="relative z-10 space-y-4">
-        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.26em] text-[var(--muted)]">
-          Strategic View
-        </p>
+        <p className="label-xs">Strategic View</p>
         <h3 className="text-2xl font-semibold leading-tight text-[var(--text)]">{title}</h3>
         <p className="max-w-sm text-sm leading-7 text-[var(--muted)]">{description}</p>
       </div>
 
-      <div className="relative mt-6 h-48">
+      <div className="relative z-10 mt-6 h-48">
         <div className="widget-grid-3d h-full w-full" />
         <div className="wire-orb absolute left-[12%] top-[16%] h-16 w-16 opacity-80" />
         <div className="wire-orb absolute right-[18%] top-[22%] h-10 w-10 opacity-70" />
@@ -65,24 +63,20 @@ export function MetricGridWidget({
     <div className={cn('widget-shell p-5 sm:p-6', className)}>
       <div className="widget-glow-bg" />
       <div className="relative z-10">
-        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.26em] text-[var(--muted)]">
-          Key Highlights
-        </p>
+        <p className="label-xs">Key Highlights</p>
         <h3 className="mt-2 text-2xl font-semibold text-[var(--text)]">{title}</h3>
 
         <div className="mt-5 grid gap-3">
           {metrics.map((item) => (
             <div
               key={`${item.label}-${item.value}`}
-              className="rounded-[1.2rem] border border-[var(--border)] bg-white/30 px-4 py-3"
+              className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-white/30 px-4 py-3 transition-colors hover:bg-white/45"
             >
               <div className="flex items-end justify-between gap-3">
                 <p className="text-xl font-semibold tracking-[-0.03em] text-[var(--text)]">
                   {item.value}
                 </p>
-                <p className="text-[0.64rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">
-                  {item.label}
-                </p>
+                <p className="label-xs">{item.label}</p>
               </div>
               {item.note ? (
                 <p className="mt-2 text-xs leading-6 text-[var(--muted)]">{item.note}</p>
@@ -118,7 +112,7 @@ export function TeamMemberWidget({
   return (
     <article className={cn('widget-shell p-5 sm:p-6', className)}>
       <div className="widget-glow-bg" />
-      <div className={cn('absolute inset-0 rounded-[1.5rem] opacity-80', variant)} />
+      <div className={cn('pointer-events-none absolute inset-0 opacity-80', variant)} />
 
       <div className="relative z-10 flex items-start justify-between gap-3">
         <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white/35 px-3 py-1.5 text-[0.64rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">
@@ -131,7 +125,7 @@ export function TeamMemberWidget({
       </div>
 
       <div className="relative z-10 mt-5 grid grid-cols-[auto_1fr] items-center gap-4">
-        <div className="flex h-14 w-14 items-center justify-center rounded-[1rem] border border-[var(--border)] bg-white/40 text-lg font-semibold text-[var(--text)]">
+        <div className="flex h-14 w-14 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-white/40 text-lg font-semibold text-[var(--text)]">
           {getInitials(member.name)}
         </div>
         <div>

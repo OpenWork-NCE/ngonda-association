@@ -40,12 +40,7 @@ export function BrochureActions({href, fileName, labels}: BrochureActionsProps) 
 
   return (
     <div className="flex flex-wrap gap-3">
-      <a
-        href={encodedHref}
-        target="_blank"
-        rel="noreferrer"
-        className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--accent),var(--accent-secondary))] px-4 py-2.5 text-sm font-semibold text-[var(--accent-contrast)] shadow-[0_18px_36px_-24px_rgba(14,29,25,0.58)]"
-      >
+      <a href={encodedHref} target="_blank" rel="noreferrer" className="btn-primary">
         <ExternalLink className="h-4 w-4" />
         {labels.open}
       </a>

@@ -112,10 +112,7 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
             }
           >
             <div className="flex flex-wrap gap-3">
-              <Link
-                href="/projects"
-                className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--accent),var(--accent-secondary))] px-5 py-3 text-sm font-semibold text-[var(--accent-contrast)] shadow-[0_18px_36px_-24px_rgba(14,29,25,0.58)]"
-              >
+              <Link href="/projects" className="btn-primary">
                 {tActions('discover')}
                 <ArrowRight className="h-4 w-4" />
               </Link>

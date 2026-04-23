@@ -32,10 +32,10 @@ export function LanguageSwitcher() {
               )
             }
             className={cn(
-              'rounded-full px-3 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.24em] transition-colors',
+              'rounded-full px-3 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.24em] transition-colors duration-[var(--dur-fast)]',
               active
                 ? 'bg-[var(--accent)] text-[var(--accent-contrast)]'
-                : 'text-[var(--muted)] hover:bg-white/40 hover:text-[var(--text)]'
+                : 'text-[var(--muted)] hover:bg-[var(--accent-soft)] hover:text-[var(--text)]'
             )}
           >
             {nextLocale}

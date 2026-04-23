@@ -17,7 +17,12 @@ export function PageContainer({
   className?: string;
 }) {
   return (
-    <div className={cn('mx-auto w-full max-w-[92rem] px-4 py-8 sm:px-6 sm:py-9 lg:px-10 lg:py-12', className)}>
+    <div
+      className={cn(
+        'mx-auto w-full max-w-[92rem] px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12',
+        className
+      )}
+    >
       {children}
     </div>
   );
@@ -45,7 +50,7 @@ export function PageHero({
   return (
     <section
       className={cn(
-        'relative overflow-hidden rounded-[2rem] border border-[var(--border-strong)] px-6 py-8 shadow-[var(--shadow-hero)] sm:px-8 sm:py-9 lg:px-12 lg:py-10',
+        'relative overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border-strong)] px-6 py-8 shadow-[var(--shadow-hero)] sm:px-8 sm:py-10 lg:px-12 lg:py-12',
         className
       )}
     >
@@ -83,9 +88,7 @@ export function PageHero({
                   <p className="text-2xl font-semibold tracking-[-0.04em] text-[var(--text)]">
                     {metric.value}
                   </p>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">
-                    {metric.label}
-                  </p>
+                  <p className="label-xs mt-1">{metric.label}</p>
                   {metric.note ? (
                     <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{metric.note}</p>
                   ) : null}
@@ -130,16 +133,19 @@ export function SectionTitle({
 export function SurfaceCard({
   children,
   className,
-  tone = 'default'
+  tone = 'default',
+  interactive = true
 }: {
   children: ReactNode;
   className?: string;
   tone?: 'default' | 'muted' | 'contrast' | 'accent' | 'warning';
+  interactive?: boolean;
 }) {
   return (
     <div
       className={cn(
-        'surface-card transition-transform duration-300 hover:-translate-y-0.5',
+        'surface-card',
+        interactive && 'surface-card-interactive',
         tone === 'muted' && 'surface-card-muted',
         tone === 'contrast' && 'surface-card-contrast',
         tone === 'accent' && 'surface-card-accent',
@@ -178,9 +184,9 @@ export function BackLink({
 function HeroPrism() {
   return (
     <div className="relative mx-auto flex aspect-[4/5] w-full max-w-[22rem] items-center justify-center">
-      <div className="absolute inset-[12%] rounded-[2.4rem] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.46),rgba(255,255,255,0.08))]" />
-      <div className="absolute inset-y-[24%] right-[14%] w-[54%] rounded-[3rem] rounded-tl-full rounded-br-full border border-[var(--border-strong)] bg-[var(--surface-strong)] shadow-[var(--shadow-card)]" />
-      <div className="absolute inset-y-[36%] left-[18%] w-[48%] rounded-[2.4rem] rounded-tr-full rounded-bl-full border border-[var(--border-strong)] bg-[linear-gradient(140deg,var(--accent-highlight),var(--accent-secondary))]" />
+      <div className="absolute inset-[12%] rounded-[var(--radius-xl)] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.46),rgba(255,255,255,0.08))]" />
+      <div className="absolute inset-y-[24%] right-[14%] w-[54%] rounded-[var(--radius-xl)] rounded-tl-full rounded-br-full border border-[var(--border-strong)] bg-[var(--surface-strong)] shadow-[var(--shadow-card)]" />
+      <div className="absolute inset-y-[36%] left-[18%] w-[48%] rounded-[var(--radius-xl)] rounded-tr-full rounded-bl-full border border-[var(--border-strong)] bg-[linear-gradient(140deg,var(--accent-highlight),var(--accent-secondary))]" />
       <div className="absolute right-[24%] top-[25%] h-10 w-10 rounded-full border border-[var(--border-strong)] bg-white/50" />
       <div className="absolute bottom-[20%] left-[30%] h-7 w-7 rounded-full border border-[var(--border)] bg-white/40" />
     </div>

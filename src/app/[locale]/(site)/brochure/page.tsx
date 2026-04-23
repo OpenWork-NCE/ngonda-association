@@ -2,19 +2,11 @@ import { BrochureActions } from '@/components/brochure-actions';
 import { PageContainer, PageHero, SectionTitle, SurfaceCard } from '@/components/page-shell';
 import { Reveal } from '@/components/reveal';
 import { brochures, getLocalized, isAppLocale } from '@/data/site-content';
-import { cn } from '@/lib/utils';
 import { formatDate, formatFileSize } from '@/lib/format';
-import { FileStack } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 const BROCHURE_TONES = ['default', 'contrast', 'muted', 'warning'] as const;
-const BROCHURE_VISUALS = [
-  'from-[rgba(255,225,196,0.96)] via-[rgba(247,172,121,0.95)] to-[rgba(235,126,59,0.96)]',
-  'from-[rgba(255,240,224,0.96)] via-[rgba(250,190,146,0.94)] to-[rgba(220,100,44,0.96)]',
-  'from-[rgba(254,220,192,0.96)] via-[rgba(245,160,110,0.94)] to-[rgba(212,88,30,0.96)]',
-  'from-[rgba(255,232,204,0.96)] via-[rgba(248,175,128,0.92)] to-[rgba(200,90,30,0.96)]'
-] as const;
 
 export default async function BrochurePage({ params }: PageProps<'/[locale]/brochure'>) {
   const { locale } = await params;
@@ -136,7 +128,7 @@ export default async function BrochurePage({ params }: PageProps<'/[locale]/broc
                       {brochure.highlights.map((item) => (
                         <div
                           key={item.de}
-                          className="rounded-[1rem] border border-[var(--border)] bg-white/18 px-4 py-3 text-sm leading-6 text-[var(--text)]"
+                          className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-white/18 px-4 py-3 text-sm leading-6 text-[var(--text)]"
                         >
                           {getLocalized(item, locale)}
                         </div>
@@ -163,8 +155,8 @@ export default async function BrochurePage({ params }: PageProps<'/[locale]/broc
 
 function MetadataPill({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[1.2rem] border border-[var(--border)] bg-white/22 px-4 py-3">
-      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">
+    <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-white/22 px-4 py-3">
+      <p className="label-xs">
         {label}
       </p>
       <p className="mt-2 text-sm font-semibold text-[var(--text)]">{value}</p>

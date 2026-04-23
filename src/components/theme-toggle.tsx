@@ -12,22 +12,29 @@ export function ThemeToggle() {
   const t = useTranslations('actions');
   const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
-  const isDark = resolvedTheme === 'dark';
+  const isDark = mounted && resolvedTheme === 'dark';
 
   return (
     <button
       type="button"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className="control-chip inline-flex h-11 w-11 items-center justify-center text-[var(--text)] transition-colors hover:text-[var(--accent)]"
+      className="control-chip inline-flex h-11 w-11 items-center justify-center text-[var(--text)] hover:text-[var(--accent)]"
       aria-label={t('theme')}
       title={t('theme')}
       disabled={!mounted}
     >
-      {mounted ? (
-        isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />
-      ) : (
-        <span className="h-4 w-4" aria-hidden="true" />
-      )}
+      <span className="relative block h-4 w-4">
+        <Sun
+          className={`absolute inset-0 h-4 w-4 transition-all duration-[var(--dur-base)] ${
+            mounted && isDark ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-75 opacity-0'
+          }`}
+        />
+        <Moon
+          className={`absolute inset-0 h-4 w-4 transition-all duration-[var(--dur-base)] ${
+            mounted && !isDark ? 'rotate-0 scale-100 opacity-100' : 'rotate-90 scale-75 opacity-0'
+          }`}
+        />
+      </span>
     </button>
   );
 }
