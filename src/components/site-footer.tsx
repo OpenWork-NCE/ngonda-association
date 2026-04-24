@@ -64,7 +64,7 @@ export async function SiteFooter({locale}: {locale: AppLocale}) {
             {/* Col 1 — Brand + contact */}
             <div className="px-4 py-7 sm:px-6 lg:px-10">
               <div className="flex items-center gap-3.5">
-                <div className="shrink-0 rounded-[var(--radius-sm)] border border-[var(--accent-secondary-medium)] bg-[var(--accent-secondary-soft)] px-3 py-2 shadow-[var(--shadow-soft)]">
+                <div className="shrink-0 rounded-[var(--radius-sm)] border border-[var(--accent-secondary-medium)] bg-[var(--accent-soft)] px-3 py-2 shadow-[var(--shadow-soft)]">
                   <Image
                     src="/ngonda-logo.png"
                     alt="NGONDA e.V."
@@ -84,7 +84,7 @@ export async function SiteFooter({locale}: {locale: AppLocale}) {
               </p>
 
               <div className="mt-6 space-y-2 text-sm">
-                <div className="flex items-start gap-3 rounded-[var(--radius-md)] border border-[var(--accent-secondary-medium)] bg-[var(--accent-secondary-soft)] px-4 py-3 text-[var(--text)]">
+                <div className="flex items-start gap-3 rounded-[var(--radius-md)] border border-[var(--accent-secondary-medium)] bg-[var(--accent-soft)] px-4 py-3 text-[var(--text)]">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent-secondary)]" />
                   <div className="leading-6">
                     <p>{contactDetails.organization}</p>
@@ -95,11 +95,11 @@ export async function SiteFooter({locale}: {locale: AppLocale}) {
                 </div>
 
                 <div className="grid gap-2 sm:grid-cols-2">
-                  <div className="flex items-center gap-3 rounded-[var(--radius-md)] border border-[var(--accent-secondary-medium)] bg-[var(--accent-secondary-soft)] px-4 py-3 text-[var(--text)]">
+                  <div className="flex items-center gap-3 rounded-[var(--radius-md)] border border-[var(--accent-secondary-medium)] bg-[var(--accent-soft)] px-4 py-3 text-[var(--text)]">
                     <Phone className="h-4 w-4 shrink-0 text-[var(--accent-secondary)]" />
                     <span className="text-sm">{contactDetails.officePhone}</span>
                   </div>
-                  <div className="flex items-center gap-3 rounded-[var(--radius-md)] border border-[var(--accent-secondary-medium)] bg-[var(--accent-secondary-soft)] px-4 py-3 text-[var(--text)]">
+                  <div className="flex items-center gap-3 rounded-[var(--radius-md)] border border-[var(--accent-secondary-medium)] bg-[var(--accent-soft)] px-4 py-3 text-[var(--text)]">
                     <Mail className="h-4 w-4 shrink-0 text-[var(--accent-secondary)]" />
                     <a
                       href="mailto:info@ngonda.de"
@@ -120,7 +120,7 @@ export async function SiteFooter({locale}: {locale: AppLocale}) {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="group flex items-center justify-between rounded-[var(--radius-sm)] border border-transparent px-3 py-2.5 text-[var(--text)] transition-all duration-[var(--dur-fast)] hover:border-[var(--accent-secondary-medium)] hover:bg-[var(--accent-secondary-soft)] hover:text-[var(--accent-secondary)]"
+                      className="group flex items-center justify-between rounded-[var(--radius-sm)] border border-transparent px-3 py-2.5 text-[var(--text)] transition-all duration-[var(--dur-fast)] hover:border-[var(--accent-secondary-medium)] hover:bg-[var(--accent-soft)] hover:text-[var(--accent-secondary)]"
                     >
                       <span>{tNav(item.key)}</span>
                       <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-opacity duration-[var(--dur-fast)] group-hover:opacity-100" />
@@ -140,7 +140,7 @@ export async function SiteFooter({locale}: {locale: AppLocale}) {
                   ? 'Institutionelle Referenzen, Bankdaten und formale Kennzahlen.'
                   : 'Références institutionnelles, coordonnées et informations formelles.'}
               </p>
-              <div className="mt-4 rounded-[var(--radius-md)] border border-[var(--accent-secondary-medium)] bg-[var(--accent-secondary-soft)] p-4 text-xs leading-6 text-[var(--muted)]">
+              <div className="mt-4 rounded-[var(--radius-md)] border border-[var(--accent-secondary-medium)] bg-[var(--accent-soft)] p-4 text-xs leading-6 text-[var(--muted)]">
                 <p>{contactDetails.vr}</p>
                 <p>{contactDetails.ust}</p>
                 <p className="mt-2">Office: {contactDetails.officePhone}</p>
@@ -164,7 +164,7 @@ export async function SiteFooter({locale}: {locale: AppLocale}) {
                       href={item.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-[var(--accent-secondary-medium)] bg-[var(--accent-secondary-soft)] px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent-secondary-strong)] transition-colors duration-[var(--dur-fast)] hover:bg-[var(--accent-secondary-medium)] hover:text-[var(--text)]"
+                      className="social-link inline-flex items-center gap-2 rounded-full border border-[var(--accent-secondary-medium)] bg-[var(--accent-soft)] px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] transition-colors duration-[var(--dur-fast)] hover:bg-[var(--accent-secondary-medium)] hover:text-[var(--text)]"
                     >
                       <Icon className="h-3.5 w-3.5" />
                       {item.label}

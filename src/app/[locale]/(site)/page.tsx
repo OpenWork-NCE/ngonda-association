@@ -38,8 +38,8 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
 
   const heroTitle =
     locale === 'de'
-      ? 'Schutz, Stimme und Zukunft für Migrantinnen in Aachen.'
-      : 'Protection, voix et avenir pour les femmes migrantes à Aachen.';
+      ? 'Schutz, Stimme und Zukunft für Migrantinnen in NGONDA e.V.'
+      : 'Protection, voix et avenir pour les femmes migrantes à NGONDA e.V.';
 
   const heroLead =
     locale === 'de'
@@ -74,10 +74,7 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
 
               <div className="relative z-10 grid h-full items-center gap-10 px-5 py-6 sm:px-7 sm:py-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(24rem,0.92fr)] lg:px-10 lg:py-10">
                 <div className="max-w-[34rem] space-y-6 contrast-on-media">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="status-indicator status-indicator-green">
-                      {locale === 'de' ? 'Aachen • Aktiv' : 'Aachen • Actif'}
-                    </span>
+                  <div className="flex flex-wrap items-center gap-3">                  
                     <span className="rounded-full border border-white/16 bg-black/22 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/76 backdrop-blur-md">
                       {content.heroEyebrow}
                     </span>
@@ -103,18 +100,6 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
                     >
                       {tActions('readMore')}
                     </Link>
-                  </div>
-
-                  <div className="flex flex-wrap gap-3 pt-1 text-white/86">
-                    <div className="rounded-full border border-white/12 bg-black/20 px-4 py-2 text-sm font-semibold backdrop-blur-md">
-                      DE / FR
-                    </div>
-                    <div className="rounded-full border border-white/12 bg-black/20 px-4 py-2 text-sm font-semibold backdrop-blur-md">
-                      {currentProjects.length} {locale === 'de' ? 'aktive Projekte' : 'projets actifs'}
-                    </div>
-                    <div className="rounded-full border border-white/12 bg-black/20 px-4 py-2 text-sm font-semibold backdrop-blur-md">
-                      {locale === 'de' ? 'lokal verankert' : 'ancrage local'}
-                    </div>
                   </div>
                 </div>
 
@@ -193,9 +178,9 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
                       </span>
                       <div>
                         <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-white/58">
-                          {locale === 'de' ? 'Klar & nah' : 'Clair & proche'}
+                          {locale === 'de' ? 'Ngonda E.v' : 'Ngonda E.v'}
                         </p>
-                        <p className="mt-1 text-sm font-semibold text-white">DE / FR • Aachen</p>
+                        <p className="mt-1 text-sm font-semibold text-white">SHE FIRST</p>
                       </div>
                     </div>
                   </div>
@@ -537,56 +522,6 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
           </div>
         </section>
 
-        {/* ── Digital Services CTA — Mastra-style announcement bar ── */}
-        <Reveal>
-          <div className="relative overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--border-strong)]">
-            {/* Dark surface */}
-            <div className="absolute inset-0 bg-[var(--surface-contrast)]" />
-            {/* Accent glow top-right */}
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_70%_at_100%_0%,var(--glow-primary),transparent_55%)]" />
-            {/* Grid pattern */}
-            <div className="hairline-grid pointer-events-none absolute inset-0 opacity-[0.20] [mask-image:linear-gradient(90deg,transparent,black_30%,black_70%,transparent)]" />
-            {/* Inner ring */}
-            <div className="pointer-events-none absolute inset-0 rounded-[inherit] border border-[var(--ring-inner)]" />
-
-            <div className="relative grid gap-6 px-6 py-8 sm:px-8 sm:py-9 lg:grid-cols-[1.15fr_auto] lg:items-center">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <span className="status-indicator status-indicator-green">
-                    {locale === 'de' ? 'Online' : 'En ligne'}
-                  </span>
-                  <span className="status-indicator">
-                    24/7
-                  </span>
-                </div>
-                <h3 className="text-3xl font-semibold text-[var(--text)]">
-                  {locale === 'de'
-                    ? 'Online-Service und Archiv verstärken die Begleitung mit klaren, sicheren Zugangsräumen.'
-                    : 'Le service en ligne et les archives renforcent l\'accompagnement avec des espaces d\'accès clairs et fiables.'}
-                </h3>
-                <p className="max-w-3xl text-sm leading-7 text-[var(--muted)]">
-                  {content.onlineServiceNote}
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  href="/online-service"
-                  className="btn-primary"
-                >
-                  {locale === 'de' ? 'Online-Service' : 'Service en ligne'}
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  href="/archive"
-                  className="control-chip inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-[var(--text)]"
-                >
-                  <FolderArchive className="h-4 w-4" />
-                  {locale === 'de' ? 'Archiv' : 'Archives'}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </Reveal>
       </PageContainer>
     </div>
   );

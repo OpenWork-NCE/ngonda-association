@@ -1,3 +1,4 @@
+import {FloatingActions} from '@/components/floating-actions';
 import {SiteFooter} from '@/components/site-footer';
 import {SiteHeader} from '@/components/site-header';
 import {getSiteContent, isAppLocale} from '@/data/site-content';
@@ -53,6 +54,7 @@ export default async function LocaleLayout({
         </div>
         <SiteHeader />
         <main className="relative z-10 pb-20">{children}</main>
+        <FloatingActions />
         <SiteFooter locale={locale} />
       </div>
     </NextIntlClientProvider>
