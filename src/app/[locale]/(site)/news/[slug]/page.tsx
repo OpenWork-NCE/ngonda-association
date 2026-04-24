@@ -81,33 +81,35 @@ export default async function NewsDetailPage({
           </SurfaceCard>
         </Reveal>
 
-        <section className="space-y-6">
-          <SectionTitle
-            title={locale === 'de' ? 'Bildgalerie' : 'Galerie visuelle'}
-            description={
-              locale === 'de'
-                ? 'Eindruecke aus dem Kontext der Meldung.'
-                : 'Apercus visuels en lien avec cette actualite.'
-            }
-          />
-          <div className="grid gap-4 md:grid-cols-3">
-            {article.gallery.map((item, index) => (
-              <Reveal key={item.src} delay={0.05 * index}>
-                <SurfaceCard className="overflow-hidden p-2.5">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-[1.2rem]">
-                    <Image
-                      src={item.src}
-                      alt={getLocalized(item.alt, locale)}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 768px) 33vw, 100vw"
-                    />
-                  </div>
-                </SurfaceCard>
-              </Reveal>
-            ))}
-          </div>
-        </section>
+        {article.gallery.length ? (
+          <section className="space-y-6">
+            <SectionTitle
+              title={locale === 'de' ? 'Bildgalerie' : 'Galerie visuelle'}
+              description={
+                locale === 'de'
+                  ? 'Eindruecke aus dem Kontext der Meldung.'
+                  : 'Apercus visuels en lien avec cette actualite.'
+              }
+            />
+            <div className="grid gap-4 md:grid-cols-3">
+              {article.gallery.map((item, index) => (
+                <Reveal key={item.src} delay={0.05 * index}>
+                  <SurfaceCard className="overflow-hidden p-2.5">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-[1.2rem]">
+                      <Image
+                        src={item.src}
+                        alt={getLocalized(item.alt, locale)}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                      />
+                    </div>
+                  </SurfaceCard>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        ) : null}
       </div>
     </PageContainer>
   );

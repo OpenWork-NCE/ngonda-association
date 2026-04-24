@@ -9,7 +9,7 @@ import {
   socialLinks
 } from '@/data/site-content';
 import {Link} from '@/i18n/navigation';
-import {ArrowRight, Camera, Film} from 'lucide-react';
+import {ArrowRight, Camera, Film, Play} from 'lucide-react';
 import Image from 'next/image';
 import {getTranslations} from 'next-intl/server';
 import {notFound} from 'next/navigation';
@@ -44,20 +44,23 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
             ]}
             artwork={
               <div className="relative mx-auto w-full max-w-[26rem]">
-                <SurfaceCard className="overflow-hidden p-3">
+                <SurfaceCard className="overflow-hidden p-3" interactive={false}>
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem]">
                     <Image
-                      src="/media/projects/koloniale-gewalt-bassaa/featured.jpg"
+                      src="/media/real-assets/media19.jpg"
                       alt="NGONDA gallery"
                       fill
                       className="object-cover"
                       sizes="(min-width: 1024px) 26rem, 100vw"
                     />
                     <div className="media-overlay-strong" />
+                    {/* Mastra-style status */}
+                    <div className="absolute left-4 top-4">
+                      <span className="status-indicator">
+                        {locale === 'de' ? 'Medienraum' : 'Espace médias'}
+                      </span>
+                    </div>
                     <div className="absolute bottom-5 left-5 right-5 contrast-on-media">
-                      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] contrast-on-media-muted">
-                        {locale === 'de' ? 'Medienraum' : 'espace médias'}
-                      </p>
                       <p className="mt-2 text-lg font-semibold leading-tight">
                         {locale === 'de'
                           ? 'Fotos und Videos in einer klaren, konsistenten Medienarchitektur.'
@@ -70,10 +73,7 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
             }
           >
             <div className="mt-1 flex flex-wrap gap-3">
-              <Link
-                href="/gallery/photos"
-                className="inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,var(--accent),var(--accent-secondary))] px-5 py-3 text-sm font-semibold text-[var(--accent-contrast)]"
-              >
+              <Link href="/gallery/photos" className="btn-primary">
                 <Camera className="h-4 w-4" />
                 {tPages('photosTitle')}
               </Link>
@@ -88,21 +88,23 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
           </PageHero>
         </Reveal>
 
+        {/* ── Photo + Video columns ── */}
         <section className="grid gap-6 lg:grid-cols-2">
           <Reveal>
-            <SurfaceCard className="p-6">
-              <SectionTitle
-                title={tPages('photosTitle')}
-                description={
-                  locale === 'de'
-                    ? 'Mosaikartige Einblicke in Community, Empowerment und Begegnung.'
-                    : 'Des aperçus en mosaïque autour de la communauté, de l’empowerment et de la rencontre.'
-                }
-              />
+            <SurfaceCard className="p-6" interactive={false}>
+              <div className="flex items-center justify-between gap-3">
+                <SectionTitle title={tPages('photosTitle')} />
+                <span className="status-indicator shrink-0">{galleryPhotos.length}</span>
+              </div>
+              <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
+                {locale === 'de'
+                  ? 'Mosaikartige Einblicke in Community, Empowerment und Begegnung.'
+                  : 'Des aperçus en mosaïque autour de la communauté, de l\'empowerment et de la rencontre.'}
+              </p>
               <div className="mt-5 grid grid-cols-2 gap-3">
                 {galleryPhotos.slice(0, 4).map((photo) => (
                   <div key={photo.id} className="group">
-                    <div className="relative h-36 overflow-hidden rounded-[1.25rem]">
+                    <div className="relative h-36 overflow-hidden rounded-[var(--radius-md)]">
                       <Image
                         src={photo.src}
                         alt={getLocalized(photo.title, locale)}
@@ -111,7 +113,7 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
                         sizes="(min-width: 1024px) 260px, 46vw"
                       />
                     </div>
-                    <p className="mt-2 text-sm font-semibold text-[var(--text)]">
+                    <p className="mt-2 text-xs font-semibold text-[var(--muted)]">
                       {getLocalized(photo.title, locale)}
                     </p>
                   </div>
@@ -125,61 +127,72 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
           </Reveal>
 
           <Reveal delay={0.06}>
-            <SurfaceCard tone="contrast" className="p-6">
-              <SectionTitle
-                title={tPages('videosTitle')}
-                description={
-                  locale === 'de'
-                    ? 'Interviews, Workshops und Event-Recaps mit direkter Verknüpfung zu den Videoquellen.'
-                    : 'Interviews, ateliers et récapitulatifs d’événements avec accès direct aux sources vidéo.'
-                }
-              />
+            <SurfaceCard tone="contrast" className="p-6" interactive={false}>
+              <div className="flex items-center justify-between gap-3">
+                <SectionTitle title={tPages('videosTitle')} />
+                <span className="status-indicator shrink-0">{galleryVideos.length}</span>
+              </div>
+              <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
+                {locale === 'de'
+                  ? 'Interviews, Workshops und Event-Recaps mit direkter Verknüpfung zu den Videoquellen.'
+                  : 'Interviews, ateliers et récapitulatifs d\'événements avec accès direct aux sources vidéo.'}
+              </p>
               <div className="mt-5 space-y-3">
                 {galleryVideos.map((video) => (
                   <div
                     key={video.id}
-                    className="rounded-[1.4rem] border border-[var(--border)] bg-white/25 p-3"
+                    className="flex items-center gap-3 rounded-[var(--radius-md)] border border-[var(--border)] bg-tint/14 p-3 transition-colors duration-[var(--dur-fast)] hover:border-[var(--border-strong)] hover:bg-tint/22"
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="relative h-16 w-20 overflow-hidden rounded-[0.95rem]">
-                        <Image
-                          src={video.thumbnail}
-                          alt={getLocalized(video.title, locale)}
-                          fill
-                          className="object-cover"
-                          sizes="80px"
-                        />
+                    <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-[var(--radius-sm)]">
+                      <Image
+                        src={video.thumbnail}
+                        alt={getLocalized(video.title, locale)}
+                        fill
+                        className="object-cover"
+                        sizes="80px"
+                      />
+                      {/* Play overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/40 bg-white/20">
+                          <Play className="h-3 w-3 fill-white text-white" />
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-sm font-semibold text-[var(--text)]">
-                          {getLocalized(video.title, locale)}
-                        </p>
-                        <p className="text-xs leading-6 text-[var(--muted)]">
-                          {getLocalized(video.description, locale)}
-                        </p>
-                      </div>
+                    </div>
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-semibold text-[var(--text)]">
+                        {getLocalized(video.title, locale)}
+                      </p>
+                      <p className="mt-0.5 truncate text-xs leading-5 text-[var(--muted)]">
+                        {getLocalized(video.description, locale)}
+                      </p>
                     </div>
                   </div>
                 ))}
               </div>
               <Link href="/gallery/videos" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)]">
-                {locale === 'de' ? 'Alle Videos ansehen' : 'Voir toutes les videos'}
+                {locale === 'de' ? 'Alle Videos ansehen' : 'Voir toutes les vidéos'}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </SurfaceCard>
           </Reveal>
         </section>
 
+        {/* ── Social networks ── */}
         <Reveal>
-          <SurfaceCard tone="muted" className="p-6 sm:p-7">
-            <SectionTitle
-              title={locale === 'de' ? 'Netzwerke & Videos' : 'Réseaux & vidéos'}
-              description={
-                locale === 'de'
-                  ? 'Die Galerie bleibt direkt mit den sozialen Kanälen von NGONDA verbunden.'
-                  : 'La galerie reste directement reliée aux réseaux sociaux de NGONDA.'
-              }
-            />
+          <SurfaceCard tone="muted" className="p-6 sm:p-7" interactive={false}>
+            <div className="flex items-center justify-between gap-4">
+              <SectionTitle
+                title={locale === 'de' ? 'Netzwerke & Kanäle' : 'Réseaux & canaux'}
+                description={
+                  locale === 'de'
+                    ? 'Die Galerie bleibt direkt mit den sozialen Kanälen von NGONDA verbunden.'
+                    : 'La galerie reste directement reliée aux réseaux sociaux de NGONDA.'
+                }
+              />
+              <span className="status-indicator status-indicator-green shrink-0">
+                {locale === 'de' ? 'Live' : 'Live'}
+              </span>
+            </div>
             <div className="mt-5 flex flex-wrap gap-3">
               {socialLinks.map((item) => (
                 <a
@@ -187,7 +200,7 @@ export default async function GalleryPage({params}: PageProps<'/[locale]/gallery
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white/30 px-4 py-2.5 text-sm font-semibold text-[var(--text)] transition hover:border-[var(--border-strong)] hover:text-[var(--accent)]"
+                  className="control-chip inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-[var(--text)]"
                 >
                   {item.label}
                   <ArrowRight className="h-4 w-4" />

@@ -29,13 +29,13 @@ export default async function NewsPage({params}: PageProps<'/[locale]/news'>) {
             title={tPages('newsTitle')}
             description={
               locale === 'de'
-                ? 'Meldungen und Rueckblicke, die die Entwicklung der Organisation transparent und nachvollziehbar dokumentieren.'
-                : 'Actualites et retrospectives qui documentent de facon claire l evolution de l organisation.'
+                ? 'Meldungen und Rückblicke, die die Entwicklung der Organisation transparent und nachvollziehbar dokumentieren.'
+                : 'Actualités et rétrospectives qui documentent de façon claire l\'évolution de l\'organisation.'
             }
             metrics={[
               {
                 value: `${news.length}`,
-                label: locale === 'de' ? 'veroeffentlichte Updates' : 'mises a jour'
+                label: locale === 'de' ? 'veröffentlichte Updates' : 'mises à jour'
               },
               {
                 value: latest ? formatDate(latest.publishedAt, locale) : '--',
@@ -44,7 +44,7 @@ export default async function NewsPage({params}: PageProps<'/[locale]/news'>) {
             ]}
             artwork={
               latest ? (
-                <SurfaceCard className="overflow-hidden p-3">
+                <SurfaceCard className="overflow-hidden p-3" interactive={false}>
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[1.7rem]">
                     <Image
                       src={latest.featuredImage.src}
@@ -54,6 +54,12 @@ export default async function NewsPage({params}: PageProps<'/[locale]/news'>) {
                       sizes="(min-width: 1024px) 24rem, 100vw"
                     />
                     <div className="media-overlay-strong" />
+                    {/* Mastra-style update indicator */}
+                    <div className="absolute left-4 top-4">
+                      <span className="status-indicator status-indicator-orange">
+                        {locale === 'de' ? 'Aktuell' : 'Récent'}
+                      </span>
+                    </div>
                     <div className="absolute inset-x-4 bottom-4 space-y-2 contrast-on-media">
                       <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] contrast-on-media-muted">
                         {formatDate(latest.publishedAt, locale)}
@@ -70,23 +76,28 @@ export default async function NewsPage({params}: PageProps<'/[locale]/news'>) {
         </Reveal>
 
         <section className="space-y-6">
-          <SectionTitle
-            title={locale === 'de' ? 'Aktuelle Meldungen' : 'Actualites'}
-            description={
-              locale === 'de'
-                ? 'Kuratiert, klar datiert und auf Lesbarkeit in einem institutionellen Rahmen ausgerichtet.'
-                : 'Curate, clairement date et pense pour une lecture institutionnelle fluide.'
-            }
-          />
+          <div className="flex items-end justify-between gap-4">
+            <SectionTitle
+              title={locale === 'de' ? 'Aktuelle Meldungen' : 'Actualités'}
+              description={
+                locale === 'de'
+                  ? 'Kuratiert, klar datiert und auf Lesbarkeit in einem institutionellen Rahmen ausgerichtet.'
+                  : 'Curatées, clairement datées et pensées pour une lecture institutionnelle fluide.'
+              }
+            />
+            <span className="status-indicator shrink-0">{news.length}</span>
+          </div>
+
           <div className="grid gap-5">
             {sortedNews.map((item, index) => (
               <Reveal key={item.id} delay={0.06 * index}>
                 <SurfaceCard
                   tone={index === 0 ? 'default' : 'contrast'}
-                  className="overflow-hidden p-3 sm:p-3"
+                  className="overflow-hidden p-3"
                 >
                   <div className="grid gap-4 md:grid-cols-[280px_1fr]">
-                    <div className="relative aspect-[16/11] overflow-hidden rounded-[1.3rem] md:aspect-auto md:h-full">
+                    {/* Thumbnail */}
+                    <div className="relative aspect-[16/11] overflow-hidden rounded-[var(--radius-md)] md:aspect-auto md:h-full">
                       <Image
                         src={item.featuredImage.src}
                         alt={getLocalized(item.featuredImage.alt, locale)}
@@ -95,12 +106,19 @@ export default async function NewsPage({params}: PageProps<'/[locale]/news'>) {
                         sizes="(min-width: 768px) 280px, 100vw"
                       />
                       <div className="media-overlay-strong" />
-                      <div className="absolute left-3 top-3 rounded-full border border-white/20 bg-black/24 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.23em] contrast-on-media">
+                      {/* Date badge */}
+                      <div className="absolute left-3 top-3 rounded-full border border-tint/20 bg-black/32 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.23em] contrast-on-media">
                         {formatDate(item.publishedAt, locale)}
                       </div>
                     </div>
 
+                    {/* Content */}
                     <div className="space-y-4 px-1 pb-2 pt-1 sm:px-2">
+                      {index === 0 && (
+                        <span className="status-indicator status-indicator-orange">
+                          {locale === 'de' ? 'Neueste Meldung' : 'Dernier signal'}
+                        </span>
+                      )}
                       <h2 className="text-3xl font-semibold text-[var(--text)]">
                         {getLocalized(item.title, locale)}
                       </h2>
@@ -109,7 +127,7 @@ export default async function NewsPage({params}: PageProps<'/[locale]/news'>) {
                       </p>
                       <div className="grid grid-cols-3 gap-2">
                         {item.gallery.slice(0, 3).map((media) => (
-                          <div key={media.src} className="relative aspect-square overflow-hidden rounded-[0.9rem]">
+                          <div key={media.src} className="relative aspect-square overflow-hidden rounded-[var(--radius-sm)]">
                             <Image
                               src={media.src}
                               alt={getLocalized(media.alt, locale)}

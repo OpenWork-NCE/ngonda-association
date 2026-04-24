@@ -1,21 +1,21 @@
-import { BrochureActions } from '@/components/brochure-actions';
-import { PageContainer, PageHero, SectionTitle, SurfaceCard } from '@/components/page-shell';
-import { Reveal } from '@/components/reveal';
-import { brochures, getLocalized, isAppLocale } from '@/data/site-content';
-import { formatDate, formatFileSize } from '@/lib/format';
-import { getTranslations } from 'next-intl/server';
-import { notFound } from 'next/navigation';
+import {BrochureActions} from '@/components/brochure-actions';
+import {PageContainer, PageHero, SectionTitle, SurfaceCard} from '@/components/page-shell';
+import {Reveal} from '@/components/reveal';
+import {brochures, getLocalized, isAppLocale} from '@/data/site-content';
+import {formatDate, formatFileSize} from '@/lib/format';
+import {getTranslations} from 'next-intl/server';
+import {notFound} from 'next/navigation';
 
 const BROCHURE_TONES = ['default', 'contrast', 'muted', 'warning'] as const;
 
-export default async function BrochurePage({ params }: PageProps<'/[locale]/brochure'>) {
-  const { locale } = await params;
+export default async function BrochurePage({params}: PageProps<'/[locale]/brochure'>) {
+  const {locale} = await params;
 
   if (!isAppLocale(locale)) {
     notFound();
   }
 
-  const tPages = await getTranslations({ locale, namespace: 'pages' });
+  const tPages = await getTranslations({locale, namespace: 'pages'});
   const totalPages = brochures.reduce((sum, item) => sum + item.pageCount, 0);
   const totalSizeBytes = brochures.reduce((sum, item) => sum + item.fileSizeBytes, 0);
 
@@ -35,7 +35,7 @@ export default async function BrochurePage({ params }: PageProps<'/[locale]/broc
             description={
               locale === 'de'
                 ? 'Eine kuratierte Sammlung von Broschüren, Handbüchern und Toolkits für Präsentation, Vermittlung, Begleitung und institutionelle Kommunikation.'
-                : 'Une collection éditoriale de brochures, guides et toolkits conçus pour la présentation, la médiation, l’accompagnement et la communication institutionnelle.'
+                : 'Une collection éditoriale de brochures, guides et toolkits conçus pour la présentation, la médiation, l\'accompagnement et la communication institutionnelle.'
             }
             metrics={[
               {
@@ -53,7 +53,7 @@ export default async function BrochurePage({ params }: PageProps<'/[locale]/broc
             ]}
             artwork={<BrochureStack locale={locale} />}
           >
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {[
                 locale === 'de' ? 'Institutionelle Unterlagen' : 'Documents institutionnels',
                 locale === 'de' ? 'Toolkits & Handbücher' : 'Toolkits & guides',
@@ -61,7 +61,7 @@ export default async function BrochurePage({ params }: PageProps<'/[locale]/broc
               ].map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-[var(--border)] bg-white/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--muted)]"
+                  className="status-indicator"
                 >
                   {item}
                 </span>
@@ -76,7 +76,7 @@ export default async function BrochurePage({ params }: PageProps<'/[locale]/broc
             description={
               locale === 'de'
                 ? 'Jede Broschüre erhält eine klare, lesbare Darstellung mit direktem Zugriff auf Öffnen, Download und Ausdruck.'
-                : 'Chaque brochure bénéficie d’une présentation claire et soignée, avec un accès direct à l’ouverture, au téléchargement et à l’impression.'
+                : 'Chaque brochure bénéficie d\'une présentation claire et soignée, avec un accès direct à l\'ouverture, au téléchargement et à l\'impression.'
             }
           />
 
@@ -87,17 +87,20 @@ export default async function BrochurePage({ params }: PageProps<'/[locale]/broc
                   tone={BROCHURE_TONES[index % BROCHURE_TONES.length]}
                   className="h-full p-5 sm:p-6"
                 >
-                  <div className="order-2 flex h-full flex-col lg:order-1">
-                    <div className="flex flex-wrap gap-2">
-                      <span className="rounded-full border border-[var(--border)] bg-white/35 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
-                        {getLocalized(brochure.kind, locale)}
-                      </span>
-                      <span className="rounded-full border border-[var(--border)] bg-white/35 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
-                        {brochure.pageFormat}
+                  <div className="flex h-full flex-col">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="badge">
+                          {getLocalized(brochure.kind, locale)}
+                        </span>
+                        <span className="badge">{brochure.pageFormat}</span>
+                      </div>
+                      <span className="status-indicator status-indicator-green">
+                        {locale === 'de' ? 'Verfügbar' : 'Disponible'}
                       </span>
                     </div>
 
-                    <h3 className="mt-4 text-3xl font-semibold text-[var(--text)]">
+                    <h3 className="mt-5 text-3xl font-semibold text-[var(--text)]">
                       {getLocalized(brochure.title, locale)}
                     </h3>
 
@@ -128,14 +131,14 @@ export default async function BrochurePage({ params }: PageProps<'/[locale]/broc
                       {brochure.highlights.map((item) => (
                         <div
                           key={item.de}
-                          className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-white/18 px-4 py-3 text-sm leading-6 text-[var(--text)]"
+                          className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-tint/14 px-4 py-3 text-sm leading-6 text-[var(--text)]"
                         >
                           {getLocalized(item, locale)}
                         </div>
                       ))}
                     </div>
 
-                    <div className="mt-6">
+                    <div className="mt-auto pt-6">
                       <BrochureActions
                         href={brochure.filePath}
                         fileName={brochure.fileName}
@@ -153,43 +156,61 @@ export default async function BrochurePage({ params }: PageProps<'/[locale]/broc
   );
 }
 
-function MetadataPill({ label, value }: { label: string; value: string }) {
+function MetadataPill({label, value}: {label: string; value: string}) {
   return (
-    <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-white/22 px-4 py-3">
-      <p className="label-xs">
-        {label}
-      </p>
+    <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-tint/14 px-4 py-3">
+      <p className="label-xs">{label}</p>
       <p className="mt-2 text-sm font-semibold text-[var(--text)]">{value}</p>
     </div>
   );
 }
 
-function BrochureStack({ locale }: { locale: 'de' | 'fr' }) {
+function BrochureStack({locale}: {locale: 'de' | 'fr'}) {
   return (
     <div className="relative mx-auto flex aspect-[4/5] w-full max-w-[24rem] items-center justify-center">
-      <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_center,rgba(235,126,59,0.28),transparent_62%)] blur-2xl" />
-      <div className="absolute left-[12%] top-[12%] h-[72%] w-[58%] rotate-[-8deg] rounded-[1.8rem] border border-white/25 bg-[linear-gradient(160deg,rgba(255,236,212,0.95),rgba(245,160,110,0.82),rgba(235,126,59,0.95))] p-5 shadow-[0_30px_80px_-36px_rgba(14,29,25,0.45)]" />
-      <div className="absolute right-[11%] top-[22%] h-[68%] w-[58%] rotate-[6deg] rounded-[1.8rem] border border-white/25 bg-[linear-gradient(160deg,rgba(255,232,204,0.94),rgba(248,172,120,0.88),rgba(210,95,35,0.94))] p-5 shadow-[0_30px_80px_-36px_rgba(14,29,25,0.45)]" />
-      <div className="relative z-10 h-[74%] w-[62%] rounded-[2rem] border border-white/30 bg-[linear-gradient(160deg,rgba(255,240,220,0.98),rgba(250,175,125,0.94),rgba(235,126,59,0.98))] p-6 shadow-[0_38px_90px_-42px_rgba(14,29,25,0.5)]">
-        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-[#5b2b0d]/65">
+      {/* Ambient glow — uses CSS variable */}
+      <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_center,var(--glow-primary),transparent_60%)] blur-2xl" />
+
+      {/* Back card */}
+      <div className="absolute left-[12%] top-[12%] h-[72%] w-[58%] rotate-[-8deg] rounded-[1.8rem] border border-[var(--border-strong)] bg-[var(--surface-contrast)] p-5 shadow-[var(--shadow-card)]" />
+
+      {/* Middle card */}
+      <div className="absolute right-[11%] top-[22%] h-[68%] w-[58%] rotate-[6deg] rounded-[1.8rem] border border-[var(--border-strong)] bg-[var(--surface-strong)] p-5 shadow-[var(--shadow-card)]" />
+
+      {/* Front card — accent-tinted */}
+      <div className="relative z-10 h-[74%] w-[62%] rounded-[2rem] border border-[var(--border-strong)] bg-gradient-to-br from-[var(--accent-soft)] via-[var(--surface-strong)] to-[var(--accent-secondary-soft)] p-6 shadow-[var(--shadow-hero)]">
+        {/* Inner ring */}
+        <div className="pointer-events-none absolute inset-0 rounded-[inherit] border border-[var(--ring-inner)]" />
+
+        <p className="label-xs text-[var(--accent)]">
           {locale === 'de' ? 'PDF Library' : 'PDF Library'}
         </p>
-        <h3 className="mt-3 text-3xl font-semibold leading-[0.95] text-[#4a2208]">
-          {locale === 'de' ? 'Brochüren' : 'Brochures'}
+        <h3 className="mt-3 text-3xl font-semibold leading-[0.95] text-[var(--text)]">
+          {locale === 'de' ? 'Broschüren' : 'Brochures'}
         </h3>
-        <p className="mt-4 text-sm leading-7 text-[#4a2208]/80">
+        <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
           {locale === 'de'
             ? 'Öffnen, speichern und drucken in einer starken Dokumentensektion.'
             : 'Ouvrir, enregistrer et imprimer dans une section documentaire puissante.'}
         </p>
         <div className="mt-6 grid grid-cols-2 gap-2">
-          <div className="rounded-[1rem] border border-white/30 bg-white/28 px-3 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#4a2208]/75">
-            4 PDF
+          <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-tint/20 px-3 py-2">
+            <p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">PDFs</p>
+            <p className="mt-1 text-base font-semibold text-[var(--text)]">4</p>
           </div>
-          <div className="rounded-[1rem] border border-white/30 bg-white/18 px-3 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-[#4a2208]/75">
-            100 {locale === 'de' ? 'Seiten' : 'pages'}
+          <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-tint/14 px-3 py-2">
+            <p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
+              {locale === 'de' ? 'Seiten' : 'Pages'}
+            </p>
+            <p className="mt-1 text-base font-semibold text-[var(--text)]">100</p>
           </div>
         </div>
+
+        {/* Accent glow dot */}
+        <div
+          className="absolute bottom-6 right-6 h-2.5 w-2.5 rounded-full bg-[var(--accent)] shadow-[0_0_12px_4px_var(--glow-primary)]"
+          style={{animation: 'glow-pulse 2.4s ease-in-out infinite'}}
+        />
       </div>
     </div>
   );

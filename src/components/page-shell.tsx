@@ -50,29 +50,44 @@ export function PageHero({
   return (
     <section
       className={cn(
-        'relative overflow-hidden rounded-[var(--radius-xl)] border border-[var(--border-strong)] px-6 py-8 shadow-[var(--shadow-hero)] sm:px-8 sm:py-10 lg:px-12 lg:py-12',
+        'relative overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--border-strong)] px-6 py-9 shadow-[var(--shadow-hero)] sm:px-8 sm:py-11 lg:px-12 lg:py-14',
         className
       )}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,var(--hero-sheen),transparent_42%),var(--surface)]" />
-      <div className="pointer-events-none absolute inset-0 hairline-grid opacity-20 [mask-image:linear-gradient(180deg,black,transparent_80%)]" />
+      {/* Base surface */}
+      <div className="pointer-events-none absolute inset-0 bg-[var(--surface)]" />
+
+      {/* Gradient depth — Mastra-style radial glows */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_68%_52%_at_0%_0%,var(--glow-primary),transparent_52%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_52%_42%_at_100%_100%,var(--glow-secondary),transparent_52%)]" />
+
+      {/* Hairline grid — Mastra anti-grid pattern */}
+      <div className="hairline-grid pointer-events-none absolute inset-0 opacity-[0.22] [mask-image:linear-gradient(180deg,black,transparent_72%)]" />
+
+      {/* Top sheen */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,var(--hero-sheen),transparent_40%)]" />
+
+      {/* Inner ring highlight — uses --ring-inner variable */}
+      <div className="pointer-events-none absolute inset-0 rounded-[inherit] border border-[var(--ring-inner)]" />
 
       <div
         className={cn(
           'relative z-10 grid gap-8',
-          showArtwork ? 'lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)] lg:items-start' : ''
+          showArtwork
+            ? 'lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)] lg:items-start'
+            : ''
         )}
       >
-        <div className="space-y-6">
+        <div className="space-y-7">
           {eyebrow ? <p className="section-label">{eyebrow}</p> : null}
 
           <div className="space-y-4">
-            <h1 className="max-w-4xl text-4xl font-semibold leading-[0.96] text-[var(--text)] sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-4xl text-4xl font-semibold leading-[0.94] tracking-[-0.04em] text-[var(--text)] sm:text-5xl lg:text-[clamp(2.8rem,4vw,3.6rem)]">
               {title}
             </h1>
 
             {description ? (
-              <p className="max-w-3xl text-base leading-8 text-[var(--muted)] sm:text-lg">
+              <p className="max-w-3xl text-base leading-8 text-[var(--muted)] sm:text-[1.0625rem] sm:leading-[1.85]">
                 {description}
               </p>
             ) : null}
@@ -83,21 +98,21 @@ export function PageHero({
               {metrics.map((metric) => (
                 <div
                   key={`${metric.value}-${metric.label}`}
-                  className="surface-card surface-card-contrast p-4"
+                  className="surface-card surface-card-contrast rounded-[var(--radius-lg)] p-4"
                 >
-                  <p className="text-2xl font-semibold tracking-[-0.04em] text-[var(--text)]">
+                  <p className="text-[1.7rem] font-semibold leading-none tracking-[-0.05em] text-[var(--text)]">
                     {metric.value}
                   </p>
-                  <p className="label-xs mt-1">{metric.label}</p>
+                  <p className="label-xs mt-2">{metric.label}</p>
                   {metric.note ? (
-                    <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{metric.note}</p>
+                    <p className="mt-2 text-xs leading-5 text-[var(--muted)]">{metric.note}</p>
                   ) : null}
                 </div>
               ))}
             </div>
           ) : null}
 
-          {children ? <div className="pt-2">{children}</div> : null}
+          {children ? <div className="pt-1">{children}</div> : null}
         </div>
 
         {showArtwork ? <div className="relative">{artwork ?? <HeroPrism />}</div> : null}
@@ -116,13 +131,17 @@ export function SectionTitle({
   className?: string;
 }) {
   return (
-    <div className={cn('space-y-3', className)}>
-      <div className="h-1 w-20 rounded-full bg-[linear-gradient(90deg,var(--accent),var(--accent-secondary))]" />
-      <h2 className="max-w-4xl text-3xl font-semibold text-[var(--text)] sm:text-4xl">
+    <div className={cn('space-y-4', className)}>
+      {/* Animated gradient rule */}
+      <div className="flex items-center gap-3">
+        <div className="h-[2px] w-12 rounded-full bg-gradient-to-r from-[var(--accent)] to-[var(--accent-secondary)]" />
+        <div className="h-[2px] w-4 rounded-full bg-[var(--accent-soft)]" />
+      </div>
+      <h2 className="max-w-4xl text-3xl font-semibold tracking-[-0.038em] text-[var(--text)] sm:text-4xl">
         {title}
       </h2>
       {description ? (
-        <p className="max-w-3xl text-sm leading-7 text-[var(--muted)] sm:text-base">
+        <p className="max-w-3xl text-sm leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
           {description}
         </p>
       ) : null}
@@ -183,12 +202,34 @@ export function BackLink({
 
 function HeroPrism() {
   return (
-    <div className="relative mx-auto flex aspect-[4/5] w-full max-w-[22rem] items-center justify-center">
-      <div className="absolute inset-[12%] rounded-[var(--radius-xl)] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.46),rgba(255,255,255,0.08))]" />
-      <div className="absolute inset-y-[24%] right-[14%] w-[54%] rounded-[var(--radius-xl)] rounded-tl-full rounded-br-full border border-[var(--border-strong)] bg-[var(--surface-strong)] shadow-[var(--shadow-card)]" />
-      <div className="absolute inset-y-[36%] left-[18%] w-[48%] rounded-[var(--radius-xl)] rounded-tr-full rounded-bl-full border border-[var(--border-strong)] bg-[linear-gradient(140deg,var(--accent-highlight),var(--accent-secondary))]" />
-      <div className="absolute right-[24%] top-[25%] h-10 w-10 rounded-full border border-[var(--border-strong)] bg-white/50" />
-      <div className="absolute bottom-[20%] left-[30%] h-7 w-7 rounded-full border border-[var(--border)] bg-white/40" />
+    <div className="relative mx-auto flex aspect-[4/5] w-full max-w-[22rem] select-none items-center justify-center">
+      {/* Ambient glow */}
+      <div className="absolute inset-[18%] rounded-full bg-[radial-gradient(circle,var(--glow-primary),transparent_70%)] blur-3xl" />
+
+      {/* Back plate */}
+      <div className="absolute inset-[10%] rounded-[2.25rem] border border-[var(--border)] bg-[var(--surface-muted)] shadow-[var(--shadow-sm)]" />
+
+      {/* Right floating panel */}
+      <div className="absolute inset-y-[26%] right-[11%] w-[52%] rounded-[2rem] border border-[var(--border-strong)] bg-[var(--surface-strong)] shadow-[var(--shadow-card)]" />
+
+      {/* Accent gradient shape */}
+      <div className="absolute inset-y-[38%] left-[15%] w-[46%] rounded-[2rem] border border-[var(--border-strong)] bg-gradient-to-br from-[var(--accent-highlight)] to-[var(--accent-secondary)] shadow-[var(--shadow-accent)]" />
+
+      {/* Floating orbs */}
+      <div className="absolute right-[22%] top-[22%] h-11 w-11 rounded-full border border-[var(--border-strong)] bg-tint/55 shadow-[var(--shadow-sm)]" />
+      <div className="absolute bottom-[18%] left-[28%] h-7 w-7 rounded-full border border-[var(--border)] bg-tint/42" />
+
+      {/* Glow dot */}
+      <div
+        className="absolute left-[20%] top-[30%] h-3 w-3 rounded-full bg-[var(--accent)] shadow-[0_0_14px_5px_var(--glow-primary)]"
+        style={{animation: 'glow-pulse 2.4s ease-in-out infinite'}}
+      />
+
+      {/* Teal spark */}
+      <div
+        className="absolute right-[16%] bottom-[32%] h-2 w-2 rounded-full bg-[var(--accent-secondary)] shadow-[0_0_10px_4px_var(--glow-secondary)]"
+        style={{animation: 'glow-pulse 3.1s ease-in-out infinite 0.8s'}}
+      />
     </div>
   );
 }

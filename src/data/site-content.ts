@@ -228,29 +228,7 @@ export const currentProjects: ProjectItem[] = [
         fr: 'Perspective architecturale pour le travail de memoire'
       }
     },
-    gallery: [
-      {
-        src: '/media/projects/koloniale-gewalt-bassaa/gallery-1.jpg',
-        alt: {
-          de: 'Historischer Ort fuer Bildungsarbeit',
-          fr: 'Lieu historique mobilise pour la transmission'
-        }
-      },
-      {
-        src: '/media/projects/koloniale-gewalt-bassaa/gallery-2.jpg',
-        alt: {
-          de: 'Dokumentationsmoment im Rahmen des Projekts',
-          fr: 'Moment de documentation dans le cadre du projet'
-        }
-      },
-      {
-        src: '/media/projects/koloniale-gewalt-bassaa/gallery-3.jpg',
-        alt: {
-          de: 'Bildraum fuer Erinnerung und Analyse',
-          fr: 'Espace visuel de memoire et d analyse'
-        }
-      }
-    ],
+    gallery: [],
     body: [
       {
         de: 'Unrecht im Schatten: Koloniale Gewalt an den Bassa’a ist ein Erinnerungs- und Bildungsprojekt, das die kolonialen Verbrechen im heutigen Kamerun sichtbar macht und die Perspektive der betroffenen Gemeinschaft in den Mittelpunkt stellt.',
@@ -283,29 +261,7 @@ export const currentProjects: ProjectItem[] = [
         fr: 'Format d accompagnement pour familles et equipes'
       }
     },
-    gallery: [
-      {
-        src: '/media/projects/autismus-sensibilisierung/gallery-1.jpg',
-        alt: {
-          de: 'Workshop Sequenz zum Thema Neurodiversitaet',
-          fr: 'Sequence d atelier sur la neurodiversite'
-        }
-      },
-      {
-        src: '/media/projects/autismus-sensibilisierung/gallery-2.jpg',
-        alt: {
-          de: 'Lernraum fuer inklusive Kommunikation',
-          fr: 'Espace de formation pour une communication inclusive'
-        }
-      },
-      {
-        src: '/media/projects/autismus-sensibilisierung/gallery-3.jpg',
-        alt: {
-          de: 'Community Unterstuetzung in geschuetztem Rahmen',
-          fr: 'Soutien communautaire dans un cadre securise'
-        }
-      }
-    ],
+    gallery: [],
     body: [
       {
         de: 'Autismus verstehen: Aufklärung und Sensibilisierung ist ein Informations- und Bildungsprojekt, das Wissen über Autismus vermittelt, Vorurteile abbaut und Inklusion stärkt.',
@@ -338,29 +294,7 @@ export const currentProjects: ProjectItem[] = [
         fr: 'Format d empowerment pour les femmes a Aachen'
       }
     },
-    gallery: [
-      {
-        src: '/media/projects/muto-stimmen-fuer-veraenderung/gallery-1.jpg',
-        alt: {
-          de: 'Begleitende Gruppenarbeit im Projekt Muto',
-          fr: 'Travail de groupe dans le projet Muto'
-        }
-      },
-      {
-        src: '/media/projects/muto-stimmen-fuer-veraenderung/gallery-2.jpg',
-        alt: {
-          de: 'Workshop zu Schutz, Rechten und Handlungsraeumen',
-          fr: 'Atelier autour de la protection, des droits et des recours'
-        }
-      },
-      {
-        src: '/media/projects/muto-stimmen-fuer-veraenderung/gallery-3.jpg',
-        alt: {
-          de: 'Visuelle Szene fuer Solidaritaet und Gemeinschaft',
-          fr: 'Scene visuelle de solidarite et de communaute'
-        }
-      }
-    ],
+    gallery: [],
     body: [
       {
         de: 'Gewalt gegen Frauen betrifft besonders Migrantinnen und Frauen mit Behinderungen. In der StädteRegion Aachen sind Frauen aus Subsahara-Afrika häufig mit sprachlichen, kulturellen und strukturellen Barrieren konfrontiert.',
@@ -478,28 +412,13 @@ export const archiveProjects: ProjectItem[] = [
       fr: 'Mi Madre'
     },
     featuredImage: {
-      src: '/gallery/woman-support.jpg',
+      src: '/media/real-assets/media01.jpg',
       alt: {
-        de: 'Archivprojekt Mi Madre',
-        fr: 'Projet archive Mi Madre'
+        de: 'Austauschrunde im Rahmen eines Begleitformats',
+        fr: 'Temps d echange dans un format d accompagnement'
       }
     },
-    gallery: [
-      {
-        src: '/gallery/woman-support.jpg',
-        alt: {
-          de: 'Begleitung von Muettern im Alltag',
-          fr: 'Accompagnement de meres au quotidien'
-        }
-      },
-      {
-        src: '/gallery/community-support.avif',
-        alt: {
-          de: 'Solidarischer Austausch in der Community',
-          fr: 'Echange solidaire au sein de la communaute'
-        }
-      }
-    ],
+    gallery: [],
     body: [
       {
         de: 'Empowerment von Müttern mit Kindern mit Beeinträchtigungen im Alltag. Mütter mit körperlich oder geistig beeinträchtigten Kindern stehen oft unter hohem Druck und fühlen sich isoliert.',
@@ -522,28 +441,13 @@ export const archiveProjects: ProjectItem[] = [
       fr: 'Filles - jeunes et engagées'
     },
     featuredImage: {
-      src: '/media/news/atelier-droits-2024/featured.jpg',
+      src: '/media/real-assets/media15.jpg',
       alt: {
-        de: 'Archivprojekt Filles',
-        fr: 'Projet archive Filles'
+        de: 'Junge Teilnehmerin in einem Engagementformat',
+        fr: 'Jeune participante dans un format d engagement'
       }
     },
-    gallery: [
-      {
-        src: '/media/news/atelier-droits-2024/gallery-1.jpg',
-        alt: {
-          de: 'Junge Frauen in einem Engagementformat',
-          fr: 'Jeunes femmes dans un format d engagement'
-        }
-      },
-      {
-        src: '/media/projects/klima-migration/gallery-1.jpg',
-        alt: {
-          de: 'Lern- und Austauschmoment des Projekts',
-          fr: 'Moment d apprentissage et d echange du projet'
-        }
-      }
-    ],
+    gallery: [],
     body: [
       {
         de: 'Austausch, Lernatelier und Kreativ-Workshops für nachhaltiges und gendergerechtes Engagement junger Mädchen zwischen 14 und 27 Jahren.',
@@ -566,28 +470,13 @@ export const archiveProjects: ProjectItem[] = [
       fr: 'MINGA - engagement des filles et femmes pour le développement'
     },
     featuredImage: {
-      src: '/media/projects/koloniale-gewalt-bassaa/featured.jpg',
+      src: '/media/real-assets/media19.jpg',
       alt: {
-        de: 'Archivprojekt MINGA',
-        fr: 'Projet archive MINGA'
+        de: 'Gruppenbild eines gemeinschaftlichen Engagementformats',
+        fr: 'Photo de groupe d un format d engagement communautaire'
       }
     },
-    gallery: [
-      {
-        src: '/media/projects/koloniale-gewalt-bassaa/gallery-3.jpg',
-        alt: {
-          de: 'Kontextbild fuer Bildungs- und Engagementarbeit',
-          fr: 'Visuel de contexte pour le travail educatif'
-        }
-      },
-      {
-        src: '/gallery/community-support.avif',
-        alt: {
-          de: 'Community Szene als Projektumfeld',
-          fr: 'Scene communautaire liee au projet'
-        }
-      }
-    ],
+    gallery: [],
     body: [
       {
         de: 'Empowerment durch Bildung: Frauen spielen eine zentrale Rolle in der entwicklungspolitischen Bildungsarbeit, die globale Gerechtigkeit und soziale Veränderungen fördert.',
@@ -618,35 +507,13 @@ export const news: NewsItem[] = [
     },
     publishedAt: '2023-11-21',
     featuredImage: {
-      src: '/media/news/zusammenarbeit-2023/featured.jpg',
+      src: '/media/real-assets/media20.jpg',
       alt: {
-        de: 'Gruppenaufnahme waehrend der Informationsfahrt in Berlin',
-        fr: 'Photo de groupe durant le voyage d information a Berlin'
+        de: 'Illustratives Gruppenbild fuer die Meldung zur institutionellen Zusammenarbeit',
+        fr: 'Photo de groupe illustrative pour l actualite sur la collaboration institutionnelle'
       }
     },
-    gallery: [
-      {
-        src: '/media/news/zusammenarbeit-2023/gallery-1.jpg',
-        alt: {
-          de: 'Programmpunkt mit zivilgesellschaftlichen Akteurinnen und Akteuren',
-          fr: 'Sequence de programme avec des actrices et acteurs associatifs'
-        }
-      },
-      {
-        src: '/media/news/zusammenarbeit-2023/gallery-2.jpg',
-        alt: {
-          de: 'Institutioneller Besuch im Rahmen der Berlinreise',
-          fr: 'Visite institutionnelle dans le cadre du deplacement a Berlin'
-        }
-      },
-      {
-        src: '/media/news/zusammenarbeit-2023/gallery-3.jpg',
-        alt: {
-          de: 'Vernetzungsmoment des Teams aus Aachen',
-          fr: 'Moment de mise en reseau de l equipe d Aachen'
-        }
-      }
-    ],
+    gallery: [],
     body: [
       {
         de: 'Auf Einladung des Bundespresseamtes nahmen wir im Rahmen der Trägerschaft von Migrafrika gGmbH (Köln) vom 21. bis 24. November 2023 an einer politischen Informationsfahrt nach Berlin teil.',
@@ -686,35 +553,13 @@ export const news: NewsItem[] = [
     },
     publishedAt: '2024-06-18',
     featuredImage: {
-      src: '/media/news/atelier-droits-2024/featured.jpg',
+      src: '/media/real-assets/media02.jpg',
       alt: {
-        de: 'Gruppenatelier zu Rechten und Schutz',
-        fr: 'Atelier collectif sur les droits et la protection'
+        de: 'Atelier collectif avec prise de parole et echange',
+        fr: 'Atelier collectif avec prise de parole et echange'
       }
     },
-    gallery: [
-      {
-        src: '/media/news/atelier-droits-2024/gallery-1.jpg',
-        alt: {
-          de: 'Austausch waehrend einer moderierten Sitzung',
-          fr: 'Echange pendant une session moderee'
-        }
-      },
-      {
-        src: '/media/news/atelier-droits-2024/gallery-2.jpg',
-        alt: {
-          de: 'Arbeitssequenz mit Fokus auf Handlungswege',
-          fr: 'Sequence de travail orientee vers les recours concrets'
-        }
-      },
-      {
-        src: '/media/news/atelier-droits-2024/gallery-3.jpg',
-        alt: {
-          de: 'Begleitende Informationsphase mit Teilnehmenden',
-          fr: 'Phase d information accompagnee avec les participantes'
-        }
-      }
-    ],
+    gallery: [],
     body: [
       {
         de: 'Das Atelier brachte Teilnehmerinnen, Beratungsakteur*innen und Ehrenamtliche zusammen, um Rechte und Schutzmechanismen im Alltag verständlich aufzubereiten.',
@@ -746,35 +591,13 @@ export const news: NewsItem[] = [
     },
     publishedAt: '2025-10-09',
     featuredImage: {
-      src: '/media/news/forum-communautaire-2025/featured.jpg',
+      src: '/media/real-assets/media21.jpg',
       alt: {
-        de: 'Forumsszene mit Partnerinstitutionen und Community',
-        fr: 'Scene de forum avec institutions partenaires et communaute'
+        de: 'Gruppenbild eines Community-Forums',
+        fr: 'Photo de groupe d un forum communautaire'
       }
     },
-    gallery: [
-      {
-        src: '/media/news/forum-communautaire-2025/gallery-1.jpg',
-        alt: {
-          de: 'Austauschsession in einem offenen Dialogformat',
-          fr: 'Session d echange dans un format de dialogue ouvert'
-        }
-      },
-      {
-        src: '/media/news/forum-communautaire-2025/gallery-2.jpg',
-        alt: {
-          de: 'Kooperationsgespraech zwischen Vereinen und Netzwerkpartnern',
-          fr: 'Discussion de cooperation entre associations et partenaires'
-        }
-      },
-      {
-        src: '/media/news/forum-communautaire-2025/gallery-3.jpg',
-        alt: {
-          de: 'Sichtbarer Abschlussmoment des Community-Forums',
-          fr: 'Moment de cloture du forum communautaire'
-        }
-      }
-    ],
+    gallery: [],
     body: [
       {
         de: 'Das Forum schuf einen gemeinsamen Raum, in dem Vereinsakteur*innen, Projektpartner und Teilnehmende aktuelle Bedarfe und Prioritaeten fuer 2026 abgestimmt haben.',
@@ -973,62 +796,254 @@ export const galleryPhotos: GalleryPhoto[] = [
   {
     id: 'photo-1',
     title: {
-      de: 'Community Support',
-      fr: 'Soutien communautaire'
+      de: 'Table ronde',
+      fr: 'Table ronde'
     },
     caption: {
-      de: 'Empowerment und Begleitung von Frauen in sicheren Räumen.',
-      fr: 'Empowerment et accompagnement des femmes dans des espaces sûrs.'
+      de: 'Gemeinsamer Auftakt einer dialogorientierten Sitzung.',
+      fr: 'Ouverture collective d une session orientee vers le dialogue.'
     },
-    src: '/gallery/community-support.avif'
+    src: '/media/real-assets/media01.jpg'
   },
   {
     id: 'photo-2',
     title: {
-      de: 'Austausch & Dialog',
-      fr: 'Échange et dialogue'
+      de: 'Moderation',
+      fr: 'Moderation'
     },
     caption: {
-      de: 'Dialogorientierte Arbeit als Kern der NGONDA-Methode.',
-      fr: 'Le dialogue est au coeur de la méthode NGONDA.'
+      de: 'Prise de parole et facilitation au coeur du format.',
+      fr: 'Prise de parole et facilitation au coeur du format.'
     },
-    src: '/gallery/woman-support.jpg'
+    src: '/media/real-assets/media02.jpg'
   },
   {
     id: 'photo-3',
     title: {
-      de: 'Netzwerk & Perspektiven',
-      fr: 'Réseau et perspectives'
+      de: 'Jeunes voix',
+      fr: 'Jeunes voix'
     },
     caption: {
-      de: 'Stärkung sozialer und beruflicher Perspektiven.',
-      fr: 'Renforcement des perspectives sociales et professionnelles.'
+      de: 'Des jeunes participantes attentives dans un temps d echange.',
+      fr: 'De jeunes participantes attentives pendant le temps d echange.'
     },
-    src: '/media/projects/klima-migration/gallery-2.jpg'
+    src: '/media/real-assets/media03.jpg'
   },
   {
     id: 'photo-4',
     title: {
-      de: 'Gemeinschaft',
-      fr: 'Communauté'
+      de: 'Écoute active',
+      fr: 'Écoute active'
     },
     caption: {
-      de: 'Zusammenhalt, Sichtbarkeit und Teilhabe.',
-      fr: 'Solidarité, visibilité et participation.'
+      de: 'Moments d attention et d apprentissage partages.',
+      fr: 'Moments d attention et d apprentissage partages.'
     },
-    src: '/media/projects/muto-stimmen-fuer-veraenderung/gallery-3.jpg'
+    src: '/media/real-assets/media04.jpg'
   },
   {
     id: 'photo-5',
     title: {
-      de: 'Visuelle Atmosphäre',
-      fr: 'Atmosphère visuelle'
+      de: 'Participants',
+      fr: 'Participants'
     },
     caption: {
-      de: 'Bildsprache für eine menschliche und professionelle Präsenz.',
-      fr: 'Une direction visuelle humaine et professionnelle.'
+      de: 'Regards croises pendant une session communautaire.',
+      fr: 'Regards croises pendant une session communautaire.'
     },
-    src: '/media/news/forum-communautaire-2025/featured.jpg'
+    src: '/media/real-assets/media05.jpg'
+  },
+  {
+    id: 'photo-6',
+    title: {
+      de: 'Beobachtung',
+      fr: 'Observation'
+    },
+    caption: {
+      de: 'Un moment calme au coeur du groupe.',
+      fr: 'Un moment calme au coeur du groupe.'
+    },
+    src: '/media/real-assets/media06.jpg'
+  },
+  {
+    id: 'photo-7',
+    title: {
+      de: 'Présence',
+      fr: 'Présence'
+    },
+    caption: {
+      de: 'Portrait d une participante pendant les echanges.',
+      fr: 'Portrait d une participante pendant les echanges.'
+    },
+    src: '/media/real-assets/media07.jpg'
+  },
+  {
+    id: 'photo-8',
+    title: {
+      de: 'Parole partagée',
+      fr: 'Parole partagée'
+    },
+    caption: {
+      de: 'Une intervention qui structure la discussion.',
+      fr: 'Une intervention qui structure la discussion.'
+    },
+    src: '/media/real-assets/media08.jpg'
+  },
+  {
+    id: 'photo-9',
+    title: {
+      de: 'Coordination',
+      fr: 'Coordination'
+    },
+    caption: {
+      de: 'Présences et attention autour de la moderation.',
+      fr: 'Presences et attention autour de la moderation.'
+    },
+    src: '/media/real-assets/media09.jpg'
+  },
+  {
+    id: 'photo-10',
+    title: {
+      de: 'Animation',
+      fr: 'Animation'
+    },
+    caption: {
+      de: 'Une prise de parole dans un cadre accompagne.',
+      fr: 'Une prise de parole dans un cadre accompagne.'
+    },
+    src: '/media/real-assets/media10.jpg'
+  },
+  {
+    id: 'photo-11',
+    title: {
+      de: 'Attention',
+      fr: 'Attention'
+    },
+    caption: {
+      de: 'Temps d ecoute et de concentration.',
+      fr: 'Temps d ecoute et de concentration.'
+    },
+    src: '/media/real-assets/media11.jpg'
+  },
+  {
+    id: 'photo-12',
+    title: {
+      de: 'Transmission',
+      fr: 'Transmission'
+    },
+    caption: {
+      de: 'L information circule de maniere simple et directe.',
+      fr: 'L information circule de maniere simple et directe.'
+    },
+    src: '/media/real-assets/media12.jpg'
+  },
+  {
+    id: 'photo-13',
+    title: {
+      de: 'Focus',
+      fr: 'Focus'
+    },
+    caption: {
+      de: 'Plan rapproche sur l attention individuelle.',
+      fr: 'Plan rapproche sur l attention individuelle.'
+    },
+    src: '/media/real-assets/media13.jpg'
+  },
+  {
+    id: 'photo-14',
+    title: {
+      de: 'Participation',
+      fr: 'Participation'
+    },
+    caption: {
+      de: 'Une participante engagee dans la discussion.',
+      fr: 'Une participante engagee dans la discussion.'
+    },
+    src: '/media/real-assets/media14.jpg'
+  },
+  {
+    id: 'photo-15',
+    title: {
+      de: 'Jeunesse engagée',
+      fr: 'Jeunesse engagee'
+    },
+    caption: {
+      de: 'Des jeunes au coeur des echanges communautaires.',
+      fr: 'Des jeunes au coeur des echanges communautaires.'
+    },
+    src: '/media/real-assets/media15.jpg'
+  },
+  {
+    id: 'photo-16',
+    title: {
+      de: 'Échange',
+      fr: 'Échange'
+    },
+    caption: {
+      de: 'Conversation laterale et lien social.',
+      fr: 'Conversation laterale et lien social.'
+    },
+    src: '/media/real-assets/media16.jpg'
+  },
+  {
+    id: 'photo-17',
+    title: {
+      de: 'Dialogue',
+      fr: 'Dialogue'
+    },
+    caption: {
+      de: 'Des jeunes voix visibles dans la salle.',
+      fr: 'Des jeunes voix visibles dans la salle.'
+    },
+    src: '/media/real-assets/media17.jpg'
+  },
+  {
+    id: 'photo-18',
+    title: {
+      de: 'Accueil',
+      fr: 'Accueil'
+    },
+    caption: {
+      de: 'Un moment d entree et de rencontre.',
+      fr: 'Un moment d entree et de rencontre.'
+    },
+    src: '/media/real-assets/media18.jpg'
+  },
+  {
+    id: 'photo-19',
+    title: {
+      de: 'Photo de groupe',
+      fr: 'Photo de groupe'
+    },
+    caption: {
+      de: 'Le collectif reuni a l issue de la rencontre.',
+      fr: 'Le collectif reuni a l issue de la rencontre.'
+    },
+    src: '/media/real-assets/media19.jpg'
+  },
+  {
+    id: 'photo-20',
+    title: {
+      de: 'Clôture',
+      fr: 'Cloture'
+    },
+    caption: {
+      de: 'Image de fin pour un moment partage.',
+      fr: 'Image de fin pour un moment partage.'
+    },
+    src: '/media/real-assets/media20.jpg'
+  },
+  {
+    id: 'photo-21',
+    title: {
+      de: 'Communauté réunie',
+      fr: 'Communaute reunie'
+    },
+    caption: {
+      de: 'Presence collective et visibilite du groupe.',
+      fr: 'Presence collective et visibilite du groupe.'
+    },
+    src: '/media/real-assets/media21.jpg'
   }
 ];
 
@@ -1044,7 +1059,7 @@ export const galleryVideos: GalleryVideo[] = [
       fr: 'Acces officiel aux interviews, contenus communautaires et videos projets.'
     },
     href: 'https://www.youtube.com/',
-    thumbnail: '/media/news/zusammenarbeit-2023/featured.jpg'
+    thumbnail: '/media/real-assets/media20.jpg'
   },
   {
     id: 'video-2',
@@ -1057,7 +1072,7 @@ export const galleryVideos: GalleryVideo[] = [
       fr: 'Interviews, ateliers et documentation des projets communautaires.'
     },
     href: 'https://www.youtube.com/',
-    thumbnail: '/media/news/forum-communautaire-2025/gallery-1.jpg'
+    thumbnail: '/media/real-assets/media21.jpg'
   }
 ];
 

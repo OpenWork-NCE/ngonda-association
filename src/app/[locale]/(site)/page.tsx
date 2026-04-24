@@ -14,7 +14,7 @@ import {
 } from '@/data/site-content';
 import {Link} from '@/i18n/navigation';
 import {formatDate} from '@/lib/format';
-import {ArrowRight, FolderArchive, Newspaper, Sparkles} from 'lucide-react';
+import {ArrowRight, FolderArchive, Newspaper} from 'lucide-react';
 import Image from 'next/image';
 import {getTranslations} from 'next-intl/server';
 import {notFound} from 'next/navigation';
@@ -46,38 +46,39 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
       note:
         locale === 'de'
           ? 'Community-nahe Formate mit echter Verankerung.'
-          : 'Des formats utiles, ancrés dans la communaute.'
+          : 'Des formats utiles, ancrés dans la communauté.'
     },
     {
       value: `${teamMembers.length}`,
       label: locale === 'de' ? 'Leitungsteam' : 'noyau dirigeant',
       note:
         locale === 'de'
-          ? 'Zweisprachig, kultursensibel und vor Ort praesent.'
-          : 'Bilingue, cultive le lien et agit au plus pres.'
+          ? 'Zweisprachig, kultursensibel und vor Ort präsent.'
+          : 'Bilingue, cultive le lien et agit au plus près.'
     }
   ];
 
   return (
     <PageContainer>
       <div className="space-y-10 lg:space-y-12">
+        {/* ── Hero ── */}
         <Reveal>
           <PageHero
             className="lg:py-11"
             eyebrow={content.heroEyebrow}
             title={
               locale === 'de'
-                ? 'Raume, in denen Migrantinnen Schutz, Stimme und Zukunft entwerfen.'
-                : 'Des espaces ou les femmes migrantes retrouvent protection, voix et avenir.'
+                ? 'Räume, in denen Migrantinnen Schutz, Stimme und Zukunft entwerfen.'
+                : 'Des espaces où les femmes migrantes retrouvent protection, voix et avenir.'
             }
             description={content.heroIntro[0]}
             metrics={heroMetrics}
             artwork={
               <div className="relative mx-auto w-full max-w-[27rem]">
-                <SurfaceCard className="overflow-hidden p-3">
+                <SurfaceCard className="overflow-hidden p-3" interactive={false}>
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[1.8rem]">
                     <Image
-                      src="/media/projects/muto-stimmen-fuer-veraenderung/featured.jpg"
+                      src="/media/real-assets/media01.jpg"
                       alt="NGONDA e.V."
                       fill
                       className="object-cover"
@@ -85,27 +86,33 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
                       sizes="(min-width: 1024px) 30rem, 100vw"
                     />
                     <div className="media-overlay-strong" />
+
+                    {/* Mastra-style status badge */}
+                    <div className="absolute left-4 top-4">
+                      <span className="status-indicator status-indicator-green">
+                        {locale === 'de' ? 'Aktiv' : 'Actif'}
+                      </span>
+                    </div>
+
                     <div className="absolute bottom-5 left-5 right-5 contrast-on-media">
-                      <p className="inline-flex rounded-full border border-white/18 bg-black/22 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.28em]">
-                        {locale === 'de' ? 'She first' : 'She first'}
+                      <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] contrast-on-media-muted">
+                        She First
                       </p>
                       <p className="mt-3 max-w-xs text-xl font-semibold leading-tight">
                         {locale === 'de'
-                          ? 'Institutionelle Sichtbarkeit mit menschlicher Naehe.'
-                          : 'Une presence institutionnelle qui reste humaine et proche.'}
+                          ? 'Institutionelle Sichtbarkeit mit menschlicher Nähe.'
+                          : 'Une présence institutionnelle qui reste humaine et proche.'}
                       </p>
                     </div>
                   </div>
                 </SurfaceCard>
 
-                <SurfaceCard tone="contrast" className="absolute -left-4 bottom-4 hidden max-w-[12rem] p-4 sm:block">
-                  <p className="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-[var(--muted)]">
-                    {locale === 'de' ? 'Aachen base' : 'base Aachen'}
-                  </p>
+                <SurfaceCard tone="contrast" interactive={false} className="absolute -left-4 bottom-4 hidden max-w-[12rem] p-4 sm:block">
+                  <p className="label-xs">{locale === 'de' ? 'Aachen' : 'Aachen'}</p>
                   <p className="mt-2 text-sm leading-6 text-[var(--text)]">
                     {locale === 'de'
                       ? 'Begleitung, Orientierung und Empowerment in sicherem Rahmen.'
-                      : 'Accompagnement, orientation et empowerment dans un cadre sur.'}
+                      : 'Accompagnement, orientation et empowerment dans un cadre sûr.'}
                   </p>
                 </SurfaceCard>
               </div>
@@ -126,9 +133,10 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
           </PageHero>
         </Reveal>
 
+        {/* ── Mission + News ── */}
         <section className="grid gap-5 xl:grid-cols-[1.15fr_0.85fr]">
           <Reveal>
-            <SurfaceCard className="p-3 sm:p-4">
+            <SurfaceCard className="p-3 sm:p-4" interactive={false}>
               <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
                 <div className="relative min-h-[22rem] overflow-hidden rounded-[1.7rem]">
                   <Image
@@ -141,7 +149,7 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
                   <div className="media-overlay-strong" />
                   <div className="absolute bottom-5 left-5 right-5 space-y-2 contrast-on-media">
                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.28em] contrast-on-media-muted">
-                      {locale === 'de' ? 'Community Story' : 'Recit communautaire'}
+                      {locale === 'de' ? 'Community Story' : 'Récit communautaire'}
                     </p>
                     <h2 className="text-3xl font-semibold leading-tight">
                       {getLocalized(galleryPhotos[0].title, locale)}
@@ -163,7 +171,7 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
 
                   <div className="space-y-4">
                     <div className="premium-divider" />
-                    <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">
+                    <p className="label-xs">
                       {locale === 'de' ? 'Was uns unterscheidet' : 'Ce qui nous distingue'}
                     </p>
                     <p className="text-sm leading-7 text-[var(--muted)]">{content.distinction}</p>
@@ -182,7 +190,7 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
 
           <div className="grid gap-5">
             <Reveal delay={0.04}>
-              <SurfaceCard tone="contrast" className="p-6 sm:p-7">
+              <SurfaceCard tone="contrast" className="p-6 sm:p-7" interactive={false}>
                 <SectionTitle
                   title={locale === 'de' ? 'Unsere Vision' : 'Notre vision'}
                   description={content.vision[0]}
@@ -192,7 +200,7 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <SurfaceCard tone="muted" className="p-6 sm:p-7">
+              <SurfaceCard tone="muted" className="p-6 sm:p-7" interactive={false}>
                 <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-[1.35rem]">
                   <Image
                     src={featuredNews.featuredImage.src}
@@ -202,15 +210,15 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
                     sizes="(min-width: 1024px) 30rem, 100vw"
                   />
                   <div className="media-overlay-strong" />
-                  <div className="absolute left-3 top-3 inline-flex items-center gap-2 rounded-full border border-white/24 bg-black/24 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.23em] contrast-on-media">
+                  <div className="absolute left-3 top-3 inline-flex items-center gap-2 rounded-full border border-tint/24 bg-black/24 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.23em] contrast-on-media">
                     <Newspaper className="h-3.5 w-3.5" />
-                    {locale === 'de' ? 'Aktuelles' : 'Actualites'}
+                    {locale === 'de' ? 'Aktuelles' : 'Actualités'}
                   </div>
                 </div>
                 <h3 className="mt-4 text-2xl font-semibold text-[var(--text)]">
                   {getLocalized(featuredNews.title, locale)}
                 </h3>
-                <p className="mt-2 text-sm text-[var(--muted)]">
+                <p className="mt-2 text-xs text-[var(--muted)]">
                   {formatDate(featuredNews.publishedAt, locale)}
                 </p>
                 <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
@@ -231,13 +239,14 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
           </div>
         </section>
 
+        {/* ── Themes ── */}
         <section className="space-y-6">
           <SectionTitle
-            title={locale === 'de' ? 'Unsere Schwerpunkte' : 'Nos axes d action'}
+            title={locale === 'de' ? 'Unsere Schwerpunkte' : 'Nos axes d\'action'}
             description={
               locale === 'de'
                 ? 'Jede Intervention verbindet Schutz, Wissenstransfer und Handlungsmacht.'
-                : 'Chaque intervention articule protection, transmission et pouvoir d agir.'
+                : 'Chaque intervention articule protection, transmission et pouvoir d\'agir.'
             }
           />
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -247,13 +256,13 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
                   tone={index % 3 === 0 ? 'default' : index % 3 === 1 ? 'contrast' : 'muted'}
                   className="h-full p-5 sm:p-6"
                 >
-                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">
-                    0{index + 1}
-                  </p>
+                  {/* Mastra-style index */}
+                  <p className="label-xs text-[var(--accent)]">0{index + 1}</p>
                   <h3 className="mt-3 text-2xl font-semibold text-[var(--text)]">
                     {getLocalized(theme.title, locale)}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
+                  <div className="premium-divider my-4" />
+                  <p className="text-sm leading-7 text-[var(--muted)]">
                     {getLocalized(theme.body[0], locale)}
                   </p>
                 </SurfaceCard>
@@ -262,15 +271,21 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
           </div>
         </section>
 
+        {/* ── Projects ── */}
         <section className="space-y-6">
-          <SectionTitle
-            title={locale === 'de' ? 'Aktuelle Projekte' : 'Projets en cours'}
-            description={
-              locale === 'de'
-                ? 'Projektlogik, Vermittlung und Community Impact in einer klaren, kuratierten Struktur.'
-                : 'Une lecture claire des projets, de leurs logiques et de leur impact communautaire.'
-            }
-          />
+          <div className="flex items-end justify-between gap-4">
+            <SectionTitle
+              title={locale === 'de' ? 'Aktuelle Projekte' : 'Projets en cours'}
+              description={
+                locale === 'de'
+                  ? 'Projektlogik, Vermittlung und Community Impact in einer klaren, kuratierten Struktur.'
+                  : 'Une lecture claire des projets, de leurs logiques et de leur impact communautaire.'
+              }
+            />
+            <span className="status-indicator status-indicator-green shrink-0">
+              {locale === 'de' ? 'Laufend' : 'En cours'}
+            </span>
+          </div>
           <div className="grid gap-5 md:grid-cols-2">
             {currentProjects.map((project, index) => (
               <Reveal key={project.id} delay={0.05 * index}>
@@ -280,11 +295,11 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
                       src={project.featuredImage.src}
                       alt={getLocalized(project.featuredImage.alt, locale)}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 hover:scale-[1.02]"
                       sizes="(min-width: 768px) 50vw, 100vw"
                     />
                     <div className="media-overlay-strong" />
-                    <div className="absolute left-3 top-3 rounded-full border border-white/24 bg-black/24 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.23em] contrast-on-media">
+                    <div className="absolute left-3 top-3 rounded-full border border-tint/24 bg-black/24 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.23em] contrast-on-media">
                       {locale === 'de' ? 'Projekt' : 'Projet'} 0{index + 1}
                     </div>
                   </div>
@@ -325,13 +340,14 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
           </div>
         </section>
 
+        {/* ── Team ── */}
         <section className="space-y-6">
           <SectionTitle
-            title={locale === 'de' ? 'Leitungsteam' : 'Equipe dirigeante'}
+            title={locale === 'de' ? 'Leitungsteam' : 'Équipe dirigeante'}
             description={
               locale === 'de'
-                ? 'Ein interdisziplinaeres Team, das Strategie, Begleitung und Netzwerkarbeit in Aachen traegt.'
-                : 'Une equipe interdisciplinaire qui porte la strategie, l accompagnement et la dynamique partenariale a Aachen.'
+                ? 'Ein interdisziplinäres Team, das Strategie, Begleitung und Netzwerkarbeit in Aachen trägt.'
+                : 'Une équipe interdisciplinaire qui porte la stratégie, l\'accompagnement et la dynamique partenariale à Aachen.'
             }
           />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -343,19 +359,23 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
           </div>
         </section>
 
+        {/* ── Resources ── */}
         <section className="space-y-6">
           <SectionTitle
-            title={locale === 'de' ? 'Ressourcen & Zugange' : 'Ressources & acces'}
+            title={locale === 'de' ? 'Ressourcen & Zugänge' : 'Ressources & accès'}
             description={
               locale === 'de'
-                ? 'Alle Rubriken sind als vollwertige Zugangsraeume gestaltet und direkt nutzbar.'
-                : 'Chaque rubrique est concue comme un espace de service complet, accessible immediatement.'
+                ? 'Alle Rubriken sind als vollwertige Zugangsräume gestaltet und direkt nutzbar.'
+                : 'Chaque rubrique est conçue comme un espace de service complet, accessible immédiatement.'
             }
           />
           <div className="grid gap-5 lg:grid-cols-3">
             <Reveal>
               <SurfaceCard tone="contrast" className="h-full p-6">
-                <p className="section-label">{locale === 'de' ? 'Galerie' : 'Galerie'}</p>
+                <div className="flex items-center justify-between gap-3">
+                  <p className="section-label">{locale === 'de' ? 'Galerie' : 'Galerie'}</p>
+                  <span className="status-indicator">{galleryPhotos.length}+</span>
+                </div>
                 <p className="mt-4 text-sm leading-7 text-[var(--muted)]">{content.galleryNote}</p>
                 <div className="mt-5 grid grid-cols-3 gap-2">
                   {galleryPhotos.slice(0, 3).map((photo) => (
@@ -379,20 +399,20 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
 
             <Reveal delay={0.05}>
               <SurfaceCard tone="muted" className="h-full p-6">
-                <p className="section-label">{locale === 'de' ? 'Brochure' : 'Brochure'}</p>
+                <p className="section-label">{locale === 'de' ? 'Brochüren' : 'Brochures'}</p>
                 <p className="mt-4 text-sm leading-7 text-[var(--muted)]">{content.brochureNote}</p>
                 <div className="mt-5 space-y-3">
                   {[
                     locale === 'de'
-                      ? 'Mehrsprachige Informationsdokumente fuer Partnerinnen, Partner und Teilnehmende.'
-                      : 'Documents d information multilingues pour partenaires et participantes.',
+                      ? 'Mehrsprachige Informationsdokumente für Partnerinnen, Partner und Teilnehmende.'
+                      : 'Documents d\'information multilingues pour partenaires et participantes.',
                     locale === 'de'
-                      ? 'Klare Download-Struktur fuer Programme, Leitlinien und Projektunterlagen.'
-                      : 'Structure de telechargement claire pour programmes, lignes directrices et dossiers projets.'
+                      ? 'Klare Download-Struktur für Programme, Leitlinien und Projektunterlagen.'
+                      : 'Structure de téléchargement claire pour programmes, lignes directrices et dossiers projets.'
                   ].map((item) => (
                     <p
                       key={item}
-                      className="rounded-[1.2rem] border border-[var(--border)] bg-white/25 px-4 py-3 text-sm leading-7 text-[var(--text)]"
+                      className="rounded-[var(--radius-md)] border border-[var(--border)] bg-tint/25 px-4 py-3 text-sm leading-7 text-[var(--text)]"
                     >
                       {item}
                     </p>
@@ -410,14 +430,19 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
 
             <Reveal delay={0.1}>
               <SurfaceCard className="h-full p-6">
-                <p className="section-label">
-                  {locale === 'de' ? 'Partner & Foerderer' : 'Partenaires & financeurs'}
-                </p>
+                <div className="flex items-center justify-between gap-3">
+                  <p className="section-label">
+                    {locale === 'de' ? 'Partner' : 'Partenaires'}
+                  </p>
+                  <span className="status-indicator status-indicator-green">
+                    {locale === 'de' ? 'Aktiv' : 'Actifs'}
+                  </span>
+                </div>
                 <div className="mt-5 grid grid-cols-2 gap-3">
                   {funders.map((funder) => (
                     <div
                       key={funder.id}
-                      className="relative h-24 overflow-hidden rounded-[1.2rem] border border-[var(--border)] bg-white/70"
+                      className="relative h-24 overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] bg-tint/8"
                     >
                       <Image
                         src={funder.logo}
@@ -438,40 +463,55 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
           </div>
         </section>
 
+        {/* ── Digital Services CTA — Mastra-style announcement bar ── */}
         <Reveal>
-          <SurfaceCard tone="accent" className="px-6 py-7 contrast-on-accent sm:px-8 sm:py-8">
-            <div className="grid gap-6 lg:grid-cols-[1.15fr_auto] lg:items-center">
+          <div className="relative overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--border-strong)]">
+            {/* Dark surface */}
+            <div className="absolute inset-0 bg-[var(--surface-contrast)]" />
+            {/* Accent glow top-right */}
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_70%_at_100%_0%,var(--glow-primary),transparent_55%)]" />
+            {/* Grid pattern */}
+            <div className="hairline-grid pointer-events-none absolute inset-0 opacity-[0.20] [mask-image:linear-gradient(90deg,transparent,black_30%,black_70%,transparent)]" />
+            {/* Inner ring */}
+            <div className="pointer-events-none absolute inset-0 rounded-[inherit] border border-[var(--ring-inner)]" />
+
+            <div className="relative grid gap-6 px-6 py-8 sm:px-8 sm:py-9 lg:grid-cols-[1.15fr_auto] lg:items-center">
               <div className="space-y-4">
-                <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] contrast-on-accent-muted">
-                  <Sparkles className="h-4 w-4" />
-                  {locale === 'de' ? 'Digitale Services' : 'Services numeriques'}
+                <div className="flex items-center gap-3">
+                  <span className="status-indicator status-indicator-green">
+                    {locale === 'de' ? 'Online' : 'En ligne'}
+                  </span>
+                  <span className="status-indicator">
+                    24/7
+                  </span>
                 </div>
-                <h3 className="text-3xl font-semibold">
+                <h3 className="text-3xl font-semibold text-[var(--text)]">
                   {locale === 'de'
-                    ? 'Online-Service und Archiv verstaerken die Begleitung mit klaren, sicheren Zugangsraeumen.'
-                    : 'Le service en ligne et les archives renforcent l accompagnement avec des espaces d acces clairs et fiables.'}
+                    ? 'Online-Service und Archiv verstärken die Begleitung mit klaren, sicheren Zugangsräumen.'
+                    : 'Le service en ligne et les archives renforcent l\'accompagnement avec des espaces d\'accès clairs et fiables.'}
                 </h3>
-                <p className="max-w-3xl text-sm leading-7 contrast-on-accent-muted">
+                <p className="max-w-3xl text-sm leading-7 text-[var(--muted)]">
                   {content.onlineServiceNote}
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/online-service"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/12 px-5 py-3 text-sm font-semibold contrast-on-accent transition hover:bg-white/18"
+                  className="btn-primary"
                 >
                   {locale === 'de' ? 'Online-Service' : 'Service en ligne'}
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/archive"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/12 px-5 py-3 text-sm font-semibold contrast-on-accent transition hover:bg-white/18"
+                  className="control-chip inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-[var(--text)]"
                 >
                   <FolderArchive className="h-4 w-4" />
                   {locale === 'de' ? 'Archiv' : 'Archives'}
                 </Link>
               </div>
             </div>
-          </SurfaceCard>
+          </div>
         </Reveal>
       </div>
     </PageContainer>

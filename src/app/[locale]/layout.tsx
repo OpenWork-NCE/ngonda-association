@@ -45,8 +45,6 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider locale={locale}>
       <div className="relative min-h-screen overflow-x-clip bg-[var(--background)] text-[var(--text)]">
-        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),transparent)]" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-80 bg-[radial-gradient(circle_at_top,rgba(235,126,59,0.1),transparent_60%)]" />
         <SiteHeader />
         <main className="relative z-10 pb-20">{children}</main>
         <SiteFooter locale={locale} />

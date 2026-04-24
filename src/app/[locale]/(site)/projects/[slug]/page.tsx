@@ -79,33 +79,35 @@ export default async function ProjectDetailPage({
           </SurfaceCard>
         </Reveal>
 
-        <section className="space-y-6">
-          <SectionTitle
-            title={locale === 'de' ? 'Projektgalerie' : 'Galerie du projet'}
-            description={
-              locale === 'de'
-                ? 'Visuelle Eindruecke aus Umsetzung, Dialog und Community-Arbeit.'
-                : 'Apercus visuels de la mise en oeuvre, du dialogue et du travail communautaire.'
-            }
-          />
-          <div className="grid gap-4 md:grid-cols-3">
-            {project.gallery.map((item, index) => (
-              <Reveal key={item.src} delay={0.05 * index}>
-                <SurfaceCard className="overflow-hidden p-2.5">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem]">
-                    <Image
-                      src={item.src}
-                      alt={getLocalized(item.alt, locale)}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 768px) 33vw, 100vw"
-                    />
-                  </div>
-                </SurfaceCard>
-              </Reveal>
-            ))}
-          </div>
-        </section>
+        {project.gallery.length ? (
+          <section className="space-y-6">
+            <SectionTitle
+              title={locale === 'de' ? 'Projektgalerie' : 'Galerie du projet'}
+              description={
+                locale === 'de'
+                  ? 'Visuelle Eindruecke aus Umsetzung, Dialog und Community-Arbeit.'
+                  : 'Apercus visuels de la mise en oeuvre, du dialogue et du travail communautaire.'
+              }
+            />
+            <div className="grid gap-4 md:grid-cols-3">
+              {project.gallery.map((item, index) => (
+                <Reveal key={item.src} delay={0.05 * index}>
+                  <SurfaceCard className="overflow-hidden p-2.5">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem]">
+                      <Image
+                        src={item.src}
+                        alt={getLocalized(item.alt, locale)}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                      />
+                    </div>
+                  </SurfaceCard>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        ) : null}
       </div>
     </PageContainer>
   );

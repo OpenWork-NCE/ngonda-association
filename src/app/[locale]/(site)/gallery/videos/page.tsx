@@ -54,7 +54,7 @@ export default async function GalleryVideosPage({
                     sizes="(min-width: 1024px) 50vw, 100vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/20 to-transparent" />
-                  <div className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-white/18 bg-black/28 px-3 py-1 text-xs font-semibold contrast-on-media">
+                  <div className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-tint/18 bg-black/28 px-3 py-1 text-xs font-semibold contrast-on-media">
                     <PlayCircle className="h-4 w-4" />
                     YouTube
                   </div>
