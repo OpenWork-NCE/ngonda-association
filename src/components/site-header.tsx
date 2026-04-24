@@ -35,6 +35,7 @@ export function SiteHeader() {
   const tBrand = useTranslations('brand');
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const isHome = pathname === '/';
 
   const links = NAV_ITEMS.map((item) => ({
     ...item,
@@ -43,17 +44,33 @@ export function SiteHeader() {
   }));
 
   return (
-    <header className="sticky top-0 z-50 px-4 pt-3.5 sm:px-6 lg:px-10">
+    <header
+      className={cn(
+        'z-50 px-4 sm:px-6 lg:px-10',
+        isHome ? 'absolute inset-x-0 top-0 pt-3.5 sm:pt-4' : 'sticky top-0 pt-3.5'
+      )}
+    >
       <div className="mx-auto w-full max-w-[92rem]">
-        <div className="relative overflow-visible rounded-[var(--radius-xl)] border border-[var(--border-strong)] bg-[var(--header-bg)] shadow-[var(--shadow-card)] backdrop-blur-[14px]">
+        <div
+          className={cn(
+            'relative overflow-visible rounded-[var(--radius-xl)] border border-[var(--border-strong)] bg-[var(--header-bg)] backdrop-blur-[16px]',
+            isHome
+              ? 'shadow-[0_22px_48px_-28px_rgba(0,0,0,0.58)] supports-[backdrop-filter]:bg-[color-mix(in_oklab,var(--header-bg)_82%,transparent)]'
+              : 'shadow-[var(--shadow-card)]'
+          )}
+        >
           {/* Top sheen */}
           <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(180deg,var(--header-sheen),transparent_52%)]" />
           {/* Inner ring — Mastra-style barely-visible inset glow */}
           <div className="pointer-events-none absolute inset-0 rounded-[inherit] border border-[var(--ring-inner)]" />
 
-          <div className="relative flex items-center justify-between gap-3 px-3.5 py-2.5 sm:px-4 sm:py-3">
+          {isHome ? (
+            <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-secondary-medium)] to-transparent opacity-80" />
+          ) : null}
+
+          <div className="relative flex items-center justify-between gap-3 px-3 py-2.5 sm:px-4 sm:py-3">
             {/* Brand */}
-            <Link href="/" className="flex min-w-0 items-center gap-3 py-0.5">
+            <Link href="/" className="flex min-w-0 items-center gap-3 rounded-[var(--radius-lg)] px-1 py-0.5">
               <div className="relative shrink-0 overflow-hidden rounded-[var(--radius-sm)] border border-[var(--border-strong)] bg-[var(--surface-strong)] px-2.5 py-1.5 shadow-[var(--shadow-soft),var(--shadow-xs)]">
                 <Image
                   src="/ngonda-logo.png"
@@ -67,9 +84,7 @@ export function SiteHeader() {
               <div className="hidden min-w-0 sm:block">
                 <p className="label-xs">NGONDA e.V.</p>
                 <div className="mt-0.5 flex items-center gap-2">
-                  <span className="truncate text-sm font-semibold text-[var(--text)]">
-                    {tBrand('slogan')}
-                  </span>
+                  <span className="truncate text-sm font-semibold text-[var(--text)]">{tBrand('slogan')}</span>
                   <span className="hidden rounded-full border border-[var(--border)] px-2 py-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-[var(--muted)] lg:inline-flex">
                     Aachen
                   </span>
@@ -77,32 +92,32 @@ export function SiteHeader() {
               </div>
             </Link>
 
-            {/* Desktop nav pill */}
-            <nav
-              aria-label="Main navigation"
-              className="relative z-20 hidden items-center gap-0.5 rounded-full border border-[var(--border)] bg-[var(--surface-strong)] p-1 shadow-[var(--shadow-soft),var(--shadow-xs)] xl:flex"
-            >
-              {links.map((link) => (
-                <Link
-                  key={link.key}
-                  href={link.href}
-                  aria-current={link.active ? 'page' : undefined}
-                  className={cn(
-                    'relative rounded-full px-3.5 py-2 text-[0.8125rem] font-medium transition-all duration-[var(--dur-fast)]',
-                    link.active
-                      ? 'bg-[var(--accent)] text-[var(--accent-contrast)] shadow-[var(--shadow-accent)]'
-                      : 'text-[var(--muted)] hover:bg-[var(--accent-soft)] hover:text-[var(--text)]'
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Controls */}
             <div className="hidden items-center gap-2 xl:flex">
-              <LanguageSwitcher />
-              <ThemeToggle />
+              <nav
+                aria-label="Main navigation"
+                className="relative z-20 flex items-center gap-0.5 rounded-full border border-[var(--border)] bg-[var(--surface-strong)] p-1 shadow-[var(--shadow-soft),var(--shadow-xs)]"
+              >
+                {links.map((link) => (
+                  <Link
+                    key={link.key}
+                    href={link.href}
+                    aria-current={link.active ? 'page' : undefined}
+                    className={cn(
+                      'relative rounded-full px-3.5 py-2 text-[0.8rem] font-medium transition-all duration-[var(--dur-fast)]',
+                      link.active
+                        ? 'bg-[var(--accent)] text-[var(--accent-contrast)] shadow-[var(--shadow-accent)]'
+                        : 'text-[var(--muted)] hover:bg-[var(--accent-soft)] hover:text-[var(--text)]'
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+
+              <div className="flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface-strong)] px-2 py-1 shadow-[var(--shadow-soft),var(--shadow-xs)]">
+                <LanguageSwitcher />
+                <ThemeToggle />
+              </div>
             </div>
 
             {/* Mobile hamburger */}
@@ -141,7 +156,7 @@ export function SiteHeader() {
                   </Link>
                 ))}
               </div>
-              <div className="mt-4 flex items-center justify-between gap-3">
+              <div className="mt-4 flex items-center justify-between gap-3 rounded-[var(--radius-lg)] border border-[var(--border)] bg-tint/8 px-2 py-2">
                 <LanguageSwitcher />
                 <ThemeToggle />
               </div>

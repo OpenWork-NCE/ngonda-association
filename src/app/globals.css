@@ -23,7 +23,7 @@
   --surface-muted: rgba(215, 240, 246, 0.96);
   --surface-contrast: rgba(200, 232, 242, 0.97);
   --surface-accent: linear-gradient(145deg, #c8620e 0%, #d97520 45%, #eca060 100%);
-  --surface-glass: rgba(109, 255, 235, 0.574);
+  --surface-glass: rgba(94, 255, 252, 0.667);
 
   /* Borders */
   --border: rgba(15, 13, 9, 0.08);
@@ -31,7 +31,7 @@
   --line: rgba(15, 13, 9, 0.04);
 
   /* Inner ring — used on cards, hero, header, widgets */
-  --ring-inner: rgba(255, 255, 255, 0.65);
+  --ring-inner: rgba(94, 255, 252, 0.667);
 
   /* Accent — orange */
   --accent: #d0650e;
@@ -72,6 +72,13 @@
   /* Glow */
   --glow-primary: rgba(208, 101, 14, 0.10);
   --glow-secondary: rgba(31, 168, 188, 0.18);
+  --bg-grid-major: rgba(15, 13, 9, 0.14);
+  --bg-grid-minor: rgba(15, 13, 9, 0.065);
+  --bg-grid-depth: rgba(255, 255, 255, 0.5);
+  --bg-vignette: rgba(245, 244, 240, 0.18);
+  --bg-noise: rgba(255, 255, 255, 0.018);
+  --bg-dof-shadow: rgba(15, 13, 9, 0.07);
+  --bg-dof-highlight: rgba(255, 255, 255, 0.42);
 
   /* ── Radius scale ── */
   --radius-xs: 0.625rem;
@@ -184,6 +191,13 @@
   /* Glow */
   --glow-primary: rgba(245, 144, 56, 0.12);
   --glow-secondary: rgba(93, 207, 222, 0.08);
+  --bg-grid-major: rgba(255, 248, 235, 0.095);
+  --bg-grid-minor: rgba(255, 248, 235, 0.034);
+  --bg-grid-depth: rgba(255, 255, 255, 0.04);
+  --bg-vignette: rgba(7, 6, 4, 0.36);
+  --bg-noise: rgba(255, 255, 255, 0.012);
+  --bg-dof-shadow: rgba(0, 0, 0, 0.28);
+  --bg-dof-highlight: rgba(255, 255, 255, 0.045);
 
   /* Shadows — Mastra-style pure black (0 4px 54px #000c) */
   --shadow-soft: inset 0 1px 0 rgba(255, 255, 255, 0.018);
@@ -243,6 +257,8 @@ body {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   overflow-x: hidden;
   background: var(--background);
   color: var(--text);
@@ -272,31 +288,151 @@ a {
     opacity var(--dur-fast) var(--ease-out);
 }
 
-/* Mastra-style hairline grid — slightly more visible than before */
+/* Dynamic site grid with depth */
 body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 82% 60% at 50% -10%, var(--bg-grid-depth), transparent 64%),
+    linear-gradient(var(--bg-grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid-major) 1px, transparent 1px),
+    linear-gradient(var(--bg-grid-minor) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid-minor) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    88px 88px,
+    88px 88px,
+    26px 26px,
+    26px 26px;
+  background-position:
+    center top,
+    center top,
+    center top,
+    center top,
+    center top;
+  transform-origin: top center;
+  transform: perspective(1400px) rotateX(72deg) scale(1.54) translateY(-10%);
+  mask-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.96) 30%, rgba(0, 0, 0, 0.58) 72%, transparent 92%);
+  opacity: 0.88;
+  animation: grid-drift 36s linear infinite;
+}
+
+/* Glow and vignette depth */
+body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -2;
   pointer-events: none;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 100% 65% at 50% 0%, black, transparent 80%);
-  opacity: 0.28;
+  background:
+    radial-gradient(circle at 12% 16%, color-mix(in oklab, var(--glow-primary) 70%, transparent), transparent 24%),
+    radial-gradient(circle at 84% 12%, color-mix(in oklab, var(--glow-secondary) 68%, transparent), transparent 22%),
+    radial-gradient(circle at 50% 38%, color-mix(in oklab, var(--glow-primary) 42%, transparent), transparent 28%),
+    radial-gradient(circle at 50% 120%, var(--bg-vignette), transparent 58%);
+  filter: blur(18px) saturate(0.98);
+  opacity: 0.78;
 }
 
-/* Subtle top accent glow — Mastra-style */
-body::after {
+html::before {
   content: "";
   position: fixed;
-  inset-x: 0;
-  top: 0;
-  height: 320px;
+  inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(ellipse 80% 50% at 50% -10%, var(--glow-primary), transparent);
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--background) 32%, transparent), transparent 18%),
+    linear-gradient(180deg, transparent 0%, transparent 78%, color-mix(in oklab, var(--background) 80%, transparent) 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 3px,
+      var(--bg-noise) 3px 4px,
+      transparent 4px 8px
+    );
+  opacity: 0.24;
+}
+
+.site-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.site-background-grid,
+.site-background-depth,
+.site-background-glow,
+.site-background-noise {
+  position: absolute;
+  inset: 0;
+}
+
+.site-background-grid {
+  background:
+    linear-gradient(var(--bg-grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid-major) 1px, transparent 1px);
+  background-size:
+    56px 56px,
+    56px 56px;
+  background-position:
+    center top,
+    center top;
+  opacity: 0.42;
+}
+
+.site-background-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 82% 60% at 50% -10%, var(--bg-grid-depth), transparent 64%),
+    linear-gradient(var(--bg-grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid-major) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    56px 56px,
+    56px 56px;
+  background-position: center top, center top, center top;
+  transform-origin: top center;
+  transform: perspective(1400px) rotateX(72deg) scale(1.46) translateY(-7%);
+  mask-image: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.94) 26%, rgba(0, 0, 0, 0.42) 68%, transparent 90%);
+  opacity: 0.72;
+  animation: grid-drift 36s linear infinite;
+}
+
+.site-background-depth {
+  background:
+    radial-gradient(circle at 20% 18%, var(--bg-dof-highlight), transparent 22%),
+    radial-gradient(circle at 78% 16%, color-mix(in oklab, var(--accent-secondary) 14%, transparent), transparent 18%),
+    radial-gradient(circle at 50% 44%, var(--bg-dof-shadow), transparent 28%),
+    radial-gradient(circle at 84% 84%, var(--bg-dof-shadow), transparent 24%);
+  filter: blur(54px) saturate(0.94);
+  opacity: 0.66;
+}
+
+.site-background-glow {
+  background:
+    radial-gradient(circle at 12% 16%, color-mix(in oklab, var(--glow-primary) 70%, transparent), transparent 24%),
+    radial-gradient(circle at 84% 12%, color-mix(in oklab, var(--glow-secondary) 68%, transparent), transparent 22%),
+    radial-gradient(circle at 50% 38%, color-mix(in oklab, var(--glow-primary) 42%, transparent), transparent 28%),
+    radial-gradient(circle at 50% 120%, var(--bg-vignette), transparent 58%);
+  filter: blur(18px) saturate(0.98);
+  opacity: 0.46;
+}
+
+.site-background-noise {
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--background) 32%, transparent), transparent 18%),
+    linear-gradient(180deg, transparent 0%, transparent 78%, color-mix(in oklab, var(--background) 80%, transparent) 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 3px,
+      var(--bg-noise) 3px 4px,
+      transparent 4px 8px
+    );
+  opacity: 0.18;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -829,6 +965,18 @@ body::after {
   50%       { opacity: 1; }
 }
 
+@keyframes grid-drift {
+  0% {
+    transform: perspective(1400px) rotateX(72deg) scale(1.54) translateY(-10%) translateX(0);
+  }
+  50% {
+    transform: perspective(1400px) rotateX(72deg) scale(1.56) translateY(-9.5%) translateX(-0.18%);
+  }
+  100% {
+    transform: perspective(1400px) rotateX(72deg) scale(1.54) translateY(-10%) translateX(0);
+  }
+}
+
 /* ─────────────────────────────────────────────────────────────────────────
    REDUCED MOTION
 ───────────────────────────────────────────────────────────────────────── */
@@ -840,5 +988,13 @@ body::after {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+
+  body::before {
+    animation: none !important;
+  }
+
+  .site-background-grid {
+    animation: none !important;
   }
 }

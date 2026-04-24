@@ -45,6 +45,12 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider locale={locale}>
       <div className="relative min-h-screen overflow-x-clip bg-[var(--background)] text-[var(--text)]">
+        <div aria-hidden="true" className="site-background">
+          <div className="site-background-grid" />
+          <div className="site-background-depth" />
+          <div className="site-background-glow" />
+          <div className="site-background-noise" />
+        </div>
         <SiteHeader />
         <main className="relative z-10 pb-20">{children}</main>
         <SiteFooter locale={locale} />

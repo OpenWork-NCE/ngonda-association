@@ -222,10 +222,10 @@ export const currentProjects: ProjectItem[] = [
       fr: 'Injustice dans l’ombre : violences coloniales envers les Bassa’a'
     },
     featuredImage: {
-      src: '/media/projects/koloniale-gewalt-bassaa/featured.jpg',
+      src: '/media/real-assets/media19.jpg',
       alt: {
-        de: 'Architektonische Perspektive fuer Erinnerungsarbeit',
-        fr: 'Perspective architecturale pour le travail de memoire'
+        de: 'Gruppenaufnahme in einem institutionellen Kontext fuer Erinnerungs- und Bildungsarbeit',
+        fr: 'Photo de groupe dans un contexte institutionnel pour un travail de memoire et de transmission'
       }
     },
     gallery: [],
@@ -255,10 +255,10 @@ export const currentProjects: ProjectItem[] = [
       fr: 'Comprendre l’autisme : information et sensibilisation'
     },
     featuredImage: {
-      src: '/media/projects/autismus-sensibilisierung/featured.jpg',
+      src: '/media/real-assets/media12.jpg',
       alt: {
-        de: 'Begleitformat fuer Familien und Fachkraefte',
-        fr: 'Format d accompagnement pour familles et equipes'
+        de: 'Sensibilisierungs- und Bildungsformat mit visueller Praesentation',
+        fr: 'Format de sensibilisation et de formation avec support visuel'
       }
     },
     gallery: [],
@@ -288,10 +288,10 @@ export const currentProjects: ProjectItem[] = [
       fr: 'Muto - voix pour le changement'
     },
     featuredImage: {
-      src: '/media/projects/muto-stimmen-fuer-veraenderung/featured.jpg',
+      src: '/media/real-assets/media20.jpg',
       alt: {
-        de: 'Empowerment Format fuer Frauen in Aachen',
-        fr: 'Format d empowerment pour les femmes a Aachen'
+        de: 'Gemeinsame Gruppenaufnahme eines inklusiven Empowerment-Formats',
+        fr: 'Photo de groupe d un format d empowerment inclusif'
       }
     },
     gallery: [],
