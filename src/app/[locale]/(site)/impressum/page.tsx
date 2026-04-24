@@ -26,11 +26,6 @@ export default async function ImpressumPage({params}: PageProps<'/[locale]/impre
           <PageHero
             eyebrow="Impressum"
             title={tPages('impressumTitle')}
-            description={
-              locale === 'de'
-                ? 'Institutionelle Angaben, Verantwortlichkeiten und rechtliche Hinweise in einer strukturierten Darstellung.'
-                : 'Informations institutionnelles, responsabilités et mentions juridiques dans une présentation structurée.'
-            }
             metrics={[
               {
                 value: 'VR-6400',

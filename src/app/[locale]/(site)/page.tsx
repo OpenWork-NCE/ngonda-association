@@ -435,7 +435,6 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
                   <p className="section-label">{locale === 'de' ? 'Galerie' : 'Galerie'}</p>
                   <span className="status-indicator">{galleryPhotos.length}+</span>
                 </div>
-                <p className="mt-4 text-sm leading-7 text-[var(--muted)]">{content.galleryNote}</p>
                 <div className="mt-5 grid grid-cols-3 gap-2">
                   {galleryPhotos.slice(0, 3).map((photo) => (
                     <div key={photo.id} className="relative aspect-square overflow-hidden rounded-[1rem]">
@@ -459,7 +458,6 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
             <Reveal delay={0.05}>
               <SurfaceCard tone="muted" className="h-full p-6">
                 <p className="section-label">{locale === 'de' ? 'Brochüren' : 'Brochures'}</p>
-                <p className="mt-4 text-sm leading-7 text-[var(--muted)]">{content.brochureNote}</p>
                 <div className="mt-5 space-y-3">
                   {[
                     locale === 'de'

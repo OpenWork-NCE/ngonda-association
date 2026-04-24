@@ -22,7 +22,6 @@ export default async function FundersPage({params}: PageProps<'/[locale]/funders
           <PageHero
             eyebrow={locale === 'de' ? 'Partnernetzwerk' : 'Réseau partenaires'}
             title={tPages('fundersTitle')}
-            description={content.fundersNote}
             metrics={[
               {
                 value: `${funders.length}`,

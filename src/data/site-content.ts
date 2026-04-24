@@ -1101,16 +1101,6 @@ export const siteContent = {
     ],
     coordinatorProfile:
       'Aus dem Bereich der Zivilgesellschaft, Organisation und Soziales arbeite ich als Gruppenleiterin und Moderatorin für Projektarbeit. Als Geschäftsführerin von NGONDA e.V. koordiniere ich den Vereinsalltag und Bildungsmaßnahmen zur Stärkung migrantischer Frauen in Aachen.',
-    archiveEditorialNote:
-      'Archive und ergänzende Programme bleiben sichtbar, aber getrennt von aktuellen Projekten. So werden historische und konzeptionelle Inhalte nicht mit laufenden Projekten vermischt.',
-    galleryNote:
-      'Die Galerie zeigt kuratierte Eindrücke aus Projekten, Begegnungen und Community-Aktivitäten.',
-    brochureNote:
-      'Die Broschüre bündelt Informationsunterlagen zu Programmen, Partnerschaften und Vereinsarbeit.',
-    fundersNote:
-      'Förderer werden als sichtbare Partner in einer eigenen, klar strukturierten Sektion präsentiert.',
-    onlineServiceNote:
-      'Der Online-Service bietet digitale Kontaktwege, Orientierung und direkten Zugang zu relevanten Informationen.'
   },
   fr: {
     localeLabel: 'Français',
@@ -1136,16 +1126,6 @@ export const siteContent = {
     ],
     coordinatorProfile:
       'Issue de la société civile, de l’organisation et du social, je coordonne des projets de groupe et de modération. En tant que directrice de NGONDA e.V., je pilote le quotidien de l’association et les actions éducatives au service des femmes migrantes à Aachen.',
-    archiveEditorialNote:
-      'Les archives et programmes complémentaires restent visibles mais distincts des projets en cours pour préserver la lisibilité éditoriale.',
-    galleryNote:
-      'La galerie présente des moments choisis issus des projets, des rencontres et des actions communautaires.',
-    brochureNote:
-      'La rubrique Brochure rassemble les documents d’information sur les programmes, les partenariats et les activités de l’association.',
-    fundersNote:
-      'La rubrique Partenaires/Financeurs est structurée et extensible (logos, noms, liens).',
-    onlineServiceNote:
-      'Le service en ligne propose des parcours de contact numériques, des informations utiles et des points d’orientation.'
   }
 } as const;
 

@@ -32,11 +32,6 @@ export default async function BrochurePage({params}: PageProps<'/[locale]/brochu
           <PageHero
             eyebrow={locale === 'de' ? 'Dokumenten-Hub' : 'Hub documentaire'}
             title={tPages('brochureTitle')}
-            description={
-              locale === 'de'
-                ? 'Eine kuratierte Sammlung von Broschüren, Handbüchern und Toolkits für Präsentation, Vermittlung, Begleitung und institutionelle Kommunikation.'
-                : 'Une collection éditoriale de brochures, guides et toolkits conçus pour la présentation, la médiation, l\'accompagnement et la communication institutionnelle.'
-            }
             metrics={[
               {
                 value: `${brochures.length}`,
