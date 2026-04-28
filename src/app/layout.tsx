@@ -20,12 +20,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: 'NGONDA e.V.',
   description:
-    'NGONDA e.V. accompagne et renforce les femmes migrantes en Allemagne.',
-  icons: {
-    icon: [{url: '/ngonda-logo.png', type: 'image/png'}],
-    shortcut: '/ngonda-logo.png',
-    apple: '/ngonda-logo.png'
-  }
+    'NGONDA e.V. accompagne et renforce les femmes migrantes en Allemagne.'
 };
 
 export default function RootLayout({
