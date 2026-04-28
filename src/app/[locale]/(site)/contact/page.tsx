@@ -69,8 +69,8 @@ export default async function ContactPage({params}: PageProps<'/[locale]/contact
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--accent-soft)]">
                       <Mail className="h-4 w-4 text-[var(--accent)]" />
                     </div>
-                    <a href="mailto:info@ngonda.de" className="hover:text-[var(--accent)]">
-                      info@ngonda.de
+                    <a href={contactDetails.emailHref} className="hover:text-[var(--accent)]">
+                      {contactDetails.email}
                     </a>
                   </div>
                 </SurfaceCard>
@@ -117,8 +117,8 @@ export default async function ContactPage({params}: PageProps<'/[locale]/contact
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--surface-strong)]">
                     <Mail className="h-4 w-4 text-[var(--accent)]" />
                   </div>
-                  <a href="mailto:info@ngonda.de" className="text-[var(--accent)] hover:underline">
-                    info@ngonda.de
+                  <a href={contactDetails.emailHref} className="text-[var(--accent)] hover:underline">
+                    {contactDetails.email}
                   </a>
                 </div>
               </div>

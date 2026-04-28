@@ -628,24 +628,39 @@ export const cooperationFrancoAllemande: LocalizedString[] = [
 
 export const funders: FunderItem[] = [
   {
-    id: 'f1',
-    name: 'Förderer 1',
+    id: 'aktion-mensch',
+    name: 'Aktion Mensch',
     logo: '/funders/funder-1.jpg'
   },
   {
-    id: 'f2',
-    name: 'Förderer 2',
+    id: 'deutsche-stiftung-engagement-ehrenamt',
+    name: 'Deutsche Stiftung für Engagement und Ehrenamt',
     logo: '/funders/funder-2.jpg'
   },
   {
-    id: 'f3',
-    name: 'Förderer 3',
+    id: 'komm-an-nrw',
+    name: 'KOMM-AN NRW',
     logo: '/funders/funder-3.jpg'
   },
   {
-    id: 'f4',
-    name: 'Förderer 4',
+    id: 'engagement-global',
+    name: 'Engagement Global',
     logo: '/funders/funder-4.jpg'
+  },
+  {
+    id: 'heidehof-stiftung',
+    name: 'Heidehof Stiftung',
+    logo: '/funders/funder-7.jpg'
+  },
+  {
+    id: 'brot-fuer-die-welt',
+    name: 'Brot für die Welt',
+    logo: '/funders/funder-6.jpg'
+  },
+  {
+    id: 'deutsche-aids-stiftung',
+    name: 'Deutsche AIDS-Stiftung',
+    logo: '/funders/funder-5.jpg'
   }
 ];
 
@@ -1101,6 +1116,12 @@ export const siteContent = {
     ],
     coordinatorProfile:
       'Aus dem Bereich der Zivilgesellschaft, Organisation und Soziales arbeite ich als Gruppenleiterin und Moderatorin für Projektarbeit. Als Geschäftsführerin von NGONDA e.V. koordiniere ich den Vereinsalltag und Bildungsmaßnahmen zur Stärkung migrantischer Frauen in Aachen.',
+    archiveEditorialNote:
+      'Das Archiv dokumentiert abgeschlossene und ergänzende Programme als Teil der institutionellen Entwicklung von NGONDA e.V.',
+    galleryNote:
+      'Die Galerie bündelt visuelle Einblicke in Projekte, Begegnungen und Community-Arbeit von NGONDA e.V.',
+    onlineServiceNote:
+      'Der Online-Service macht Kontaktwege, Informationen und Zugänge zu den Angeboten von NGONDA e.V. leichter erreichbar.',
   },
   fr: {
     localeLabel: 'Français',
@@ -1126,6 +1147,12 @@ export const siteContent = {
     ],
     coordinatorProfile:
       'Issue de la société civile, de l’organisation et du social, je coordonne des projets de groupe et de modération. En tant que directrice de NGONDA e.V., je pilote le quotidien de l’association et les actions éducatives au service des femmes migrantes à Aachen.',
+    archiveEditorialNote:
+      'Les archives documentent les programmes achevés et complémentaires dans le développement institutionnel de NGONDA e.V.',
+    galleryNote:
+      'La galerie rassemble des aperçus visuels des projets, rencontres et actions communautaires de NGONDA e.V.',
+    onlineServiceNote:
+      'Le service en ligne facilite l’accès aux contacts, aux informations et aux offres de NGONDA e.V.',
   }
 } as const;
 
@@ -1134,9 +1161,11 @@ export const contactDetails = {
   street: 'Jülicher Str.293',
   careOf: 'S/O ADNA e.V.',
   city: '52070 Aachen',
-  phone: '0241 47594351',
-  officePhone: '0241 47594351',
-  mobilePhone: '01743993509',
+  phone: '+49 15215431424',
+  officePhone: '+49 15215431424',
+  mobilePhone: '+49 15215431424',
+  email: 'hello@ngonda-ev.com',
+  emailHref: 'mailto:hello@ngonda-ev.com',
   website: 'https://ngonda-ev.com',
   vr: 'VR-6400',
   ust: 'UST- Nr:201/5914/5135',

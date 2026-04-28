@@ -8,7 +8,7 @@ async function main() {
     update: {
       organization: 'NGONDA e.V.',
       slogan: 'She first',
-      phone: '+49 241 47594351',
+      phone: '+49 15215431424',
       street: 'Jülicher Str.293',
       city: '52070 Aachen',
       vrNumber: 'VR-6400',
@@ -22,7 +22,7 @@ async function main() {
       slogan: 'She first',
       defaultLocale: 'de',
       secondaryLocale: 'fr',
-      phone: '+49 241 47594351',
+      phone: '+49 15215431424',
       street: 'Jülicher Str.293',
       city: '52070 Aachen',
       vrNumber: 'VR-6400',

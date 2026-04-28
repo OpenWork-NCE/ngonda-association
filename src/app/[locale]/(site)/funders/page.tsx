@@ -1,6 +1,6 @@
 import {PageContainer, PageHero, SectionTitle, SurfaceCard} from '@/components/page-shell';
 import {Reveal} from '@/components/reveal';
-import {funders, getSiteContent, isAppLocale} from '@/data/site-content';
+import {funders, isAppLocale} from '@/data/site-content';
 import Image from 'next/image';
 import {getTranslations} from 'next-intl/server';
 import {notFound} from 'next/navigation';
@@ -13,7 +13,6 @@ export default async function FundersPage({params}: PageProps<'/[locale]/funders
   }
 
   const tPages = await getTranslations({locale, namespace: 'pages'});
-  const content = getSiteContent(locale);
 
   return (
     <PageContainer>
@@ -46,7 +45,7 @@ export default async function FundersPage({params}: PageProps<'/[locale]/funders
             </span>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {funders.map((funder, index) => (
               <Reveal key={funder.id} delay={0.05 * index}>
                 <SurfaceCard

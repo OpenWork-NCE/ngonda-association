@@ -16,7 +16,6 @@ import {Link} from '@/i18n/navigation';
 import {formatDate} from '@/lib/format';
 import {
   ArrowRight,
-  FolderArchive,
   Newspaper,
   Sparkles
 } from 'lucide-react';

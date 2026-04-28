@@ -102,10 +102,10 @@ export async function SiteFooter({locale}: {locale: AppLocale}) {
                   <div className="flex items-center gap-3 rounded-[var(--radius-md)] border border-[var(--accent-secondary-medium)] bg-[var(--accent-soft)] px-4 py-3 text-[var(--text)]">
                     <Mail className="h-4 w-4 shrink-0 text-[var(--accent-secondary)]" />
                     <a
-                      href="mailto:info@ngonda.de"
+                      href={contactDetails.emailHref}
                       className="text-sm transition-colors hover:text-[var(--accent)]"
                     >
-                      info@ngonda.de
+                      {contactDetails.email}
                     </a>
                   </div>
                 </div>
@@ -145,6 +145,7 @@ export async function SiteFooter({locale}: {locale: AppLocale}) {
                 <p>{contactDetails.ust}</p>
                 <p className="mt-2">Office: {contactDetails.officePhone}</p>
                 <p>Tel: {contactDetails.mobilePhone}</p>
+                <p>Email: {contactDetails.email}</p>
                 <p className="mt-2">IBAN: {contactDetails.iban}</p>
                 <p>BIC: {contactDetails.bic}</p>
               </div>
